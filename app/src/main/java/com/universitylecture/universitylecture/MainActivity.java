@@ -3,6 +3,8 @@ package com.universitylecture.universitylecture;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton lectureListImageButton;
     private ImageButton lectureCircleImageButton;
 
+    private DrawerLayout drawerLayout;
+    private ImageButton drawerToggleImageButton;
 
     // fragment管理器
     private FragmentManager fragmentManager;
@@ -46,6 +50,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lectureListImageButton.setOnClickListener(this);
         lectureCircleImageButton = (ImageButton) findViewById(R.id.lecture_circle_image_button);
         lectureCircleImageButton.setOnClickListener(this);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggleImageButton = (ImageButton) findViewById(R.id.toggle_drawer_open);
+        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
     @Override
