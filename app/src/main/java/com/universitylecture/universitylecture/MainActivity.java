@@ -2,6 +2,7 @@ package com.universitylecture.universitylecture;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,8 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton lectureListImageButton;
     private ImageButton lectureCircleImageButton;
 
+    // drawer layout
     private DrawerLayout drawerLayout;
     private ImageButton drawerToggleImageButton;
+
+   // 搜索
+    private ImageButton searchImageButton;
 
     // fragment管理器
     private FragmentManager fragmentManager;
@@ -59,6 +64,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+
+        searchImageButton = (ImageButton) findViewById(R.id.search_activity);
+        searchImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            }
+        });
+
     }
 
     @Override
