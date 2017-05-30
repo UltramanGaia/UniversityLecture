@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by fengqingyundan on 2017/5/28.
  */
-
+//为了使用Listview而建立的容器类
 public class LectureAdapter extends ArrayAdapter<Lecture> {
     private int resourceId;
 
