@@ -27,7 +27,6 @@ public class Lecture {
         name = pname;
         imageId = pimageId;
     }
-
     public void setImageId( int pimageId ){
         imageId = pimageId;
     }

@@ -83,18 +83,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_lecture_image_button:
+                resetAllImage();
+                myLectureImageButton.setImageResource(R.drawable.my_lecture_pressed);
                 setTabSelection(0);
                 break;
 
             case R.id.lecture_list_image_button:
+                resetAllImage();
+                lectureListImageButton.setImageResource(R.drawable.lecture_list_pressed);
                 setTabSelection(1);
                 break;
 
             case R.id.lecture_circle_image_button:
+                resetAllImage();
+                lectureCircleImageButton.setImageResource(R.drawable.lecture_cricle_pressed);
                 setTabSelection(2);
                 break;
 
         }
+    }
+
+    private void resetAllImage(){
+        myLectureImageButton.setImageResource(R.drawable.my_lecture_normal);
+        lectureListImageButton.setImageResource(R.drawable.lecture_list_normal);
+        lectureCircleImageButton.setImageResource(R.drawable.lecture_circle_normal);
     }
 
     private void setTabSelection(int index) {

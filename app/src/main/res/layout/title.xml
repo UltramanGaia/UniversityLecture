@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/title_bar"
     >
     <ImageButton
         android:id="@+id/toggle_drawer_open"
@@ -16,7 +16,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
-        android:text="hello world"
         android:textSize="24sp"
         android:gravity="center"
         />

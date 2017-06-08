@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-
+//讲座圈界面
 public class LectureCircleFragment extends Fragment {
 
     @Override

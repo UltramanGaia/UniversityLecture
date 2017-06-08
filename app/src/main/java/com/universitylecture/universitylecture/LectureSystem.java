@@ -52,7 +52,7 @@ public class LectureSystem {
         Lecture eleventh = new Lecture("10","1月3日","A1-103","软件学院","2017深信服杯决赛答辩","深信服工作人员","0.5","深信服决赛", R.drawable.test );
         Lecture twelvth = new Lecture("11","1月4日","A1-104","软件学院","2017软件文化节开幕式","软件学生会","0.5","软件文化节", R.drawable.test );
 
-        for( int i = 0 ; i < 3 ; i++ ){
+//        for( int i = 0 ; i < 3 ; i++ ){
             lectures.add(first);
             lectures.add(second);
             lectures.add(third);
@@ -65,7 +65,7 @@ public class LectureSystem {
             lectures.add(tenth);
             lectures.add(eleventh);
             lectures.add(twelvth);
-        }
+//        }
     }
 
 
