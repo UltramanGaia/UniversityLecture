@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import butterknife.InjectView;
+
 import static android.view.Window.FEATURE_NO_TITLE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // fragment管理器
     private FragmentManager fragmentManager;
 
+    @InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;//筛选列表
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,5 +161,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             transaction.hide(lectureCircleFragment);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        //退出activity前关闭菜单
+        if (mDropDownMenu.isShowing()) {
+            mDropDownMenu.closeMenu();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

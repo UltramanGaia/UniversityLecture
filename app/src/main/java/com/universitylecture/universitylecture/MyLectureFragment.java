@@ -21,7 +21,7 @@ public class MyLectureFragment extends Fragment {
     private View view;
     private SwipeRefreshLayout swipeRefresh;
     private LectureAdapterTwo adapter;
-    private RecyclerView lectures_recyclerView;
+    private   RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
     View footer;
 
@@ -123,7 +123,7 @@ public class MyLectureFragment extends Fragment {
         lectures_recyclerView.setLayoutManager(layoutManager);
         adapter = new LectureAdapterTwo(lectures);
         lectures_recyclerView.setAdapter(adapter);
-        //lectures_recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
 
         //设置rooter
         setFooterView(lectures_recyclerView);
