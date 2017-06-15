@@ -4,11 +4,18 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import butterknife.InjectView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import butterknife.InjectView;
 
@@ -30,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // drawer layout
     private DrawerLayout drawerLayout;
-    private ImageButton drawerToggleImageButton;
+    private CircleImageView drawerToggleImageButton;
+    private NavigationView navigationView;
 
    // 搜索
     private ImageButton searchImageButton;
@@ -40,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;//筛选列表
 
+    //@InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;//筛选列表
+    private DropDownMenu mDropDownMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lectureListImageButton.setOnClickListener(this);
         lectureCircleImageButton = (ImageButton) findViewById(R.id.lecture_circle_image_button);
         lectureCircleImageButton.setOnClickListener(this);
+        mDropDownMenu = (DropDownMenu) findViewById(R.id.dropDownMenu);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerToggleImageButton = (ImageButton) findViewById(R.id.toggle_drawer_open);
+        drawerToggleImageButton = (CircleImageView) findViewById(R.id.toggle_drawer_open);
         drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -80,6 +91,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        //抽屉栏
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);//设置抽屉ITEM图标为原来的颜色
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+            public boolean onNavigationItemSelected(MenuItem item) {
+                int id = item.getItemId();
+                Intent intent;
+
+                switch(id){
+                    case R.id.my_information_in_nav:
+                        intent = new Intent( MainActivity.this , MyInformation.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.launch_in_nav:
+                        intent = new Intent( MainActivity.this , LaunchActivity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.setting_in_nav:
+                        intent = new Intent( MainActivity.this , SettingActivity.class );
+                        startActivity(intent);
+                        break;
+
+                }
+
+                return true;
+            }
+        });
     }
 
     @Override
@@ -164,10 +202,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         //退出activity前关闭菜单
+<<<<<<< HEAD
         if (mDropDownMenu.isShowing()) {
             mDropDownMenu.closeMenu();
         } else {
             super.onBackPressed();
         }
     }
+=======
+        if (LectureListFragment.mDropDownMenu != null && LectureListFragment.mDropDownMenu.isShowing()) {
+            LectureListFragment.mDropDownMenu.closeMenu();
+        } else if (drawerLayout.isDrawerOpen(Gravity.START)){
+            drawerLayout.closeDrawers();
+        }else{
+            super.onBackPressed();
+        }
+    }
+
+>>>>>>> master
 }

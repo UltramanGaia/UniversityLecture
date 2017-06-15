@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/my_information_in_nav"
+            android:icon="@mipmap/my_information"
+            android:title="我的资料">
+        </item>
+
+        <item
+            android:id="@+id/launch_in_nav"
+            android:icon="@mipmap/launch"
+            android:title="发布讲座">
+        </item>
+
+        <item
+            android:id="@+id/setting_in_nav"
+            android:icon="@mipmap/setting"
+            android:title="设置">
+        </item>
+
+    </group>
+</menu>

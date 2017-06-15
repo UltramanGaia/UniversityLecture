@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".MyInformation"></activity>
+        <activity android:name=".LaunchActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>

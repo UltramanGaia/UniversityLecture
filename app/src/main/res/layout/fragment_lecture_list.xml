@@ -20,6 +20,15 @@
         app:ddmenuBackgroundColor="@color/white"
         app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
         />
+<<<<<<< HEAD
+=======
+
+    <TextView
+        android:id="@+id/content_lecture_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+>>>>>>> master
 
     <TextView
         android:id="@+id/content_lecture_list"

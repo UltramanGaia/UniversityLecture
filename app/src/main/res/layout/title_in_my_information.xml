@@ -6,30 +6,25 @@
     android:layout_height="56dp"
     android:background="@drawable/title_bar"
     >
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/toggle_drawer_open"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/go_back"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_margin="4dp"
-        android:src="@drawable/longheadimage" />
+        android:text="返回" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_weight="1"
+        android:text="我的资料"
         android:textSize="24sp"
         android:gravity="center"
         />
-    <ImageButton
-        android:id="@+id/search_activity"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/edit_information"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_margin="4dp"
         android:layout_gravity="end"
-        android:background="#00000000"
-        app:srcCompat="@drawable/search" />
+        android:text="编辑"/>
 
-
-    </LinearLayout>
+</LinearLayout>

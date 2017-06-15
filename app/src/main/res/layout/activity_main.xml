@@ -17,7 +17,7 @@
 
         <FrameLayout
             android:id="@+id/content"
-            android:layout_width="336dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
@@ -111,37 +111,14 @@
 
 
     <!-- 左侧抽屉显示的内容-->
-    <LinearLayout
-        android:layout_width="320dp"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:orientation="vertical"
-        >
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           >
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:src="@mipmap/ic_launcher"
-               android:layout_gravity="center_horizontal|center_vertical"
-               />
-
-       </LinearLayout>
-
-        <ListView
-            android:id="@+id/left_drawer"
-            android:layout_width="240dp"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="@android:color/white"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
-            android:drawSelectorOnTop="false"/>
-    </LinearLayout>
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header">
+    </android.support.design.widget.NavigationView>
 
 
 </android.support.v4.widget.DrawerLayout>
