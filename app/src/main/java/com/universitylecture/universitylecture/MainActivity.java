@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.InjectView;
@@ -45,23 +46,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // fragment管理器
     private FragmentManager fragmentManager;
-
-    @InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;//筛选列表
-
     //@InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;//筛选列表
-    private DropDownMenu mDropDownMenu;
+
+    //抽屉栏头像下的个人信息
+    private View headerView;
+    private TextView userName;
+    private TextView phoneNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        initPersonalInformation();
         initView();
+        updatePersonalInformation();
+
         fragmentManager = getFragmentManager();
 
         setTabSelection(0);
 
 
+    }
+
+    private void initPersonalInformation(){
+        PersonalInformation.id = 0;
+        PersonalInformation.name = "龙哥";
+        PersonalInformation.phoneNumber="13631432757";
+        PersonalInformation.sex = "男";
+        PersonalInformation.studentNumber = "201530612668";
     }
 
     private void initView() {
@@ -71,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lectureListImageButton.setOnClickListener(this);
         lectureCircleImageButton = (ImageButton) findViewById(R.id.lecture_circle_image_button);
         lectureCircleImageButton.setOnClickListener(this);
-        mDropDownMenu = (DropDownMenu) findViewById(R.id.dropDownMenu);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggleImageButton = (CircleImageView) findViewById(R.id.toggle_drawer_open);
@@ -92,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         //抽屉栏
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);//设置抽屉ITEM图标为原来的颜色
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -118,6 +131,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+
+        View headerView=navigationView.getHeaderView(0);
+        userName = (TextView) headerView.findViewById(R.id.username);
+        phoneNumber = (TextView) headerView.findViewById(R.id.phoneNumber);
     }
 
     @Override
@@ -202,22 +219,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         //退出activity前关闭菜单
-<<<<<<< HEAD
-        if (mDropDownMenu.isShowing()) {
-            mDropDownMenu.closeMenu();
-        } else {
-            super.onBackPressed();
-        }
-    }
-=======
         if (LectureListFragment.mDropDownMenu != null && LectureListFragment.mDropDownMenu.isShowing()) {
             LectureListFragment.mDropDownMenu.closeMenu();
-        } else if (drawerLayout.isDrawerOpen(Gravity.START)){
+        } else if(drawerLayout.isDrawerOpen(Gravity.START)){
             drawerLayout.closeDrawers();
         }else{
             super.onBackPressed();
         }
     }
 
->>>>>>> master
+    private void updatePersonalInformation(){
+        userName.setText(PersonalInformation.name);
+        phoneNumber.setText(PersonalInformation.phoneNumber);
+    }
+
+    protected void onResume(){
+        super.onResume();
+        updatePersonalInformation();//更新抽屉栏个人信息
+    }
 }
