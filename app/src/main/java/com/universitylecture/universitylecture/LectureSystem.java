@@ -39,18 +39,18 @@ public class LectureSystem {
     //对学校的讲座进行初始化
     private void initLectures( School school ){
         List lectures = school.getLectures();
-        Lecture first = new Lecture( "0" , "1月1日" , "A1-101" , "软件学院" ,"2015软件文化节颁奖","软件学生会","0.5","软件文化节闭幕式" , R.drawable.test );
-        Lecture second = new Lecture( "1","1月2日","A1-102","软件学院","2015深信服杯杯比赛规则讲解","深信服老总","0.5","深信服杯开幕式" , R.drawable.test );
-        Lecture third = new Lecture("2","1月3日","A1-103","软件学院","2015深信服杯决赛答辩","深信服工作人员","0.5","深信服决赛", R.drawable.test );
-        Lecture forth = new Lecture("3","1月4日","A1-104","软件学院","2015软件文化节开幕式","软件学生会","0.5","软件文化节", R.drawable.test );
-        Lecture fifth = new Lecture( "4" , "1月1日" , "A1-101" , "软件学院" ,"2016软件文化节颁奖","软件学生会","0.5","软件文化节闭幕式", R.drawable.test );
-        Lecture sixth = new Lecture( "5","1月2日","A1-102","软件学院","2016深信服杯杯比赛规则讲解","深信服老总","0.5","深信服杯开幕式", R.drawable.test );
-        Lecture seventh = new Lecture("6","1月3日","A1-103","软件学院","2016深信服杯决赛答辩","深信服工作人员","0.5","深信服决赛", R.drawable.test );
-        Lecture eighth = new Lecture("7","1月4日","A1-104","软件学院","2016软件文化节开幕式","软件学生会","0.5","软件文化节", R.drawable.test );
-        Lecture ninth = new Lecture( "8" , "1月1日" , "A1-101" , "软件学院" ,"2017软件文化节颁奖","软件学生会","0.5","软件文化节闭幕式", R.drawable.test );
-        Lecture tenth = new Lecture( "9","1月2日","A1-102","软件学院","2017深信服杯杯比赛规则讲解","深信服老总","0.5","深信服杯开幕式", R.drawable.test );
-        Lecture eleventh = new Lecture("10","1月3日","A1-103","软件学院","2017深信服杯决赛答辩","深信服工作人员","0.5","深信服决赛", R.drawable.test );
-        Lecture twelvth = new Lecture("11","1月4日","A1-104","软件学院","2017软件文化节开幕式","软件学生会","0.5","软件文化节", R.drawable.test );
+        Lecture first = new Lecture( "0" , "软件文化节闭幕式" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会" , R.drawable.test );
+        Lecture second = new Lecture( "1","深信服杯开幕式" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会" , R.drawable.test );
+        Lecture third = new Lecture("2","深信服决赛" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture forth = new Lecture("3","软件文化节" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture fifth = new Lecture( "4" , "软件文化节闭幕式" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture sixth = new Lecture( "5","深信服杯开幕式" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture seventh = new Lecture("6","深信服决赛" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture eighth = new Lecture("7","软件文化节" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture ninth = new Lecture( "8" , "软件文化节闭幕式" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture tenth = new Lecture( "9","深信服杯开幕式" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture eleventh = new Lecture("10","深信服决赛" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
+        Lecture twelvth = new Lecture("11","软件文化节" , "1月1日","A1-101","软件学院","2015软件文化节颁奖","王振宇院长","德育分0.5","2015软件文化节颁奖","软件学生会","软件学生会", R.drawable.test );
 
 //        for( int i = 0 ; i < 3 ; i++ ){
             lectures.add(first);

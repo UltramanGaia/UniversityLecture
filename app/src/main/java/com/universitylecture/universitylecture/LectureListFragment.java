@@ -26,13 +26,13 @@ public class LectureListFragment extends Fragment {
     //@InjectView(R.id.dropDownMenu) static DropDownMenu mDropDownMenu;
     public static DropDownMenu mDropDownMenu ;
 
-
     private String headers[] = {"城市", "时间","学院"};
     private List<View> popupViews = new ArrayList<>();
 
     private GirdDropDownAdapter cityAdapter;
     private ListDropDownAdapter timeAdapter;
     private ConstellationAdapter institudeAdapter;
+
 
     private String citys[] = {"不限", "武汉", "北京", "上海", "成都", "广州", "深圳", "重庆", "天津", "西安", "南京", "杭州"};
     private String time[] = { "不限" , "一天之内" , "三天之内" , "五天之内" , "七天之内" , "七天之后" };

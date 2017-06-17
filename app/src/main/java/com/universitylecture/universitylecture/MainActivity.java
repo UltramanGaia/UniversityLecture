@@ -118,8 +118,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         startActivity(intent);
                         break;
                     case R.id.launch_in_nav:
-                        intent = new Intent( MainActivity.this , LaunchActivity.class );
-                        startActivity(intent);
+                        if( confirmIdentification(PersonalInformation.phoneNumber) ){
+                            intent = new Intent( MainActivity.this , LaunchActivity.class );
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText( getApplicationContext() , "只有管理员才能发布讲座" , Toast.LENGTH_SHORT );
+                        }
                         break;
                     case R.id.setting_in_nav:
                         intent = new Intent( MainActivity.this , SettingActivity.class );
@@ -236,5 +240,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume(){
         super.onResume();
         updatePersonalInformation();//更新抽屉栏个人信息
+    }
+
+    //验证是不是管理员
+    private boolean confirmIdentification(String phoneNumber){
+        //验证逻辑写这里
+
+        return true;
     }
 }

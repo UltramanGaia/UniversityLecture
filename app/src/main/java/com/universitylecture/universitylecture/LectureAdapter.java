@@ -39,7 +39,7 @@ public class LectureAdapter extends ArrayAdapter<Lecture> {
         }
 
         viewHolder.lecture_Image.setImageResource(lecture.getImageId());
-        viewHolder.lecture_name.setText(lecture.getName());
+        viewHolder.lecture_name.setText(lecture.getTitle());
         return view;
     }
 

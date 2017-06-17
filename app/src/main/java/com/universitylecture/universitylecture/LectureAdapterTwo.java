@@ -77,7 +77,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
             if(holder instanceof ViewHolder) {
                 Lecture lecture = mLectureLIst.get(position);
                 ((ViewHolder)holder).lectureImage.setImageResource(lecture.getImageId());
-                ((ViewHolder)holder).lectureName.setText(lecture.getName());
+                ((ViewHolder)holder).lectureName.setText(lecture.getTitle());
                 return;
             }
             return;
