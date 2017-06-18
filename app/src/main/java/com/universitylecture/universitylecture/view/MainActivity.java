@@ -20,6 +20,10 @@ import com.universitylecture.universitylecture.pojo.User;
 
 import butterknife.InjectView;
 import de.hdodenhof.circleimageview.CircleImageView;
+import butterknife.InjectView;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import butterknife.InjectView;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // fragment管理器
     private FragmentManager fragmentManager;
+    //@InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;//筛选列表
 
     @InjectView(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;//筛选列表
@@ -63,12 +68,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        initPersonalInformation();
         initView();
+        updatePersonalInformation();
+
         fragmentManager = getFragmentManager();
 
         setTabSelection(0);
 
 
+    }
+
+    private void initPersonalInformation(){
+        PersonalInformation.id = 0;
+        PersonalInformation.name = "龙哥";
+        PersonalInformation.phoneNumber="13631432757";
+        PersonalInformation.sex = "男";
+        PersonalInformation.studentNumber = "201530612668";
     }
 
     private void initView() {
