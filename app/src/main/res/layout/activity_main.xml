@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.universitylecture.universitylecture.MainActivity">
+    tools:context="com.universitylecture.universitylecture.view.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,13 +17,11 @@
 
         <FrameLayout
             android:id="@+id/content"
-            android:layout_width="336dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1">
 
         </FrameLayout>
@@ -31,28 +29,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:background="@drawable/bottom_bar"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/my_lecture_image_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:clickable="false"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/my_lecture_pressed"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="       我的讲座"
+                    android:text="我的讲座"
                     android:textAlignment="center"
                      />
 
@@ -62,21 +61,23 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/lecture_list_image_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:clickable="false"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    app:srcCompat="@drawable/lecture_list_normal" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="       讲座列表"
-                    android:textAlignment="center" />
+                    android:text="讲座列表"
+                     />
 
             </LinearLayout>
 
@@ -84,20 +85,22 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/lecture_circle_image_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:clickable="false"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    app:srcCompat="@drawable/lecture_circle_normal" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="         讲座圈"
+                    android:text="讲座圈"
                     android:textAlignment="center" />
 
             </LinearLayout>
@@ -108,37 +111,14 @@
 
 
     <!-- 左侧抽屉显示的内容-->
-    <LinearLayout
-        android:layout_width="320dp"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:orientation="vertical"
-        >
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           >
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:src="@mipmap/ic_launcher"
-               android:layout_gravity="center_horizontal|center_vertical"
-               />
-
-       </LinearLayout>
-
-        <ListView
-            android:id="@+id/left_drawer"
-            android:layout_width="240dp"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="@android:color/white"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
-            android:drawSelectorOnTop="false"/>
-    </LinearLayout>
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header">
+    </android.support.design.widget.NavigationView>
 
 
 </android.support.v4.widget.DrawerLayout>

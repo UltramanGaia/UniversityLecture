@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="56dp"
+    android:background="@drawable/title_bar"
     >
-    <ImageButton
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/toggle_drawer_open"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_margin="4dp"
+        android:src="@drawable/longheadimage" />
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
-        android:text="hello world"
         android:textSize="24sp"
         android:gravity="center"
         />
@@ -25,9 +26,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_margin="4dp"
         android:layout_gravity="end"
-        app:srcCompat="@android:drawable/checkbox_off_background" />
-
+        android:background="#00000000"
+        app:srcCompat="@drawable/search" />
 
 
     </LinearLayout>
