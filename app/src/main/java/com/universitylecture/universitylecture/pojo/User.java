@@ -100,8 +100,9 @@ public class User implements Serializable {
         phoneNumber = uPhoneNumber;
     }
 
-    public User(String uName,String uPassword,String uSex,String uPhoneNumber) {
+    public User(String uName,String ustudentNumber,String uPassword,String uSex,String uPhoneNumber) {
         name = uName;
+        studentNumber = ustudentNumber;
         password = uPassword;
         sex = uSex;
         phoneNumber = uPhoneNumber;

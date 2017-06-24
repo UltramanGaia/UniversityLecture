@@ -22,7 +22,6 @@ public class MyInformation extends AppCompatActivity {
     private View nameInMyInformation ;
     private View sexInMyInformation;
     private View phoneNumberInMyInformation;
-    private View studentNumberInMyInformation;
 
     private Intent intent;
 
@@ -54,6 +53,7 @@ public class MyInformation extends AppCompatActivity {
         nameInMyInformation.setOnClickListener( new View.OnClickListener(){
             public void onClick(View v){
                 intent.putExtra("data" , "name" );
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -63,6 +63,7 @@ public class MyInformation extends AppCompatActivity {
         sexInMyInformation.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 intent.putExtra("data" , "sex" );
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -72,19 +73,12 @@ public class MyInformation extends AppCompatActivity {
         phoneNumberInMyInformation.setOnClickListener( new View.OnClickListener(){
             public void onClick(View v){
                 intent.putExtra("data" , "phoneNumber" );
-                startActivity(intent);
-            }
-        });
-
-        //学号栏点击功能
-        studentNumberInMyInformation = (LinearLayout) findViewById(R.id.studentnumber_in_my_information);
-        studentNumberInMyInformation.setOnClickListener( new View.OnClickListener(){
-            public void onClick(View v){
-                intent.putExtra("data" , "studentNumber" );
                 intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
+
+
 
         back = (Button) findViewById(R.id.go_back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +93,6 @@ public class MyInformation extends AppCompatActivity {
         name.setText(PersonalInformation.name);
         sex.setText(PersonalInformation.sex);
         phoneNumber.setText(PersonalInformation.phoneNumber);
-        studentNumber.setText(PersonalInformation.studentNumber);
         user = (User) getIntent().getSerializableExtra("user");
     }
 
@@ -107,7 +100,6 @@ public class MyInformation extends AppCompatActivity {
         name = (TextView) findViewById(R.id.name_text_in_my_information);
         sex = (TextView) findViewById(R.id.sex_text_in_my_information);
         phoneNumber = (TextView) findViewById(R.id.phonenumber_text_in_my_information);
-        studentNumber = (TextView) findViewById(R.id.studentnumber_text_in_my_information);
     }
 
     protected void onResume(){

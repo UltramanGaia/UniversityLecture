@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class HttpUtil {
 
-    public static final String strUrl = "http://192.168.1.132:8080/UniversityLectureServer/";
+    public static final String strUrl = "http://192.168.43.115:8080/UniversityLectureServer/";
     public static Object doPost(Object object,String surl) {
         /*User sendUser = (User)object;*/
 
@@ -34,9 +34,7 @@ public class HttpUtil {
             httpURLConnection.setReadTimeout(8000);
             httpURLConnection.setUseCaches(false);
             httpURLConnection.setRequestProperty("Content-type","application/x-java-serialized-object");
-            /*httpURLConnection.connect();
-            Log.e("Code", "doPost: "+httpURLConnection.getResponseCode());*/
-            Log.e("HttpUtil", "connect");
+            Log.d("HttpUtil", "connect");
 
 //            if(httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) {
 //                Log.e("TAG", "doPost: connection error");

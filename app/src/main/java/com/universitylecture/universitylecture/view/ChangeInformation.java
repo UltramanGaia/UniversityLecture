@@ -64,52 +64,26 @@ public class ChangeInformation extends AppCompatActivity {
                 //根据传过来的data决定要改的是哪个信息
                 if( data.equals("name") ){
                     //要改的是名字
-                    com.universitylecture.universitylecture.view.PersonalInformation.name = changed;
-
+                    PersonalInformation.name = changed;
+                    user.setName(changed);
+                    new Thread(changeInformationTask).start();
                     //与后台交互更新的逻辑写这里
                 }
                 else if( data.equals("sex") ){
                     //更新性别
-
                     //与后台交互更新的逻辑写这里
-
-
                     PersonalInformation.sex = changed;
+                    user.setSex(changed);
+                    new Thread(changeInformationTask).start();
                 }
                 else if( data.equals("phoneNumber") ){
                     //更新手机号码
 
                     //服务器验证逻辑写在这里
-
-
                     PersonalInformation.phoneNumber = changed;
+                    user.setPhoneNumber(changed);
+                    new Thread(changeInformationTask).start();
                 }
-                else if( data.equals("studentNumber")){
-                    //更新学号
-
-                    //与后台交互更新的逻辑写这里
-                    PersonalInformation.studentNumber = changed;
-                    user.setStudentNumber(changed);
-                    new Thread(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-                            User returnUser =(User) HttpUtil.doPost(user,"UpdateUserServlet");
-                            if (returnUser != null)
-                                OutputMessage.outputMessage("保存成功");
-                            else
-                                OutputMessage.outputMessage("保存失败");
-
-                        }
-                    }).start();
-
-
-
-
-
-                }
-
                 //保存成功后返回上一页面
                 ChangeInformation.super.onBackPressed();
             }
@@ -119,12 +93,9 @@ public class ChangeInformation extends AppCompatActivity {
 
     private void initData(){
         data = getIntent().getStringExtra("data");
-        //user = (User) getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("user");
 
-        user = new User();
-        user.setSex("男");
-        user.setPhoneNumber("13631428910");
-        user.setName("QQ");
+
 
         changedContent = (EditText) findViewById(R.id.changing_information);
         setContentHint();
@@ -145,8 +116,7 @@ public class ChangeInformation extends AppCompatActivity {
             changedContent.setHint("请输入新的性别");
         }else if( data.equals("phoneNumber")){
             changedContent.setHint("请输入新的电话");
-        }else
-            changedContent.setHint("请输入新的学号");
+        }
     }
 
 
@@ -155,9 +125,20 @@ public class ChangeInformation extends AppCompatActivity {
             return "姓名";
         }else if( data.equals("sex") ){
             return "性别";
-        }else if( data.equals("phoneNumber")){
+        }else {
             return "电话";
-        }else
-            return "学号";
+        }
+
     }
+
+    Runnable changeInformationTask = new Runnable() {
+        @Override
+        public void run() {
+            User returnUser =(User) HttpUtil.doPost(user,"UpdateUserServlet");
+            if (returnUser != null)
+                OutputMessage.outputMessage("保存成功");
+            else
+                OutputMessage.outputMessage("保存失败");
+        }
+    };
 }

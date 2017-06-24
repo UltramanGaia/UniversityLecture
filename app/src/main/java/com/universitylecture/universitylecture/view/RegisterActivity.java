@@ -1,3 +1,4 @@
+/*
 package com.universitylecture.universitylecture.view;
 
 import android.content.Intent;
@@ -33,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity{
     EditText userNameText;
     EditText passwordText;
     EditText comfirmPasswordText;
+    EditText studentNumberText;
     EditText phoneNumberText;
     EditText codeText;
     RadioGroup sexGroup;
@@ -110,12 +112,13 @@ public class RegisterActivity extends AppCompatActivity{
                     @Override
                     public void run() {
                         String userName = userNameText.getText().toString();
+                        String studentNumber = studentNumberText.getText().toString();
                         String phoneNumber = phoneNumberText.getText().toString();
                         String password = passwordText.getText().toString();
                         String confirmPassword = comfirmPasswordText.getText().toString();
                         String code = codeText.getText().toString();
                         Log.d("Sex", "onCreate: " + user.getSex());
-                        User sendUser = new User(userName,password,user.getSex(),phoneNumber);
+                        User sendUser = new User(userName,studentNumber,password,user.getSex(),phoneNumber);
                         sendUser.setCode(code);
                         if(userName.isEmpty())
                             OutputMessage.outputMessage("用户名不能为空");
@@ -169,6 +172,7 @@ public class RegisterActivity extends AppCompatActivity{
         passwordText = (EditText) findViewById(R.id.register_password);
         comfirmPasswordText = (EditText) findViewById(R.id.verify_register_password);
         codeText = (EditText) findViewById(R.id.verify_code);
+        studentNumberText = (EditText) findViewById(R.id.studentNumber);
         sexGroup = (RadioGroup) findViewById(sex);
         male = (RadioButton) findViewById(R.id.male);
         female = (RadioButton) findViewById(R.id.female);
@@ -177,7 +181,8 @@ public class RegisterActivity extends AppCompatActivity{
         cancelBtn = (Button) findViewById(R.id.cancel_btn);
     }
 
-    /*Runnable registerTask = new Runnable() {
+    */
+/*Runnable registerTask = new Runnable() {
         @Override
         public void run() {
             String userName = userNameText.getText().toString();
@@ -209,7 +214,8 @@ public class RegisterActivity extends AppCompatActivity{
             }
 
         }
-    };*/
+    };*//*
+
 
     Handler handler = new Handler() {
         @Override
@@ -263,3 +269,4 @@ public class RegisterActivity extends AppCompatActivity{
         super.onDestroy();
     }
 }
+*/

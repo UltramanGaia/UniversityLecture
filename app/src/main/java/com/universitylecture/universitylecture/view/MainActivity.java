@@ -13,17 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
+import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.OutputMessage;
 
 import butterknife.InjectView;
 import de.hdodenhof.circleimageview.CircleImageView;
-import butterknife.InjectView;
-import de.hdodenhof.circleimageview.CircleImageView;
-
-import butterknife.InjectView;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
@@ -133,12 +130,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         startActivity(intent);
                         break;
                     case R.id.launch_in_nav:
-                        if( confirmIdentification(PersonalInformation.phoneNumber) ){
-                            intent = new Intent( MainActivity.this , LaunchActivity.class );
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText( getApplicationContext() , "只有管理员才能发布讲座" , Toast.LENGTH_SHORT );
-                        }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                User returnUser = (User) HttpUtil.doPost(user,"VerifyLecturePublisherServlet");
+                                if(returnUser != null) {
+                                    Intent intent = new Intent( MainActivity.this , LaunchActivity.class );
+                                    startActivity(intent);
+                                }
+                                else
+                                    OutputMessage.outputMessage("只有管理员才能发布讲座");
+                            }
+                        }).start();
                         break;
                     case R.id.setting_in_nav:
                         intent = new Intent( MainActivity.this , SettingActivity.class );
@@ -256,12 +259,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume(){
         super.onResume();
         updatePersonalInformation();//更新抽屉栏个人信息
-    }
-
-    //验证是不是管理员
-    private boolean confirmIdentification(String phoneNumber){
-        //验证逻辑写这里
-
-        return true;
     }
 }

@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.util.MyApplication;
 
 import java.util.List;
 
@@ -79,7 +81,10 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         if(getItemViewType(position) == TYPE_NORMAL){
             if(holder instanceof ViewHolder) {
                 Lecture lecture = mLectureLIst.get(position);
+/*
                 ((ViewHolder)holder).lectureImage.setImageResource(lecture.getImageId());
+*/
+                Glide.with(MyApplication.getContext()).load(lecture.getImagePath()).into(((ViewHolder)holder).lectureImage);
                 ((ViewHolder)holder).lectureName.setText(lecture.getTitle());
                 return;
             }

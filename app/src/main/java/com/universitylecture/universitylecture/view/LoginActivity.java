@@ -1,9 +1,9 @@
 package com.universitylecture.universitylecture.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +14,7 @@ import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity{
 
     private EditText phoneNumberText;
     private EditText passwordText;
@@ -41,12 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, com.universitylecture.universitylecture.view.RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterMobileActivity.class);
                 startActivity(intent);
             }
         });
-
-
     }
 
     Runnable loginTask = new Runnable() {
@@ -72,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (returnUser != null) {
                     Looper.prepare();
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, com.universitylecture.universitylecture.view.MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("user",returnUser);
                     startActivity(intent);
                     Looper.loop();

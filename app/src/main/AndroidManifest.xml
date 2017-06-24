@@ -3,6 +3,7 @@
     package="com.universitylecture.universitylecture">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -14,7 +15,8 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".view.MyInformation">
+        <activity android:name=".view.LaunchActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,13 +25,17 @@
         </activity>
         <activity android:name=".view.SearchActivity" />
         <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.RegisterActivity"/>
-        <activity android:name=".view.LaunchActivity"/>
+        <activity android:name=".view.LoginActivity"/>
         <activity android:name=".view.selectInstituteForLaunch"/>
         <activity android:name=".view.SettingActivity"/>
-        <activity android:name=".view.LoginActivity"/>
+        <activity android:name=".view.MyInformation"/>
         <activity android:name=".view.ChangeInformation"/>
         <activity android:name=".view.SelectInformationForLaunch"/>
+        <activity android:name=".view.RegisterMobileActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".view.RegisterUserInfoActivity"
+            android:theme="@style/AppTheme"/>
+
 
     </application>
 

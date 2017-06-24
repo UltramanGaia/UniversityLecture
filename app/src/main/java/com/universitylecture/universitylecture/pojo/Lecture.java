@@ -20,12 +20,12 @@ public class Lecture implements Serializable{
     private String content;      //内容
     private String sponsor;      //讲座主办方
     private String co_sponsor;   //讲座协办方
-    private int imageId;
+    private String imagePath;
 
-    public Lecture( String pID ,String ptitle, String ptime , String pclassroom , String pinstitute , String pintroduction ,
+    public Lecture(String ptitle, String ptime , String pclassroom , String pinstitute , String pintroduction ,
                     String plecturer , String pcredit , String pcontent ,String psponsor,
-                    String pco_sponsor,int pimageId){
-        ID = pID;
+                    String pco_sponsor,String path){
+
         title = ptitle;
         time = ptime;
         classroom = pclassroom;
@@ -36,8 +36,9 @@ public class Lecture implements Serializable{
         content = pcontent;
         sponsor = psponsor;
         co_sponsor = pco_sponsor;
-        imageId = pimageId;
+        imagePath = path;
     }
+
 
     public Lecture(String ptime,String pinstitute) {
         time = ptime;
@@ -136,11 +137,11 @@ public class Lecture implements Serializable{
         this.co_sponsor = co_sponsor;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
