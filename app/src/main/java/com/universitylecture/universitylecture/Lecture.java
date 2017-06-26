@@ -1,10 +1,12 @@
 package com.universitylecture.universitylecture;
 
+import java.io.Serializable;
+
 /**
  * Created by fengqingyundan on 2017/5/27.
  */
 //讲座类
-public class Lecture{
+public class Lecture implements Serializable{
     private String ID;
     private String title;        //标题
     private String time;         //时间

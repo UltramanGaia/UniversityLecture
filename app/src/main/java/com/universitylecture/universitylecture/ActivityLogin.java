@@ -12,7 +12,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/20.
  */
 
-public class ActivityLogin extends AppCompatActivity {
+public class ActivityLogin extends BaseActivity {
     private Button registerButton;
 
     protected void onCreate(Bundle savedInstanceState) {

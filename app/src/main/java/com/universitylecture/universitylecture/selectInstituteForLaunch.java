@@ -26,7 +26,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/17.
  */
 
-public class selectInstituteForLaunch extends AppCompatActivity {
+public class selectInstituteForLaunch extends BaseActivity {
     @InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;
 
     private String instituteHeader = "学院";

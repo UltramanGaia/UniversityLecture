@@ -12,7 +12,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/20.
  */
 
-public class ActivityRegisterSecond extends AppCompatActivity {
+public class ActivityRegisterSecond extends BaseActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

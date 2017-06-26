@@ -14,7 +14,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/14.
  */
 //我的资料界面
-public class MyInformation extends AppCompatActivity {
+public class MyInformation extends BaseActivity {
     //四个linearlayout
     private View nameInMyInformation ;
     private View sexInMyInformation;

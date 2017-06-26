@@ -12,7 +12,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/20.
  */
 
-public class ActivityRegisterFirst extends AppCompatActivity {
+public class ActivityRegisterFirst extends BaseActivity {
     private Button next_button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

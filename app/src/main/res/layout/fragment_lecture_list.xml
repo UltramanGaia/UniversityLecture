@@ -21,10 +21,21 @@
         app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
         />
 
-    <TextView
-        android:id="@+id/content_lecture_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layoyt_in_lecture_list"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lectures_of_lecture_list_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:scrollbarThumbVertical="@drawable/my_bar"
+            >
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 

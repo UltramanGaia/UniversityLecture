@@ -17,7 +17,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/14.
  */
 
-public class LaunchActivity extends AppCompatActivity {
+public class LaunchActivity extends BaseActivity {
 
     private EditText lectureTitle;
     private EditText lectureClassroom;

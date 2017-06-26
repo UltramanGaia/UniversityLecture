@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

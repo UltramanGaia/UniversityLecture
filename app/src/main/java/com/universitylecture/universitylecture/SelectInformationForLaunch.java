@@ -26,7 +26,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/17.
  */
 
-public class SelectInformationForLaunch extends AppCompatActivity {
+public class SelectInformationForLaunch extends BaseActivity {
     //private View view ;
     @InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;
     //public static DropDownMenu mDropDownMenu ;

@@ -16,7 +16,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/15.
  */
 //修改个人信息页面
-public class ChangeInformation extends AppCompatActivity {
+public class ChangeInformation extends BaseActivity {
     //活动传回来的数据
     private String data;
 

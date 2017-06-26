@@ -22,7 +22,7 @@ import butterknife.InjectView;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     // 我的讲座的fragment
     private MyLectureFragment myLectureFragment;
@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         break;
                     case R.id.setting_in_nav:
-                        intent = new Intent( MainActivity.this , SettingActivity.class );
-                        startActivity(intent);
+                        intent = new Intent( "com.universitylecture.universitylecture.FORCE_OFFLINE");
+                        sendBroadcast(intent);
                         break;
 
                 }
