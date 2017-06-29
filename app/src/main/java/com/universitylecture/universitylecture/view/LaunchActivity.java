@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.util.UploadUtil;
 
@@ -122,11 +123,17 @@ public class LaunchActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     /*Lecture returnLecture = (Lecture) HttpUtil.doPost(sendLecture, "AddLectureServlet");*/
-                                    Lecture returnLecture = UploadUtil.uploadFile(file,sendLecture,"UploadImageServlet");
-                                    if (returnLecture == null)
-                                        OutputMessage.outputMessage("发布失败");
-                                    else
-                                        OutputMessage.outputMessage("发布成功");
+                                    String imageUri = UploadUtil.uploadFile(file,"UploadImageServlet");
+                                    if (imageUri == null)
+                                        OutputMessage.outputMessage("发布讲座失败");
+                                    else {
+                                        sendLecture.setImagePath(imageUri);
+                                        Lecture returnLecture = (Lecture) HttpUtil.doPost(sendLecture,"AddLectureServlet");
+                                        if (returnLecture != null)
+                                            OutputMessage.outputMessage("发布讲座成功");
+                                        else
+                                            OutputMessage.outputMessage("发布讲座失败");
+                                    }
                                 }
                             }).start();
                         }

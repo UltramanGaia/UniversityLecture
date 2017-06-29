@@ -2,15 +2,13 @@ package com.universitylecture.universitylecture.util;
 
 import android.util.Log;
 
-import com.universitylecture.universitylecture.pojo.Lecture;
-
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,14 +22,14 @@ public class UploadUtil {
     private static final String TAG = "uploadFile";
     private static final int TIME_OUT = 10 * 1000; // 超时时间
     private static final String CHARSET = "utf-8"; // 设置编码
-    private static final String RequestURL = "http://192.168.43.115:8080/UniversityLectureServer/";
+    private static final String RequestURL = "http://118.89.45.18:8080/UniversityLectureServer/";
     /**
      * 上传文件到服务器
      * @param file 需要上传的文件
      * @param surl 请求的rul
      * @return 返回响应的内容
      */
-    public static Lecture uploadFile(File file, Lecture lecture,String surl) {
+    public static String uploadFile(File file,String surl) {
         int res=0;
         String result = null;
         String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成
@@ -51,7 +49,7 @@ public class UploadUtil {
             conn.setRequestProperty("connection", "keep-alive");
             conn.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary="+ BOUNDARY);
 
-            if (file != null && lecture != null) {
+            if (file != null) {
                 /**
                  * 当文件不为空时执行上传
                  */
@@ -83,22 +81,21 @@ public class UploadUtil {
                         .getBytes();
                 dos.write(end_data);
                 dos.flush();
-
-                
-
-
-                conn.setRequestProperty("Content-type","application/x-java-serialized-object");
-                ObjectOutputStream outObj = new ObjectOutputStream(dos);
-                outObj.writeObject(lecture);
-
-                is.close();
-                outObj.close();
                 dos.close();
+
+
                 /**
                  * 获取响应码 200=成功 当响应成功，获取响应的流
                  */
                 res = conn.getResponseCode();
                 Log.e(TAG, "response code:" + res);
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(
+                        conn.getInputStream()
+                ));
+                String imageUri = reader.readLine();
+                return imageUri;
+
                 //if (res == 200) {
                     /*Log.e(TAG, "request success");
                     InputStream input = conn.getInputStream();
@@ -112,21 +109,14 @@ public class UploadUtil {
                 } else {
                     Log.e(TAG, "request error");*/
 
-                    InputStream input = conn.getInputStream();
-                    ObjectInputStream inObj = new ObjectInputStream(input);
-                    Lecture readObj = (Lecture)inObj.readObject();
-                    Log.e("HttpUtil", "readObject");
-                    inObj.close();
-                    input.close();
-                    conn.disconnect();
-                    return readObj;
+
                 //}
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

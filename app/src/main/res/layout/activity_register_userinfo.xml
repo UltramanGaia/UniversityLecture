@@ -8,8 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg_login"
-    >
+    android:background="@drawable/bg_login">
 
     <!-- Login progress -->
     <ProgressBar
@@ -38,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3.20"
-                android:text="设置用户名和密码"
+                android:text="设置个人信息"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="38sp" />
@@ -54,12 +53,12 @@
 
                 <EditText
                     android:id="@+id/name"
-                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+                    style="@style/Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:drawableBottom="@drawable/shape_et_bottom_line"
-                    android:hint="用户名"
+                    android:hint="昵称"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -69,7 +68,9 @@
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:background="@null"
+                    android:textCursorDrawable="@drawable/color_edittext_cursor"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -80,10 +81,9 @@
 
                 <EditText
                     android:id="@+id/password"
-                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-                    android:layout_width="237dp"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_weight="1.53"
                     android:drawableBottom="@drawable/shape_et_bottom_line"
                     android:hint="密码"
                     android:imeActionId="@+id/login"
@@ -96,7 +96,9 @@
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:background="@null"
+                    android:textCursorDrawable="@drawable/color_edittext_cursor"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -107,23 +109,24 @@
 
                 <EditText
                     android:id="@+id/studentNumber"
-                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-                    android:layout_width="237dp"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_weight="1.53"
                     android:drawableBottom="@drawable/shape_et_bottom_line"
                     android:hint="学号"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:background="@null"
+                    android:textCursorDrawable="@drawable/color_edittext_cursor"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -181,6 +184,7 @@
                 android:background="@drawable/shape"
                 android:elevation="0dp"
                 android:text="注册"
+                android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />

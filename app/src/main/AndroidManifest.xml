@@ -15,26 +15,42 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".view.LaunchActivity"
-            android:theme="@style/AppTheme">
+        <activity android:name=".view.LoginActivity"
+            android:theme="@style/LoginTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.SearchActivity" />
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.LoginActivity"/>
-        <activity android:name=".view.selectInstituteForLaunch"/>
-        <activity android:name=".view.SettingActivity"/>
-        <activity android:name=".view.MyInformation"/>
-        <activity android:name=".view.ChangeInformation"/>
-        <activity android:name=".view.SelectInformationForLaunch"/>
+        <activity android:name=".view.SearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.LaunchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.selectInstituteForLaunch"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.MyInformation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.ChangeInformation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.SelectInformationForLaunch"
+            android:screenOrientation="portrait"/>
         <activity android:name=".view.RegisterMobileActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/LoginTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            />
         <activity android:name=".view.RegisterUserInfoActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/LoginTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            />
 
 
     </application>

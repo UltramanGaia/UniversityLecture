@@ -8,8 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg_login"
-    >
+    android:background="@drawable/bg_login">
 
     <!-- Login progress -->
     <ProgressBar
@@ -53,23 +52,45 @@
 
                 <EditText
                     android:id="@+id/mobile"
-                    style="@android:style/Widget.DeviceDefault.EditText"
+                    style="@style/Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="@null"
                     android:drawableBottom="@drawable/shape_et_bottom_line"
                     android:hint="+86"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="phone"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:background="@null"
+                    android:textCursorDrawable="@drawable/color_edittext_cursor"
+                    android:inputType="number"
+                    />
+
+                <!--<AutoCompleteTextView-->
+                    <!--android:id="@+id/email"-->
+                    <!--style="@style/Widget.AppCompat.Light.AutoCompleteTextView"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:drawableBottom="@drawable/shape_et_bottom_line"-->
+                    <!--android:elevation="0dp"-->
+                    <!--android:hint="手机号"-->
+                    <!--android:inputType="textEmailAddress|phone"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textColorHighlight="@android:color/white"-->
+                    <!--android:textColorHint="@color/colorHint"-->
+                    <!--android:textSize="24sp"-->
+                    <!--android:background="@null"-->
+                    <!--android:textCursorDrawable="@drawable/color_edittext_cursor"-->
+                    <!--android:numeric="integer"/>-->
 
             </android.support.design.widget.TextInputLayout>
 
@@ -77,46 +98,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3.20"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/identifyCode"
-                        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+                        style="@style/Widget.AppCompat.EditText"
                         android:layout_width="220dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1.53"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:drawableBottom="@drawable/shape_et_bottom_line"
                         android:hint="输入短信验证码"
                         android:imeActionId="@+id/login"
                         android:imeActionLabel="@string/action_sign_in_short"
                         android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@android:color/white"
                         android:textColorHighlight="@android:color/white"
                         android:textColorHint="@color/colorHint"
                         android:textSize="24sp"
-                        tools:style="@android:style/Widget.Holo.Light.AutoCompleteTextView" />
-
-
+                        android:background="@null"
+                        android:textCursorDrawable="@drawable/color_edittext_cursor"
+                        />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/send_code"
-                    android:layout_width="56dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:background="@drawable/button_shape"
+                    android:elevation="0dp"
+                    android:gravity="center|center"
                     android:text="获取验证码"
-                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
                     android:textColor="@android:color/holo_blue_light" />
+
             </LinearLayout>
 
             <Button
@@ -127,9 +149,11 @@
                 android:background="@drawable/shape"
                 android:elevation="0dp"
                 android:text="@string/action_next"
+                android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,4 +171,3 @@
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
-
