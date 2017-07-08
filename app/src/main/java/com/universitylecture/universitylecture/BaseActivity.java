@@ -53,10 +53,10 @@ public class BaseActivity extends AppCompatActivity {
             builder.setTitle("警告");
             builder.setMessage("确认退出？");
             builder.setCancelable(false);
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    ActivityCollector.finishAll();
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCollector.finishAll();
                     //Intent intent1 = new Intent(context , );
                     //context.startActivity(intent);
                 }
