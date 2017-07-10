@@ -103,7 +103,7 @@ public class LaunchActivity extends BaseActivity {
                 String content = "sacxz";
                 String sponsor = "vzx";
                 String co_sponsor = "asc";
-                String time = "2017:03:04 18:30:00";
+                String time = "2017:07:14 18:30:00";
                 String institute = "asf";
 
                 //上传数据到服务器的数据写在这里

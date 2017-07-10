@@ -6,8 +6,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +59,7 @@ public class LectureListFragment extends Fragment {
     private String selectedInstitude;
 
 
-    private List lectures;
+    private List<Lecture> lectures;
     private SwipeRefreshLayout swipeRefresh;
     private LectureAdapterTwo adapter;
     private RecyclerView lectures_recyclerView;
@@ -207,9 +205,7 @@ public class LectureListFragment extends Fragment {
                         }catch (InterruptedException e){
                             e.printStackTrace();
                         }
-                        lectures.add( lectures.get(2) );
-                        lectures.add( lectures.get(2) );
-                        lectures.add( lectures.get(2) );
+
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -228,7 +224,7 @@ public class LectureListFragment extends Fragment {
 
     private void setSwipeRefreshLayout(){
         swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt_in_lecture_list);
-        swipeRefresh.setColorSchemeColors(R.color.colorPrimary);
+        swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         //按键逻辑
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

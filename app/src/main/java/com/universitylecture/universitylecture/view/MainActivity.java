@@ -64,8 +64,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-
-        initPersonalInformation();
         initView();
         updatePersonalInformation();
 
@@ -76,13 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private void initPersonalInformation(){
-        PersonalInformation.id = 0;
-        PersonalInformation.name = "龙哥";
-        PersonalInformation.phoneNumber="13631432757";
-        PersonalInformation.sex = "男";
-        PersonalInformation.studentNumber = "201530612668";
-    }
+
 
     private void initView() {
         myLectureImageButton = (ImageButton) findViewById(R.id.my_lecture_image_button);
