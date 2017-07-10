@@ -1,6 +1,5 @@
 package com.universitylecture.universitylecture.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -22,7 +21,7 @@ import com.universitylecture.universitylecture.util.OutputMessage;
  * Created by helloworld on 2017/6/18.
  */
 
-public class RegisterUserInfoActivity extends Activity {
+public class RegisterUserInfoActivity extends BaseActivity {
 
     private EditText nameText;
     private EditText passwordText;

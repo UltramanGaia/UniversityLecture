@@ -1,6 +1,7 @@
 package com.universitylecture.universitylecture.adapter;
 
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
     public static final int TYPE_NORMAL = 1;  //说明是不footer的
     public static final int TYPE_HEADER = 2;
 
+    private Context mContext;//获取活动上下文，为点击事件服务
     private List<Lecture> mLectureLIst;
     private View mFooterView;
     private View mHeaderView;
@@ -52,8 +54,9 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         notifyItemInserted(0);
     }
 
-    public LectureAdapterTwo(List<Lecture> lectureList){
+    public LectureAdapterTwo(List<Lecture> lectureList , Context context){
         mLectureLIst = lectureList;
+        mContext = context;
     }
 
     public View getFooterView() {

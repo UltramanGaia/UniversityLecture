@@ -2,7 +2,6 @@ package com.universitylecture.universitylecture.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,7 +16,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/14.
  */
 //我的资料界面
-public class MyInformation extends AppCompatActivity {
+public class MyInformation extends BaseActivity {
     //四个linearlayout
     private View nameInMyInformation ;
     private View sexInMyInformation;

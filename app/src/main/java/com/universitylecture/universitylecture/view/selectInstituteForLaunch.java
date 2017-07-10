@@ -2,7 +2,6 @@ package com.universitylecture.universitylecture.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -27,7 +26,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/6/17.
  */
 
-public class selectInstituteForLaunch extends AppCompatActivity {
+public class selectInstituteForLaunch extends BaseActivity {
     @InjectView(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;
 

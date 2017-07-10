@@ -1,6 +1,5 @@
 package com.universitylecture.universitylecture.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -14,7 +13,7 @@ import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
-public class LoginActivity extends Activity{
+public class LoginActivity extends BaseActivity {
 
     private EditText phoneNumberText;
     private EditText passwordText;

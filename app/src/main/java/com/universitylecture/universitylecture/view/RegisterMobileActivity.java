@@ -1,6 +1,5 @@
 package com.universitylecture.universitylecture.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,7 +21,7 @@ import cn.smssdk.SMSSDK;
  * Created by helloworld on 2017/6/18.
  */
 
-public class RegisterMobileActivity extends Activity {
+public class RegisterMobileActivity extends BaseActivity {
 
     private EditText mobileText;
     private EditText codeText;
