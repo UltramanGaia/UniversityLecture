@@ -6,8 +6,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.util.Constant;
+import com.universitylecture.universitylecture.util.MyApplication;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
@@ -83,5 +86,7 @@ public class ActivityLectureContent extends BaseActivity {
 
         title_in_title_bar_of_launch = (TextView) findViewById(R.id.title_in_title_bar);
         title_in_title_bar_of_launch.setText("");
+
+        Glide.with(MyApplication.getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).into(lectureImage);
     }
 }

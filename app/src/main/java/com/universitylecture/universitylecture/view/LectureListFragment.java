@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,6 @@ import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
-import com.universitylecture.universitylecture.util.OutputMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,7 +59,7 @@ public class LectureListFragment extends Fragment {
     private String selectedInstitude;
 
 
-    private List<Lecture> lectures;
+    private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
     private SwipeRefreshLayout swipeRefresh;
     private LectureAdapterTwo adapter;
     private RecyclerView lectures_recyclerView;
@@ -69,12 +69,15 @@ public class LectureListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.e("TAG", "onCreateView: ");
         view = inflater.inflate(R.layout.fragment_lecture_list, container, false);
         // Inflate the layout for this fragment
         mDropDownMenu = (DropDownMenu) view.findViewById(R.id.dropDownMenu);
         ButterKnife.inject(this,view);
         initView();
         initData();//初始化列表数据
+
+
         setSwipeRefreshLayout();//设置下拉刷新的逻辑
         setUpOnScrollRefresh();//设置上拉刷新的逻辑
 
@@ -83,6 +86,11 @@ public class LectureListFragment extends Fragment {
 
     private void initView() {
         mDropDownMenu = (DropDownMenu) view.findViewById(R.id.dropDownMenu);
+
+        lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_lecture_list_recyclerview);
+        layoutManager = new LinearLayoutManager(MyApplication.getContext());
+        lectures_recyclerView.setLayoutManager(layoutManager);
+
         //init city menu
         final ListView cityView = new ListView(MyApplication.getContext());
         cityAdapter = new GirdDropDownAdapter(MyApplication.getContext(), Arrays.asList(citys));
@@ -112,10 +120,9 @@ public class LectureListFragment extends Fragment {
                     public void run() {
 
 
-                        //点确定后与服务器交互操作写这里
+                        //select lectures
                         Lecture lecture = new Lecture(selectedTime,selectedInstitude);
                         ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-                        OutputMessage.outputMessage(lectures.size()+"");
                         mDropDownMenu.closeMenu();
 
                     }
@@ -173,20 +180,35 @@ public class LectureListFragment extends Fragment {
         LectureSystem lectureSystem = LectureSystem.getLectureSystem();
         List schools = lectureSystem.getSchools();
         School school = (School) schools.get(0);
-        lectures = school.getLectures();
+        //lectures = school.getLectures();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final Lecture lecture = new Lecture("10","无");
+                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                Log.e("lecture size in thread", "initData: " + lectures.size());
 
-        //配置recylerview三部曲
-        lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_lecture_list_recyclerview);
-        layoutManager = new LinearLayoutManager(MyApplication.getContext());
-        lectures_recyclerView.setLayoutManager(layoutManager);
-        adapter = new LectureAdapterTwo(lectures,getActivity());
-        lectures_recyclerView.setAdapter(adapter);
-        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //配置recylerview三部曲
 
-        //设置rooter
-        setFooterView(lectures_recyclerView);
-        //setHeaderView(lectures_recyclerView);
+                        adapter = new LectureAdapterTwo(lectures,getActivity());
+                        lectures_recyclerView.setAdapter(adapter);
+                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+
+                        //设置rooter
+                        setFooterView(lectures_recyclerView);
+                        //setHeaderView(lectures_recyclerView);
+                    }
+                });
+
+            }
+        }).start();
+
+        Log.e("lecture size out thread", "initData: " + lectures.size());
+
     }
 
     public  void setUpOnScrollRefresh(){

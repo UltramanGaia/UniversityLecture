@@ -89,6 +89,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         PersonalInformation.phoneNumber = user.getPhoneNumber();
         PersonalInformation.sex = user.getSex();
 
+        /*
+            测试数据
+        PersonalInformation.name = "cf";
+        PersonalInformation.phoneNumber = "13631428910";
+        PersonalInformation.sex = "男";*/
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggleImageButton = (CircleImageView) findViewById(R.id.toggle_drawer_open);
         drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){

@@ -12,14 +12,16 @@ import android.view.ViewGroup;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
+import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
 import com.universitylecture.universitylecture.util.MyApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //我的讲座界面
 public class MyLectureFragment extends Fragment {
-    private List lectures;
+    private ArrayList<Lecture> lectures = new ArrayList<>();
     private View view;
     private SwipeRefreshLayout swipeRefresh;
     private LectureAdapterTwo adapter;
