@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class HttpUtil {
 
-    public static final String strUrl = "http://192.168.43.115:8080/UniversityLectureServer/";
+    public static final String strUrl = "http://118.89.45.18:8080/UniversityLectureServer/";
     public static Object doPost(Object object,String surl) {
         /*User sendUser = (User)object;*/
 

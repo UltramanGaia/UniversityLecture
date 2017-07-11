@@ -1,7 +1,6 @@
 package com.universitylecture.universitylecture.pojo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by fengqingyundan on 2017/5/27.
@@ -11,12 +10,12 @@ import java.util.List;
 public class School {
     private String ID;
     private String name;
-    private List lectures;
+    private ArrayList<Lecture> lectures;
 
     public School(String pID , String pname ){
         ID = pID;
         name = pname;
-        lectures = new ArrayList<Lecture>();
+        lectures = new ArrayList<>();
     }
 
     public void setID(String pID){
@@ -35,7 +34,7 @@ public class School {
         return name;
     }
 
-    public List getLectures(){
+    public ArrayList<Lecture> getLectures(){
         return lectures;
     }
 }
