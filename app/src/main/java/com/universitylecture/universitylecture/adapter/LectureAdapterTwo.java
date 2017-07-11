@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,6 +124,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         if(getItemViewType(position) == TYPE_NORMAL){
             if(holder instanceof ViewHolder) {
                 Lecture lecture = mLectureLIst.get(position);
+                Log.e("position", "onBindViewHolder: " + position);
 
                 ((ViewHolder)holder).lectureName.setText(lecture.getTitle());
                 ((ViewHolder)holder).lectureTime.setText(lecture.getTime());

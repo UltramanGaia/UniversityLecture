@@ -114,7 +114,7 @@ public class LectureListFragment extends Fragment {
             public void onClick(View v) {
 
                 mDropDownMenu.setTabText(constellationPosition == 0 ? headers[2] : institude[constellationPosition]);
-                selectedInstitude = constellationPosition == 0 ? "" : institude[constellationPosition];
+                selectedInstitude = constellationPosition == 0 ? "不限" : institude[constellationPosition];
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -122,8 +122,24 @@ public class LectureListFragment extends Fragment {
 
                         //select lectures
                         Lecture lecture = new Lecture(selectedTime,selectedInstitude);
-                        ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-                        mDropDownMenu.closeMenu();
+                        final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //配置recylerview三部曲
+
+                                adapter = new LectureAdapterTwo(lectures,getActivity());
+                                lectures_recyclerView.setAdapter(adapter);
+                                lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+
+                                //设置rooter
+                                setFooterView(lectures_recyclerView);
+                                //setHeaderView(lectures_recyclerView);
+                                mDropDownMenu.closeMenu();
+                            }
+                        });
+
 
                     }
                 }).start();
@@ -185,7 +201,7 @@ public class LectureListFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final Lecture lecture = new Lecture("10","无");
+                final Lecture lecture = new Lecture("10","不限");
                 lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
                 Log.e("lecture size in thread", "initData: " + lectures.size());
 
