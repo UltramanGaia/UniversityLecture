@@ -106,7 +106,7 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/identifyingCode"
+                        android:id="@+id/identifyCode"
                         style="@style/Widget.AppCompat.EditText"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"

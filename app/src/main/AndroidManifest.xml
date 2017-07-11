@@ -2,47 +2,57 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.universitylecture.universitylecture">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
-        android:name=".MyApplication"
+        android:name=".util.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+
+        <activity android:name=".view.LoginActivity"
+            android:theme="@style/LoginTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".MyInformation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".LaunchActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".SettingActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ChangeInformation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".SelectInformationForLaunch"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".selectInstituteForLaunch"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ActivityLogin"
+        <activity android:name=".view.SearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.LaunchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.selectInstituteForLaunch"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.MyInformation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.ChangeInformation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.SelectInformationForLaunch"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.RegisterMobileActivity"
             android:theme="@style/LoginTheme"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ActivityRegisterFirst"
+            />
+        <activity android:name=".view.RegisterUserInfoActivity"
             android:theme="@style/LoginTheme"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"
+            />
+        <activity android:name="view.ActivityLectureContent"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".ActivityRegisterSecond"
-            android:theme="@style/LoginTheme"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            android:screenOrientation="portrait"></activity>
+
+
     </application>
 
 </manifest>

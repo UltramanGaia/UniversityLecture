@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_in_my_information"></include>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/lecture_image_in_lecture_content"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/lecture_name_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="深信服"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/lecture_time_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2017年1月1日"
+                android:textSize="24dp"
+                />
+
+            <TextView
+                android:id="@+id/lecture_classroom_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A1-203"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/lecture_lecturer_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="舒梓杰"
+                android:textSize="24dp"
+                />
+
+            <TextView
+                android:id="@+id/lecture_credit_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="0.5德育分"/>
+
+            <TextView
+                android:id="@+id/lecture_sponsor_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="软件学院"/>
+
+            <TextView
+                android:id="@+id/lecture_co_sponsor_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="软件学院"/>
+
+            <TextView
+                android:id="@+id/lecture_content_in_lecture_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="软件学院"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
