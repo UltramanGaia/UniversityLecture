@@ -64,7 +64,7 @@ public class ActivityLectureContent extends BaseActivity {
         lectureName.setText("讲座题目：" + lecture.getTitle());
 
         lectureTime = (TextView) findViewById(R.id.lecture_time_in_lecture_content);
-        lectureTime.setText("讲座时间：" + lecture.getTime());
+        lectureTime.setText("讲座时间：" + lecture.getTime().split(":")[0] + ":" + lecture.getTime().split(":")[1]);
 
         lectureClassroom = (TextView) findViewById(R.id.lecture_classroom_in_lecture_content);
         lectureClassroom.setText("讲座地点：" + lecture.getClassroom());
