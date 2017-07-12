@@ -129,7 +129,7 @@ public class LectureListFragment extends Fragment {
                             public void run() {
                                 //配置recylerview三部曲
 
-                                adapter = new LectureAdapterTwo(lectures,getActivity());
+                                adapter.setmLectureLIst(lectures);
                                 lectures_recyclerView.setAdapter(adapter);
                                 lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
 

@@ -127,7 +127,10 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Log.e("position", "onBindViewHolder: " + position);
 
                 ((ViewHolder)holder).lectureName.setText(lecture.getTitle());
-                ((ViewHolder)holder).lectureTime.setText(lecture.getTime());
+
+                String date = lecture.getTime().split(" ")[0];
+                String time = lecture.getTime().split(" ")[1];
+                ((ViewHolder)holder).lectureTime.setText(date + " " + time.split(":")[0] + ":" + time.split(":")[1]);
                 ((ViewHolder)holder).lectureClassroom.setText(lecture.getClassroom());
                 ((ViewHolder)holder).lectureLecturer.setText(lecture.getLecturer());
                 ((ViewHolder)holder).lectureIntroduction.setText(lecture.getIntroduction());
