@@ -227,7 +227,7 @@ public class LectureListFragment extends Fragment {
 
     }
 
-    public  void setUpOnScrollRefresh(){
+    public  void setUpOnScrollRefresh() {
         lectures_recyclerView.addOnScrollListener(new UpOnScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
@@ -243,6 +243,12 @@ public class LectureListFragment extends Fragment {
                         }catch (InterruptedException e){
                             e.printStackTrace();
                         }
+
+                        ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
+                        Lecture lecture = tempLectures.get(tempLectures.size() - 1);
+                        ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
+                        tempLectures.addAll(tempLectures.size(),returnLectures);
+                        adapter.setmLectureLIst(tempLectures);
 
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -280,7 +286,11 @@ public class LectureListFragment extends Fragment {
             public void run() {
 
                 //更新逻辑写在此处
-                addLecture();
+                ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
+                Lecture lecture = tempLectures.get(tempLectures.size() - 1);
+                ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
+                tempLectures.addAll(tempLectures.size(),returnLectures);
+                adapter.setmLectureLIst(tempLectures);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override

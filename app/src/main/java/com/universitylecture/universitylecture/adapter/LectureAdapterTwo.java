@@ -32,7 +32,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
     public static final int TYPE_HEADER = 2;
 
     private Context mContext;//获取活动上下文，为点击事件服务
-    private ArrayList<Lecture> mLectureLIst = new ArrayList<Lecture>();
+    private ArrayList<Lecture> mLectureLIst = new ArrayList<>();
     private View mFooterView;
     private View mHeaderView;
 
@@ -166,5 +166,13 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         }else {
             return mLectureLIst.size() + 1;
         }
+    }
+
+    public void setmLectureLIst(ArrayList<Lecture> lectures) {
+        mLectureLIst = lectures;
+    }
+
+    public ArrayList<Lecture> getmLectureLIst() {
+        return mLectureLIst;
     }
 }
