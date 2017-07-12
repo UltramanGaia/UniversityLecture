@@ -85,7 +85,7 @@ public class LaunchActivity extends BaseActivity {
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick( View v ){
-                /*String title = lectureTitle.getText().toString();
+                String title = lectureTitle.getText().toString();
                 String classroom = lectureClassroom.getText().toString();
                 String introduction = lectureIntroduction.getText().toString();
                 String lecturer = lectureLecturer.getText().toString();
@@ -94,8 +94,8 @@ public class LaunchActivity extends BaseActivity {
                 String sponsor = lectureSponsor.getText().toString();
                 String co_sponsor = lectureCoSponsor.getText().toString();
                 String time = lectureTimeText.getText().toString();
-                String institute = lectureInstituteText.getText().toString();*/
-                String title = "as";
+                String institute = lectureInstituteText.getText().toString();
+                /*String title = "as";
                 String classroom = "asfas";
                 String introduction = "asf";
                 String lecturer = "scv";
@@ -104,7 +104,7 @@ public class LaunchActivity extends BaseActivity {
                 String sponsor = "vzx";
                 String co_sponsor = "asc";
                 String time = "2017:07:14 18:30:00";
-                String institute = "asf";
+                String institute = "asf";*/
 
                 //上传数据到服务器的数据写在这里
                 if (title.isEmpty() || classroom.isEmpty() || introduction.isEmpty() || lecturer.isEmpty() || credit.isEmpty() || content.isEmpty() ||

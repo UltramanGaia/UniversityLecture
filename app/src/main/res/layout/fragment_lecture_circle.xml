@@ -4,10 +4,5 @@
     android:layout_height="match_parent"
     tools:context="com.universitylecture.universitylecture.LectureCircleFragment">
 
-    <Button
-        android:id="@+id/test_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="测试登录"/>
 
 </FrameLayout>
