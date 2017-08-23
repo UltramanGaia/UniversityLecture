@@ -21,15 +21,17 @@
         android:textSize="24sp"
         android:gravity="center"
         />
-    <ImageButton
-        android:id="@+id/search_activity"
+    <Button
+        android:id="@+id/more"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="4dp"
         android:layout_gravity="end"
         android:background="#00000000"
-        app:srcCompat="@drawable/search" />
+        android:text="+"
+        android:textSize="30dp"
+        android:textColor="@color/white"/>
 
 
     </LinearLayout>

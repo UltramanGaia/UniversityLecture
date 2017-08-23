@@ -238,17 +238,15 @@ public class LectureListFragment extends Fragment {
                     public void run() {
 
                         //更新逻辑写在此处
-                        try{
-                            Thread.sleep(2000);
-                        }catch (InterruptedException e){
-                            e.printStackTrace();
-                        }
+
 
                         ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
-                        Lecture lecture = tempLectures.get(tempLectures.size() - 1);
-                        ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
-                        tempLectures.addAll(tempLectures.size(),returnLectures);
-                        adapter.setmLectureLIst(tempLectures);
+                        if(tempLectures.size() > 0){
+                            Lecture lecture = tempLectures.get(tempLectures.size() - 1);
+                            ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
+                            tempLectures.addAll(tempLectures.size(),returnLectures);
+                            adapter.setmLectureLIst(tempLectures);
+                        }
 
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -287,10 +285,13 @@ public class LectureListFragment extends Fragment {
 
                 //更新逻辑写在此处
                 ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
-                Lecture lecture = tempLectures.get(tempLectures.size() - 1);
-                ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
-                tempLectures.addAll(tempLectures.size(),returnLectures);
-                adapter.setmLectureLIst(tempLectures);
+                if(tempLectures.size() > 0 ){
+                    Lecture lecture = tempLectures.get(tempLectures.size() - 1);
+                    ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
+                    tempLectures.addAll(tempLectures.size(),returnLectures);
+                    adapter.setmLectureLIst(tempLectures);
+                }
+
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
