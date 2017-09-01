@@ -221,6 +221,34 @@
                 android:padding="1dp"
                 android:background="@drawable/shape_gray_square_bg"
                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    >
+                    <TextView
+                        android:id="@+id/lecture_position"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="0,0"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/choose_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="定位"
+                        />
+                </LinearLayout>
+
+                </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

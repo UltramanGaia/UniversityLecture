@@ -62,6 +62,9 @@ public class LaunchActivity extends BaseActivity {
     private TextView title_in_title_bar_of_launch;
     private Button submit;
 
+    private TextView lecture_position;
+    private Button choose_position;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(FEATURE_NO_TITLE);
@@ -172,6 +175,16 @@ public class LaunchActivity extends BaseActivity {
                 startActivityForResult(intent, 3);
             }
         });
+
+        choose_position = (Button)findViewById(R.id.choose_position);
+        choose_position.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( LaunchActivity.this , MapActivity.class);
+                startActivityForResult(intent , 4);
+            }
+        });
+
     }
 
     private void initView(){
@@ -187,6 +200,8 @@ public class LaunchActivity extends BaseActivity {
 
         lectureTimeText = (TextView) findViewById(R.id.time_text_in_launch);
         lectureInstituteText = (TextView) findViewById(R.id.institute_text_in_launch);
+
+        lecture_position = (TextView) findViewById(R.id.lecture_position);
 
         title_in_title_bar_of_launch = (TextView) findViewById(R.id.title_in_title_bar);
         title_in_title_bar_of_launch.setText("发布讲座");
@@ -248,9 +263,17 @@ public class LaunchActivity extends BaseActivity {
                     } catch (Exception e) {
                     }
                 }
+                break;
+            case 4:
+                if(resultCode == RESULT_OK){
+                   String pos = data.getStringExtra("position");
+                   lecture_position.setText(pos);
+                    Log.d(TAG, "onActivityResult: " + pos );
+                }
+                break;
 
-                super.onActivityResult(requestCode, resultCode, data);
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**

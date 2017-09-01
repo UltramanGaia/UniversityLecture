@@ -77,6 +77,7 @@ public class PopWindow extends PopupWindow{
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(mContext , MyTwoDCodeActivity.class);
+                intent.putExtra("phoneNumber",inner_user.getPhoneNumber());
                 ((Activity) mContext).startActivity(intent);
                 PopWindow.this.dismiss();
             }

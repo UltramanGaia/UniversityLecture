@@ -1,5 +1,6 @@
 package com.universitylecture.universitylecture.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,9 @@ public class ActivityLectureContent extends BaseActivity {
     private Button back;
     private TextView title_in_title_bar_of_launch;
 
+    //导航去这个讲座
+    private Button bt_davi;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(FEATURE_NO_TITLE);
@@ -52,6 +56,18 @@ public class ActivityLectureContent extends BaseActivity {
             @Override
             public void onClick(View v) {
                 ActivityLectureContent.super.onBackPressed();
+            }
+        });
+
+        bt_davi = (Button) findViewById(R.id.bt_navigation);
+        bt_davi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ////
+                Intent intent = new Intent(ActivityLectureContent.this,NaviBaseWalkActivity.class);
+                intent.putExtra("positionx",113.4075616300106);
+                intent.putExtra("positiony",23.04584466695405);
+                startActivity(intent);
             }
         });
     }
@@ -88,5 +104,7 @@ public class ActivityLectureContent extends BaseActivity {
         title_in_title_bar_of_launch.setText("");
 
         Glide.with(MyApplication.getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).into(lectureImage);
+
+
     }
 }

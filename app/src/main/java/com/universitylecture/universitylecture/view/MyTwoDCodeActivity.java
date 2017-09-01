@@ -1,5 +1,6 @@
 package com.universitylecture.universitylecture.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.pojo.Lecture;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import static android.view.Window.FEATURE_NO_TITLE;
@@ -34,7 +34,8 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
     private void initView(){
         //生成二维码照片
         myTwoDCode = (ImageView) findViewById(R.id.myTwoDCode);
-        String content = "hahaha";//二维码内容
+        Intent intent = getIntent();
+        String content = intent.getStringExtra("phoneNumber");//二维码内容
         Bitmap mBitmap = CodeUtils.createImage(content, 400, 400, null);
         myTwoDCode.setImageBitmap(mBitmap);
 

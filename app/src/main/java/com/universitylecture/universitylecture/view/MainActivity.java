@@ -279,6 +279,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 
+
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
                     Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
