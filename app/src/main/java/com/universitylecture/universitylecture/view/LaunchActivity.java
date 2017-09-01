@@ -132,6 +132,7 @@ public class LaunchActivity extends BaseActivity {
                                             OutputMessage.outputMessage("发布讲座成功");
                                         else
                                             OutputMessage.outputMessage("发布讲座失败");
+                                        LaunchActivity.super.onBackPressed();
                                     }
                                 }
                             }).start();

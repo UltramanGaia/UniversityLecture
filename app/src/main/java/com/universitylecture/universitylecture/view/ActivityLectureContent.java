@@ -30,6 +30,7 @@ public class ActivityLectureContent extends BaseActivity {
     private TextView lectureCo_sponsor;
 
     private Lecture lecture;//传进来的讲座
+    private String alarm;//判断是否要使闹钟设置按钮可见
 
     //标题栏部件
     private Button back;
@@ -41,6 +42,7 @@ public class ActivityLectureContent extends BaseActivity {
         setContentView(R.layout.activity_lecture_content);
 
         lecture = (Lecture) getIntent().getSerializableExtra("lecture_item");
+        alarm = getIntent().getStringExtra("alarm");
 
         initView();
         initButton();
@@ -54,6 +56,8 @@ public class ActivityLectureContent extends BaseActivity {
                 ActivityLectureContent.super.onBackPressed();
             }
         });
+
+
     }
 
     private void initView(){

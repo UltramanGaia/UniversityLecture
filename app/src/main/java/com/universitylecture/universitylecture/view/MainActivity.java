@@ -19,7 +19,6 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.PopWindow;
 import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtil;
-import com.universitylecture.universitylecture.util.MyApplication;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -32,7 +31,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     // 我的讲座的fragment
-    private MyLectureFragment myLectureFragment;
+    private MyTwoDCodeActivity.MyLectureFragment myLectureFragment;
     // 讲座列表的fragment
     private LectureListFragment lectureListFragment;
     // 讲座圈的fragment
@@ -77,7 +76,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         setTabSelection(0);
 
-        ZXingLibrary.initDisplayOpinion(this);//初始化顶部加号部分
+        ZXingLibrary.initDisplayOpinion(this);//初始化zxing库
     }
 
 
@@ -110,7 +109,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
-
+        //右上角加号初始化
         moreButton = (Button) findViewById(R.id.more);
         moreButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -206,7 +205,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (index) {
             case 0:
                 if (myLectureFragment == null) {
-                    myLectureFragment = new MyLectureFragment();
+                    myLectureFragment = new MyTwoDCodeActivity.MyLectureFragment();
                     transaction.add(R.id.content,  myLectureFragment);
                 } else {
                     transaction.show(myLectureFragment);
