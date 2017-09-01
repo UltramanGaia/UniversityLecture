@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.support.design.widget.AppBarLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import com.universitylecture.universitylecture.R;
+import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.view.MyTwoDCodeActivity;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
@@ -21,7 +22,9 @@ import com.uuzuche.lib_zxing.activity.CaptureActivity;
 public class PopWindow extends PopupWindow{
     private View conentView;
     private Context mContext;
-    public PopWindow(final Activity context ){
+    private User user;
+    public PopWindow(final Activity context, User user ){
+        this.user = user;
         mContext = context;
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -46,13 +49,26 @@ public class PopWindow extends PopupWindow{
         // mPopupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
         // 设置SelectPicPopupWindow弹出窗体动画效果
         this.setAnimationStyle(R.style.AnimationPreview);
-
+        final User inner_user = user;
         conentView.findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(mContext, CaptureActivity.class);
-                ((Activity) mContext).startActivityForResult(intent, 1 );
+                final User inner_inner_user = inner_user;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        User returnUser = (User) HttpUtil.doPost(inner_inner_user,"VerifyLecturePublisherServlet");
+                        if(returnUser != null) {
+                            Intent  intent = new Intent(mContext, CaptureActivity.class);
+                            ((Activity) mContext).startActivityForResult(intent, 1 );
+                        }
+                        else
+                            OutputMessage.outputMessage("你没有权限进行扫描");
+                    }
+                }).start();
+
+
                 PopWindow.this.dismiss();
             }
         });

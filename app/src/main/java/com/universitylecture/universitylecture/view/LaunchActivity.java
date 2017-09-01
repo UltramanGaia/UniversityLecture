@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
  */
 
 public class LaunchActivity extends BaseActivity {
+    private static final String TAG = "LaunchActivity";
 
     private EditText lectureTitle;
     private EditText lectureClassroom;
@@ -213,8 +215,10 @@ public class LaunchActivity extends BaseActivity {
                     /**
                      * 当选择的图片不为空的话，在获取到图片的途径
                      */
-                    Uri uri = data.getData();
-                    //Log.e(TAG, "uri = " + uri);
+                    //Uri uri = data.getData();
+                    Uri uri = geturi(data);//解决小米手机图片问题
+
+                    Log.e(TAG, "uri = " + uri);
                     try {
                         String[] pojo = { MediaStore.Images.Media.DATA };
 
@@ -229,6 +233,7 @@ public class LaunchActivity extends BaseActivity {
                              * 这里加这样一个判断主要是为了第三方的软件选择，比如：使用第三方的文件管理器的话，你选择的文件就不一定是图片了，
                              * 这样的话，我们判断文件的后缀名 如果是图片格式的话，那么才可以
                              */
+                            Log.e(TAG, "image path : " + path );
                             if (path.endsWith("jpg") || path.endsWith("png")) {
                                 picPath = path;
                                 Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
@@ -237,6 +242,7 @@ public class LaunchActivity extends BaseActivity {
                                 alert();
                             }
                         } else {
+                            Log.e(TAG, "onActivityResult: cursor is null");
                             alert();
                         }
 
@@ -246,6 +252,46 @@ public class LaunchActivity extends BaseActivity {
 
                 super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    /**
+     * 解决小米手机上获取图片路径为null的情况
+     * @param intent
+     * @return
+     */
+    public Uri geturi(android.content.Intent intent) {
+        Uri uri = intent.getData();
+        String type = intent.getType();
+        if (uri.getScheme().equals("file") && (type.contains("image/"))) {
+            String path = uri.getEncodedPath();
+            if (path != null) {
+                path = Uri.decode(path);
+                ContentResolver cr = this.getContentResolver();
+                StringBuffer buff = new StringBuffer();
+                buff.append("(").append(MediaStore.Images.ImageColumns.DATA).append("=")
+                        .append("'" + path + "'").append(")");
+                Cursor cur = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        new String[] { MediaStore.Images.ImageColumns._ID },
+                        buff.toString(), null, null);
+                int index = 0;
+                for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
+                    index = cur.getColumnIndex(MediaStore.Images.ImageColumns._ID);
+                    // set _id value
+                    index = cur.getInt(index);
+                }
+                if (index == 0) {
+                    // do nothing
+                } else {
+                    Uri uri_temp = Uri
+                            .parse("content://media/external/images/media/"
+                                    + index);
+                    if (uri_temp != null) {
+                        uri = uri_temp;
+                    }
+                }
+            }
+        }
+        return uri;
     }
 
     private void alert() {

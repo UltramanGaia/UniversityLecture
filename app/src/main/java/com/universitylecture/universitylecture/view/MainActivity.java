@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private NavigationView navigationView;
 
    // 更多选项按钮
-    private Button moreButton;
+    private Button moreButton;//顶部加号部分
 
     // fragment管理器
     private FragmentManager fragmentManager;
@@ -76,7 +76,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         setTabSelection(0);
 
+
         ZXingLibrary.initDisplayOpinion(this);//初始化zxing库
+
     }
 
 
@@ -114,7 +116,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         moreButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                PopWindow popWindow = new PopWindow(MainActivity.this );
+                PopWindow popWindow = new PopWindow(MainActivity.this, user);
                 popWindow.showPopupWindow(findViewById(R.id.more));
             }
         });
@@ -279,9 +281,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 
-
-
-                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
                     Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
             }
