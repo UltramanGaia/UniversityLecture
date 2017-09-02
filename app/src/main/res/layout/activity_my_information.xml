@@ -24,11 +24,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
+                android:layout_gravity="center"
                 android:text="姓名"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textColor="@color/grgray"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/name_text_in_my_information"
@@ -57,11 +58,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
+                android:layout_gravity="center"
                 android:text="性别"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textColor="@color/grgray"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/sex_text_in_my_information"
@@ -90,11 +92,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
+                android:layout_gravity="center"
                 android:text="手机"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textColor="@color/grgray"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/phonenumber_text_in_my_information"

@@ -22,7 +22,7 @@ import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
-import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
+//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 import com.universitylecture.universitylecture.pojo.SpaceItemDecoration;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
@@ -214,11 +214,11 @@ public class LectureListFragment extends Fragment {
 
                         adapter = new LectureAdapterTwo(lectures,getActivity());
                         lectures_recyclerView.setAdapter(adapter);
-                        //设置分隔线
+                       /* //设置分隔线
 //                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
                         lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
                         lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
-
+                       */
                         //设置rooter
                         setFooterView(lectures_recyclerView);
                         //setHeaderView(lectures_recyclerView);

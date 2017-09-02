@@ -80,28 +80,28 @@ public class ActivityLectureContent extends BaseActivity {
         //lectureImage.setImageResource(lecture.getImageId());
 
         lectureName = (TextView) findViewById(R.id.lecture_name_in_lecture_content);
-        lectureName.setText("讲座题目：" + lecture.getTitle());
+        lectureName.setText("" + lecture.getTitle());
 
         lectureTime = (TextView) findViewById(R.id.lecture_time_in_lecture_content);
-        lectureTime.setText("讲座时间：" + lecture.getTime().split(":")[0] + ":" + lecture.getTime().split(":")[1]);
+        lectureTime.setText("" + lecture.getTime().split(":")[0] + ":" + lecture.getTime().split(":")[1]);
 
         lectureClassroom = (TextView) findViewById(R.id.lecture_classroom_in_lecture_content);
-        lectureClassroom.setText("讲座地点：" + lecture.getClassroom());
+        lectureClassroom.setText("" + lecture.getClassroom());
 
         lectureLecturer = (TextView) findViewById(R.id.lecture_lecturer_in_lecture_content);
-        lectureLecturer.setText("主讲人：" + lecture.getLecturer());
+        lectureLecturer.setText("" + lecture.getLecturer());
 
         lectureCredit = (TextView) findViewById(R.id.lecture_credit_in_lecture_content);
-        lectureCredit.setText("学分：" + lecture.getCredit());
+        lectureCredit.setText("" + lecture.getCredit());
 
         lectureContent = (TextView) findViewById(R.id.lecture_content_in_lecture_content);
         lectureContent.setText( lecture.getContent());
 
         lectureSponsor = (TextView) findViewById(R.id.lecture_sponsor_in_lecture_content);
-        lectureSponsor.setText("主办方：" + lecture.getSponsor());
+        lectureSponsor.setText("" + lecture.getSponsor());
 
         lectureCo_sponsor = (TextView) findViewById(R.id.lecture_co_sponsor_in_lecture_content);
-        lectureCo_sponsor.setText("协办方：" + lecture.getCo_sponsor());
+        lectureCo_sponsor.setText("" + lecture.getCo_sponsor());
 
         title_in_title_bar_of_launch = (TextView) findViewById(R.id.title_in_title_bar);
         title_in_title_bar_of_launch.setText("");

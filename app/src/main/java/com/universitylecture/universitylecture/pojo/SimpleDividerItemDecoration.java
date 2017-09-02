@@ -11,7 +11,7 @@ import com.universitylecture.universitylecture.R;
 /**
  * Created by fengqingyundan on 2017/9/2.
  */
-
+/*
 public class SimpleDividerItemDecoration  extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
 
@@ -38,3 +38,4 @@ public class SimpleDividerItemDecoration  extends RecyclerView.ItemDecoration {
         }
     }
 }
+*/

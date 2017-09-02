@@ -19,7 +19,7 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
-import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
+//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 import com.universitylecture.universitylecture.pojo.SpaceItemDecoration;
 import com.universitylecture.universitylecture.util.MyApplication;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -175,8 +175,8 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
             adapter = new LectureAdapterTwo(lectures,getActivity());
             lectures_recyclerView.setAdapter(adapter);
             //lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-            lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
-            lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
+           // lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
+           // lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
             //设置rooter
             setFooterView(lectures_recyclerView);
             //setHeaderView(lectures_recyclerView);

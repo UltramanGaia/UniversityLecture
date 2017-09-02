@@ -4,34 +4,35 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="@drawable/title_bar"
+    android:background="@android:color/holo_blue_light"
     >
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/toggle_drawer_open"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
         android:layout_weight="1"
-        android:layout_margin="4dp"
-        android:src="@drawable/longheadimage" />
+        android:src="@drawable/long_head_image" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
-        android:textSize="24sp"
         android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp" />  
         />
+
     <Button
         android:id="@+id/more"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_margin="4dp"
-        android:layout_gravity="end"
-        android:background="#00000000"
-        android:text="+"
-        android:textSize="30dp"
-        android:textColor="@color/white"/>
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/qrcode"
+        android:textAllCaps="false"
+        android:textSize="30dp" />
 
 
-    </LinearLayout>
+</LinearLayout>
