@@ -9,7 +9,6 @@ import com.universitylecture.universitylecture.R;
 public class NaviBaseWalkActivity extends NaviBaseActivity {
     private NaviLatLng source = new NaviLatLng( 23.050546405028143,113.40182036161423);
     private NaviLatLng destination = new NaviLatLng( 23.04584466695405,113.4075616300106);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

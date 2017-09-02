@@ -53,6 +53,9 @@ public class LaunchActivity extends BaseActivity {
     private ImageView lecture_poster;
     private String picPath = null;
 
+    private double lecture_latitude = 0;
+    private double lecture_longitude = 0;
+
     //time和institude的linearlayout,用来处理点击事件
     private View TimeInLaunch;
     private View InstituteInLaunch;
@@ -122,7 +125,7 @@ public class LaunchActivity extends BaseActivity {
                         final File file = new File(picPath);
                         if (file != null) {
                             final Lecture sendLecture = new Lecture(title, time, classroom, institute, introduction, lecturer,
-                                    credit, content, sponsor, co_sponsor, picPath);
+                                    credit, content, sponsor, co_sponsor, picPath, lecture_latitude, lecture_longitude);
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -266,6 +269,8 @@ public class LaunchActivity extends BaseActivity {
                 break;
             case 4:
                 if(resultCode == RESULT_OK){
+                   lecture_latitude = data.getDoubleExtra("latitude",0);
+                   lecture_longitude = data.getDoubleExtra("longitude",0);
                    String pos = data.getStringExtra("position");
                    lecture_position.setText(pos);
                     Log.d(TAG, "onActivityResult: " + pos );

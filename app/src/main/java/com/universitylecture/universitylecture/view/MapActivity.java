@@ -73,7 +73,8 @@ public class MapActivity extends AppCompatActivity
                 //返回点。。。
                 Intent intent = new Intent();
                 String position = text_view_point.getText().toString();
-                intent.putExtra("position", position);
+                intent.putExtra("latitude", centerLatLng.latitude);
+                intent.putExtra("longitude",centerLatLng.longitude);
                 setResult(RESULT_OK,intent);
                 finish();
             }
