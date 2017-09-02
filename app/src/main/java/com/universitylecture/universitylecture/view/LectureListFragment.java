@@ -121,7 +121,7 @@ public class LectureListFragment extends Fragment {
 
 
                         //select lectures
-                        Lecture lecture = new Lecture(selectedTime,selectedInstitude);
+                        Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
                         final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -201,9 +201,11 @@ public class LectureListFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final Lecture lecture = new Lecture("10","不限");
+
+                final Lecture lecture = new Lecture("10","不限",5);
                 lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
                 Log.e("lecture size in thread", "initData: " + lectures.size());
+
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -242,8 +244,8 @@ public class LectureListFragment extends Fragment {
 
                         ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
                         if(tempLectures.size() > 0){
-                            Lecture lecture = tempLectures.get(tempLectures.size() - 1);
-                            ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
+                            final Lecture lecture = new Lecture("10","不限",tempLectures.size() + 5);
+                            ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureServlet");
                             tempLectures.addAll(tempLectures.size(),returnLectures);
                             adapter.setmLectureLIst(tempLectures);
                         }
@@ -272,7 +274,6 @@ public class LectureListFragment extends Fragment {
             @Override
             public void onRefresh() {
                 refresh();
-
             }
         });
     }
@@ -286,10 +287,9 @@ public class LectureListFragment extends Fragment {
                 //更新逻辑写在此处
                 ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
                 if(tempLectures.size() > 0 ){
-                    Lecture lecture = tempLectures.get(tempLectures.size() - 1);
-                    ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
-                    tempLectures.addAll(tempLectures.size(),returnLectures);
-                    adapter.setmLectureLIst(tempLectures);
+                    final Lecture lecture = new Lecture("10","不限",5);
+                    lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                    adapter.setmLectureLIst(lectures);
                 }
 
 

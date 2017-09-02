@@ -21,6 +21,7 @@ public class Lecture implements Serializable{
     private String sponsor;      //讲座主办方
     private String co_sponsor;   //讲座协办方
     private String imagePath;
+    private int counter;
 
     public Lecture(String ptitle, String ptime , String pclassroom , String pinstitute , String pintroduction ,
                     String plecturer , String pcredit , String pcontent ,String psponsor,
@@ -40,9 +41,11 @@ public class Lecture implements Serializable{
     }
 
 
-    public Lecture(String ptime,String pinstitute) {
+    public Lecture(String ptime,String pinstitute,int pcounter) {
         time = ptime;
         institute = pinstitute;
+        counter = pcounter;
+
     }
 
     public Lecture() {
@@ -143,5 +146,13 @@ public class Lecture implements Serializable{
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }

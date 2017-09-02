@@ -27,10 +27,11 @@ public class RegisterMobileActivity extends BaseActivity {
     private EditText codeText;
     private Button sendCodeBtn;
     private Button nextBtn;
-    private int time;
+    private int time = 60;
 
     private String phoneNumber;
     private String code;
+    private Handler mHandler = new Handler();
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,22 +58,8 @@ public class RegisterMobileActivity extends BaseActivity {
                 if (!judgePhoneNums(phoneNumber))
                     return;
                 SMSSDK.getVerificationCode("86", phoneNumber);
-                sendCodeBtn.setClickable(false);
-                sendCodeBtn.setText("重新发送(" + time + ")");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (time = 60; time > 0; time--) {
-                            if (time <= 0)
-                                break;
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }).start();
+
+                new Thread(new MyCountDownTimer()).start();
 
                 handler.sendEmptyMessage(-8);
             }
@@ -166,5 +153,40 @@ public class RegisterMobileActivity extends BaseActivity {
     protected void onDestroy() {
         SMSSDK.unregisterAllEventHandler();
         super.onDestroy();
+    }
+
+
+    class MyCountDownTimer implements Runnable{
+
+        @Override
+        public void run() {
+
+            //倒计时开始，循环
+            while (time > 0) {
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        sendCodeBtn.setClickable(false);
+                        sendCodeBtn.setText("重新发送 " + time + " s");
+                    }
+                });
+                try {
+                    Thread.sleep(1000); //强制线程休眠1秒，就是设置倒计时的间隔时间为1秒。
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                time--;
+            }
+
+            //倒计时结束，也就是循环结束
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    sendCodeBtn.setClickable(true);
+                    sendCodeBtn.setText("发送验证码");
+                }
+            });
+            time = 60; //最后再恢复倒计时时长
+        }
     }
 }
