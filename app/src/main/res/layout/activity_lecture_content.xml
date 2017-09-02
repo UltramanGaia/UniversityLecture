@@ -87,7 +87,6 @@
                 android:layout_height="wrap_content"
                 android:text="步行导航"
                 />
-
         </LinearLayout>
     </ScrollView>
 

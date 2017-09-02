@@ -140,6 +140,7 @@ public class LaunchActivity extends BaseActivity {
                                             OutputMessage.outputMessage("发布讲座成功");
                                         else
                                             OutputMessage.outputMessage("发布讲座失败");
+                                        LaunchActivity.super.onBackPressed();
                                     }
                                 }
                             }).start();
@@ -271,12 +272,10 @@ public class LaunchActivity extends BaseActivity {
                 if(resultCode == RESULT_OK){
                    lecture_latitude = data.getDoubleExtra("latitude",0);
                    lecture_longitude = data.getDoubleExtra("longitude",0);
-                   String pos = data.getStringExtra("position");
-                   lecture_position.setText(pos);
-                    Log.d(TAG, "onActivityResult: " + pos );
+                   lecture_position.setText(lecture_latitude + "," + lecture_longitude);
+                    Log.d(TAG, "onActivityResult: " + lecture_position.getText().toString() );
                 }
                 break;
-
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

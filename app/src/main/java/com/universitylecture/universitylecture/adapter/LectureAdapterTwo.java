@@ -71,7 +71,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context){
+    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context ){
         mContext = context;
         mLectureLIst = lectureList;
     }
