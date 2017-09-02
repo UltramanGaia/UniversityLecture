@@ -49,6 +49,12 @@
                     android:maxLines="1"
                     android:numeric="integer"
                     android:singleLine="true"
+
+
+                    android:text="13560029915"
+
+
+
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
@@ -76,6 +82,10 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
+
+                    android:text="qq123456"
+
+
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
