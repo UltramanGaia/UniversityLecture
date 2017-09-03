@@ -22,8 +22,6 @@ import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
-//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
-import com.universitylecture.universitylecture.pojo.SpaceItemDecoration;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
 
@@ -32,6 +30,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
+
+//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 
 
 //讲座列表界面
@@ -123,7 +123,7 @@ public class LectureListFragment extends Fragment {
 
 
                         //select lectures
-                        Lecture lecture = new Lecture(selectedTime,selectedInstitude);
+                        Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
                         final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -203,7 +203,7 @@ public class LectureListFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final Lecture lecture = new Lecture("10","不限");
+                final Lecture lecture = new Lecture("10","不限",5);
                 lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
                 Log.e("lecture size in thread", "initData: " + lectures.size());
 
@@ -251,15 +251,11 @@ public class LectureListFragment extends Fragment {
                     public void run() {
 
                         //更新逻辑写在此处
-                        ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
-                        if(tempLectures.size() > 0){
-                            Lecture lecture = tempLectures.get(tempLectures.size() - 1);
-                            ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
-                            if( returnLectures.size() > 0 ){
-                                tempLectures.addAll(tempLectures.size(),returnLectures);
-                            }
-                            adapter.setmLectureLIst(tempLectures);
-                        }
+                        ArrayList<Lecture> lectureArrayList = adapter.getmLectureLIst();
+                        final Lecture lecture = new Lecture("10","不限",lectureArrayList.size() + 5);
+                        lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                        lectureArrayList.addAll(lectureArrayList.size(),lectures);
+                        adapter.setmLectureLIst(lectureArrayList);
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -304,16 +300,10 @@ public class LectureListFragment extends Fragment {
             public void run() {
 
                 //更新逻辑写在此处
-                ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
-                if(tempLectures.size() > 0 ){
-                    Lecture lecture = tempLectures.get(tempLectures.size() - 1);
-                    ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureByIDServlet");
-                    tempLectures.addAll(tempLectures.size(),returnLectures);
-                    adapter.setmLectureLIst(tempLectures);
-                }
 
-
-
+                final Lecture lecture = new Lecture("10","不限",5);
+                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                adapter.setmLectureLIst(lectures);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override

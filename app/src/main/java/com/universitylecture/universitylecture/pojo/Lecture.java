@@ -23,6 +23,7 @@ public class Lecture implements Serializable{
     private String imagePath;
     private double latitude;   //纬度
     private double longitude;   //经度
+    private int counter;
 
     public Lecture(String ptitle, String ptime , String pclassroom , String pinstitute , String pintroduction ,
                     String plecturer , String pcredit , String pcontent ,String psponsor,
@@ -44,9 +45,10 @@ public class Lecture implements Serializable{
     }
 
 
-    public Lecture(String ptime,String pinstitute) {
+    public Lecture(String ptime,String pinstitute,int pcounter) {
         time = ptime;
         institute = pinstitute;
+        counter = pcounter;
     }
 
     public double getLatitude() {
@@ -163,5 +165,13 @@ public class Lecture implements Serializable{
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }
