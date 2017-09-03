@@ -9,11 +9,11 @@
 
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    	  xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scrollbars="vertical"
-        android:fadingEdge="vertical">
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -26,45 +26,43 @@
                 android:id="@+id/lecture_title"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dip"
+                android:layout_marginBottom="5dip"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginBottom="5dip"
-                android:gravity="center_vertical"
+                android:layout_marginTop="10dip"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="讲座名称"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <LinearLayout
                 android:id="@+id/time_in_launch"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:clickable="true"
+                android:layout_margin="5dip"
                 android:background="@drawable/bg_edittext_selector"
-                android:layout_margin="5dip">
+                android:clickable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dip"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="#000000"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
                     android:text="时间"
-                    />
+                    android:textColor="@color/grgray"
+                    android:textSize="18dip" />
 
                 <TextView
                     android:id="@+id/time_text_in_launch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:gravity="right" />
 
                 <ImageView
@@ -72,7 +70,7 @@
                     android:layout_height="10dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/changeinformation"/>
+                    android:src="@drawable/changeinformation" />
             </LinearLayout>
 
             <EditText
@@ -80,41 +78,39 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dip"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="地点"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <LinearLayout
                 android:id="@+id/institute_in_launch"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:clickable="true"
+                android:layout_margin="5dip"
                 android:background="@drawable/bg_edittext_selector"
-                android:layout_margin="5dip">
+                android:clickable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dip"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="#000000"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
                     android:text="学院"
-                    />
+                    android:textColor="@color/grgray"
+                    android:textSize="18dip" />
 
                 <TextView
                     android:id="@+id/institute_text_in_launch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:gravity="right" />
 
                 <ImageView
@@ -122,7 +118,7 @@
                     android:layout_height="10dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/changeinformation"/>
+                    android:src="@drawable/changeinformation" />
             </LinearLayout>
 
             <EditText
@@ -130,70 +126,65 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dip"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="主讲人"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <EditText
                 android:id="@+id/lecture_credit"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dip"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="讲座学分"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <EditText
                 android:id="@+id/lecture_sponsor"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dip"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="讲座主办方"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <EditText
                 android:id="@+id/lecture_cosponsor"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dip"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="讲座协办方"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <EditText
                 android:id="@+id/lecture_introduction"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dip"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_edittext_selector"
+                android:gravity="center_vertical"
                 android:hint="一句话介绍讲座~~"
-                android:singleLine="true"
                 android:padding="2.5dip"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
-                />
+                android:textSize="18dip" />
 
             <EditText
                 android:id="@+id/lecture_content"
@@ -201,26 +192,68 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
                 android:background="@drawable/bg_edittext_selector"
-                android:hint="讲座内容"
-                android:padding="10dp"
-                android:textColorHint="#AAAAAA"
-                android:textSize="20dip"
                 android:gravity="top"
+                android:hint="讲座内容"
                 android:inputType="textMultiLine"
-                android:minLines="6"
                 android:maxLines="6"
+                android:minLines="6"
+                android:padding="10dp"
                 android:scrollbars="vertical"
-                />
+                android:textColorHint="#AAAAAA"
+                android:textSize="18dip" />
 
             <ImageView
                 android:id="@+id/lecture_poster"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_launcher"
                 android:padding="1dp"
-                android:background="@drawable/shape_gray_square_bg"
-                />
+                android:src="@drawable/image" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="1">
+
+                    <Button
+                        android:id="@+id/choose_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1.10"
+                        android:background="@color/un_press_color"
+                        android:text="定位"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/encode_view"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/lecture_position"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="8dp"
+                        android:text="0,0"
+                        android:textAlignment="textStart"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

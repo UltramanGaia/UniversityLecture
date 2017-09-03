@@ -35,7 +35,6 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
     private ArrayList<Lecture> mLectureLIst = new ArrayList<>();
     private View mFooterView;
     private View mHeaderView;
-    private String alarm;
 
     class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout lecture_item;
@@ -72,10 +71,9 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context , String mAlarm){
+    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context ){
         mContext = context;
         mLectureLIst = lectureList;
-        alarm = mAlarm;
     }
 
 
@@ -114,7 +112,6 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Lecture lecture = mLectureLIst.get(position);
                 Intent intent = new Intent(mContext , ActivityLectureContent.class);
                 intent.putExtra("lecture_item",lecture);
-                intent.putExtra("alarm" , alarm );
                 mContext.startActivity(intent);
             }
         });

@@ -1,5 +1,6 @@
 package com.universitylecture.universitylecture.view;
 
+import android.content.Intent;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
-import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
+//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 import com.universitylecture.universitylecture.pojo.SpaceItemDecoration;
 import com.universitylecture.universitylecture.util.MyApplication;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -48,9 +49,8 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
     private void initView(){
         //生成二维码照片
         myTwoDCode = (ImageView) findViewById(R.id.myTwoDCode);
-
-
-        String content = "hahaha";//二维码内容
+        Intent intent = getIntent();
+        String content = intent.getStringExtra("phoneNumber");//二维码内容
         Bitmap mBitmap = CodeUtils.createImage(content, 400, 400, null);
         myTwoDCode.setImageBitmap(mBitmap);
 
@@ -172,11 +172,11 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
             lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_myLectures_recyclerview);
             layoutManager = new LinearLayoutManager(MyApplication.getContext());
             lectures_recyclerView.setLayoutManager(layoutManager);
-            adapter = new LectureAdapterTwo(lectures,getActivity(),"unset");
+            adapter = new LectureAdapterTwo(lectures,getActivity());
             lectures_recyclerView.setAdapter(adapter);
             //lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-            lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
-            lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
+           // lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
+           // lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
             //设置rooter
             setFooterView(lectures_recyclerView);
             //setHeaderView(lectures_recyclerView);

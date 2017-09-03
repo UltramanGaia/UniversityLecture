@@ -13,7 +13,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/title" />
+        <include layout="@layout/title"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.19" />
 
         <FrameLayout
             android:id="@+id/content"
@@ -28,9 +30,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/bottom_bar"
-            android:orientation="horizontal">
+            android:layout_height="55dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_weight="0.01">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -45,15 +48,14 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:clickable="false"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/my_lecture_pressed"/>
+                    app:srcCompat="@drawable/my_lecture_pressed" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="我的讲座"
                     android:textAlignment="center"
-                     />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -70,14 +72,14 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:clickable="false"
-                    android:layout_weight="1"
                     app:srcCompat="@drawable/lecture_list_normal" />
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="讲座列表"
-                     />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -94,14 +96,14 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:clickable="false"
-                    android:layout_weight="1"
                     app:srcCompat="@drawable/lecture_circle_normal" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="讲座圈"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
