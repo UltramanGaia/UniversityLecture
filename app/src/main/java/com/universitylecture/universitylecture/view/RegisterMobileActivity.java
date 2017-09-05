@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mob.MobSDK;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtil;
@@ -31,7 +32,7 @@ public class RegisterMobileActivity extends BaseActivity {
 
     private String phoneNumber;
     private String code;
-
+    private EventHandler eventHandler;
     private Handler mHandler = new Handler();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class RegisterMobileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_moblie);
         init();
-        SMSSDK.initSDK(this, "1e81bc5f2c43f", "d76cb4cc64ce4d4ccf287d9f063a8338");
-        EventHandler eventHandler = new EventHandler() {
+        MobSDK.init(this,"1e81bc5f2c43f","d76cb4cc64ce4d4ccf287d9f063a8338");
+        eventHandler = new EventHandler() {
             @Override
             public void afterEvent(int event, int result, Object data) {
                 Message msg = new Message();
@@ -50,6 +51,7 @@ public class RegisterMobileActivity extends BaseActivity {
                 handler.sendMessage(msg);
             }
         };
+
         SMSSDK.registerEventHandler(eventHandler);
 
         sendCodeBtn.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +87,7 @@ public class RegisterMobileActivity extends BaseActivity {
                                 sendUser.setPhoneNumber(phoneNumber);
                                 sendUser.setCode(code);
                                 User returnUser =(User) HttpUtil.doPost(sendUser, "VerifyCodeServlet");
+                                //SMSSDK.submitVerificationCode("86",phoneNumber,code);
                                 if (returnUser.getMessage().equals("OK")) {
                                     Intent intent = new Intent(RegisterMobileActivity.this,RegisterUserInfoActivity.class);
                                     intent.putExtra("user",returnUser);
