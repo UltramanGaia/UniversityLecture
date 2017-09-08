@@ -16,7 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.pojo.PopWindow;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
@@ -31,7 +32,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     // 我的讲座的fragment
-    private MyTwoDCodeActivity.MyLectureFragment myLectureFragment;
+    private MyLectureFragment myLectureFragment;
     // 讲座列表的fragment
     private LectureListFragment lectureListFragment;
     // 讲座圈的fragment
@@ -95,6 +96,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         PersonalInformation.name = user.getName();
         PersonalInformation.phoneNumber = user.getPhoneNumber();
         PersonalInformation.sex = user.getSex();
+        PersonalInformation.id = user.getId();
+        PersonalInformation.password = user.getPassword();
+        PersonalInformation.studentNumber = user.getStudentNumber();
 
         /*
             测试数据
@@ -116,7 +120,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         moreButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                PopWindow popWindow = new PopWindow(MainActivity.this, user);
+                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(MainActivity.this, user);
                 popWindow.showPopupWindow(findViewById(R.id.more));
             }
         });
@@ -207,7 +211,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (index) {
             case 0:
                 if (myLectureFragment == null) {
-                    myLectureFragment = new MyTwoDCodeActivity.MyLectureFragment();
+                    myLectureFragment = new MyLectureFragment();
                     transaction.add(R.id.content,  myLectureFragment);
                 } else {
                     transaction.show(myLectureFragment);
@@ -267,25 +271,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         updatePersonalInformation();//更新抽屉栏个人信息
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if (requestCode == 1 ) {
-            //处理扫描结果（在界面上显示）
-            if (null != data) {
-                Bundle bundle = data.getExtras();
-                if (bundle == null) {
-                    return;
-                }
-                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-                    //获取了扫描结果，进行处理
-
-                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-
-
-                } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
-                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-    }
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+//        if (requestCode == 1 ) {
+//            //处理扫描结果（在界面上显示）
+//            if (null != data) {
+//                Bundle bundle = data.getExtras();
+//                if (bundle == null) {
+//                    return;
+//                }
+//                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+//                    //获取了扫描结果，进行处理
+//
+//                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+//                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+//
+//
+//                } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
+//                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        }
+//    }
 }

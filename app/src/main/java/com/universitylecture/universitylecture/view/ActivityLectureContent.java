@@ -6,12 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.PopWindowInLectureContent;
 import com.universitylecture.universitylecture.util.Constant;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
@@ -36,7 +39,7 @@ public class ActivityLectureContent extends BaseActivity {
     //标题栏部件
     private Button back;
     private TextView title_in_title_bar_of_launch;
-
+    private Button alarmSet;
     //导航去这个讲座
     private Button bt_davi;
 
@@ -53,7 +56,7 @@ public class ActivityLectureContent extends BaseActivity {
     }
 
     private void initButton(){
-        back = (Button) findViewById(R.id.go_back);
+        back = (Button) findViewById(R.id.go_back_in_lecture_information);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +76,17 @@ public class ActivityLectureContent extends BaseActivity {
             }
         });
 
+        if( alarm.equals("set") ){
+            alarmSet = (Button) findViewById(R.id.alarmSet);
+            alarmSet.setVisibility(View.VISIBLE);
+            alarmSet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PopWindowInLectureContent popWindow = new PopWindowInLectureContent( ActivityLectureContent.this , lecture);
+                    popWindow.showPopupWindow(findViewById(R.id.alarmSet));
+                }
+            });
+        }
     }
 
     private void initView(){
@@ -107,7 +121,27 @@ public class ActivityLectureContent extends BaseActivity {
         title_in_title_bar_of_launch.setText("");
 
         Glide.with(MyApplication.getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).into(lectureImage);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == 1 ) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    //获取了扫描结果，进行处理
+
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 
 
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(ActivityLectureContent.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }

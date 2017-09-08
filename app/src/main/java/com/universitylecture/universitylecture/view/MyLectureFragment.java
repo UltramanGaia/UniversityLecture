@@ -125,7 +125,7 @@ public class MyLectureFragment extends Fragment {
         lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_myLectures_recyclerview);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());
         lectures_recyclerView.setLayoutManager(layoutManager);
-        adapter = new LectureAdapterTwo(lectures,getActivity());
+        adapter = new LectureAdapterTwo(lectures,getActivity(),"unset");
         lectures_recyclerView.setAdapter(adapter);
         lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
 

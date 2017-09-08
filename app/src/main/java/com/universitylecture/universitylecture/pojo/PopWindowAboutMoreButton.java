@@ -19,16 +19,16 @@ import com.uuzuche.lib_zxing.activity.CaptureActivity;
  * Created by fengqingyundan on 2017/8/22.
  */
 
-public class PopWindow extends PopupWindow{
+public class PopWindowAboutMoreButton extends PopupWindow{
     private View conentView;
     private Context mContext;
     private User user;
-    public PopWindow(final Activity context, User user ){
+    public PopWindowAboutMoreButton(final Activity context, User user ){
         this.user = user;
         mContext = context;
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        conentView = inflater.inflate(R.layout.popup_window, null);
+        conentView = inflater.inflate(R.layout.popup_window_about_more_button, null);
         int h = context.getWindowManager().getDefaultDisplay().getHeight();
         int w = context.getWindowManager().getDefaultDisplay().getWidth();
         // 设置SelectPicPopupWindow的View
@@ -50,28 +50,28 @@ public class PopWindow extends PopupWindow{
         // 设置SelectPicPopupWindow弹出窗体动画效果
         this.setAnimationStyle(R.style.AnimationPreview);
         final User inner_user = user;
-        conentView.findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                final User inner_inner_user = inner_user;
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        User returnUser = (User) HttpUtil.doPost(inner_inner_user,"VerifyLecturePublisherServlet");
-                        if(returnUser != null) {
-                            Intent  intent = new Intent(mContext, CaptureActivity.class);
-                            ((Activity) mContext).startActivityForResult(intent, 1 );
-                        }
-                        else
-                            OutputMessage.outputMessage("你没有权限进行扫描");
-                    }
-                }).start();
-
-
-                PopWindow.this.dismiss();
-            }
-        });
+//        conentView.findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View arg0) {
+//                final User inner_inner_user = inner_user;
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        User returnUser = (User) HttpUtil.doPost(inner_inner_user,"VerifyLecturePublisherServlet");
+//                        if(returnUser != null) {
+//                            Intent  intent = new Intent(mContext, CaptureActivity.class);
+//                            ((Activity) mContext).startActivityForResult(intent, 1 );
+//                        }
+//                        else
+//                            OutputMessage.outputMessage("你没有权限进行扫描");
+//                    }
+//                }).start();
+//
+//
+//                PopWindowAboutMoreButton.this.dismiss();
+//            }
+//        });
         conentView.findViewById(R.id.myTwoDCode).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -79,7 +79,7 @@ public class PopWindow extends PopupWindow{
                 Intent intent = new Intent(mContext , MyTwoDCodeActivity.class);
                 intent.putExtra("phoneNumber",inner_user.getPhoneNumber());
                 ((Activity) mContext).startActivity(intent);
-                PopWindow.this.dismiss();
+                PopWindowAboutMoreButton.this.dismiss();
             }
         });
     }
