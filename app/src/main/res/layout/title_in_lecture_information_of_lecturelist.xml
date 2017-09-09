@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@android:color/holo_blue_light">
+
+
+    <Button
+        android:id="@+id/go_back_in_lecture_information"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_weight="1.04"
+        android:background="@drawable/home_back"
+        android:text="   返回"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/title_in_title_bar"
+        android:layout_width="193dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/alarmSet"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/qrcode"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:visibility="invisible"></Button>
+</LinearLayout>

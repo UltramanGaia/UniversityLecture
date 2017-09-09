@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     tools:context="com.universitylecture.universitylecture.LectureCircleFragment">
 
-    <Button
-        android:id="@+id/test_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="测试登录"/>
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="你还未发布过讲座圈"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 </FrameLayout>

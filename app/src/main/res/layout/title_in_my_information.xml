@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="@drawable/title_bar"
-    >
+    android:background="#00bfef"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
     <Button
         android:id="@+id/go_back"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="返回" />
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_weight="1.04"
+        android:background="@drawable/home_back"
+        android:text="   返回"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/title_in_title_bar"
-        android:layout_width="0dp"
+        android:layout_width="193dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="我的资料"
-        android:textSize="24sp"
         android:gravity="center"
-        />
+        android:text="我的资料"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.02" />
+
     <Button
         android:id="@+id/save_information"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:visibility="invisible"
-        android:text="保存"/>
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/save"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
 </LinearLayout>

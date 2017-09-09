@@ -1,86 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/subbackground"
+    >
 
-    <include layout="@layout/title_in_my_information"></include>
+    <include layout="@layout/title_in_lecture_information_of_lecturelist"></include>
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scrollbars="vertical"
-        android:fadingEdge="vertical">
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
             <ImageView
                 android:id="@+id/lecture_image_in_lecture_content"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_launcher" />
 
-            <TextView
-                android:id="@+id/lecture_name_in_lecture_content"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="深信服"
-                android:textSize="24dp" />
+                android:layout_height="20dp" />
 
-            <TextView
-                android:id="@+id/lecture_time_in_lecture_content"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="2017年1月1日"
-                android:textSize="24dp"
-                />
+                android:layout_height="match_parent"
+                android:layout_weight="0.48"
+                android:background="@drawable/boarder"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/lecture_classroom_in_lecture_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="A1-203"
-                android:textSize="24dp" />
+                <TextView
+                    android:id="@+id/lecture_name_in_lecture_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="0.06"
+                    android:gravity="center_vertical"
+                    android:text="深信服杯软件设计大赛"
+                    android:textAlignment="center"
+                    android:textColor="@color/contents_text"
+                    android:textSize="24dp" />
 
-            <TextView
-                android:id="@+id/lecture_lecturer_in_lecture_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="舒梓杰"
-                android:textSize="24dp"
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/lecture_credit_in_lecture_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="0.5德育分"/>
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="主讲人/"
+                        android:textAlignment="textEnd"
+                        android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/lecture_sponsor_in_lecture_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="软件学院"/>
+                    <TextView
+                        android:id="@+id/lecture_lecturer_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="舒梓杰"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/lecture_co_sponsor_in_lecture_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="软件学院"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-            <TextView
-                android:id="@+id/lecture_content_in_lecture_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="软件学院"/>
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="讲座时间"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/lecture_time_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2017-1-1"
+                        android:textColor="@color/drop_down_unselected"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="讲座地点"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/lecture_classroom_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="A1-203"
+                        android:textColor="@color/drop_down_unselected"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="学分"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/lecture_credit_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.5德育分"
+                        android:textColor="@color/drop_down_unselected"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="主办方"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/lecture_sponsor_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="软件学院"
+                        android:textColor="@color/drop_down_unselected"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="协办方"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/lecture_co_sponsor_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="软件学院"
+                        android:textColor="@color/drop_down_unselected"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="0.44"
+                    android:gravity="top"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="内容"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/lecture_content_in_lecture_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="软件学院"
+                        android:textColor="@color/drop_down_unselected"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="0.64"
+                    android:gravity="top"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <Button
+                        android:id="@+id/bt_navigation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:background="@color/un_press_color"
+                        android:text="步行导航"
+                        android:textColor="@color/encode_view"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

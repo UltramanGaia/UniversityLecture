@@ -37,24 +37,24 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/phone_number_login"
                     style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:background="@null"
                     android:drawableBottom="@drawable/shape_et_bottom_line"
                     android:elevation="0dp"
                     android:hint="手机号"
                     android:inputType="textEmailAddress|phone"
                     android:maxLines="1"
+                    android:numeric="integer"
                     android:singleLine="true"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="24sp"
-                    android:background="@null"
                     android:textCursorDrawable="@drawable/color_edittext_cursor"
-                    android:numeric="integer"/>
+                    android:textSize="24sp" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -63,10 +63,11 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/login_password"
                     style="@style/Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:background="@null"
                     android:drawableBottom="@drawable/shape_et_bottom_line"
                     android:hint="@string/prompt_password"
                     android:imeActionId="@+id/login"
@@ -78,14 +79,13 @@
                     android:textColor="@android:color/white"
                     android:textColorHighlight="@android:color/white"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="24sp"
-                    android:background="@null"
-                    android:textCursorDrawable="@drawable/color_edittext_cursor"/>
+                    android:textCursorDrawable="@drawable/color_edittext_cursor"
+                    android:textSize="24sp" />
 
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -100,8 +100,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_weight="3.09">
+                android:layout_weight="3.09"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button7"
@@ -118,7 +118,7 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/register"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
