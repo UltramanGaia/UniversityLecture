@@ -24,8 +24,10 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile name: 'SMSSDK-2.1.4', ext: 'aar'
-    compile name: 'SMSSDKGUI-2.1.4', ext: 'aar'
+    compile files('libs/MobCommons-2017.0607.1736.jar')
+    compile files('libs/MobTools-2017.0607.1736.jar')
+    compile name: 'SMSSDK-3.0.0', ext: 'aar'
+    compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
     compile files('libs/AMap3DMap_5.3.0_AMapNavi_5.3.0_AMapSearch_5.3.1_AMapLocation_3.5.0_20170817.jar')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
