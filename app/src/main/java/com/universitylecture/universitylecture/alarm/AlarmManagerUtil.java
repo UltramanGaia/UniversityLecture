@@ -1,12 +1,10 @@
-package com.universitylecture.universitylecture.util;
+package com.universitylecture.universitylecture.alarm;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-
-import com.universitylecture.universitylecture.view.MainActivity;
 
 import java.util.Calendar;
 
@@ -51,7 +49,7 @@ public class AlarmManagerUtil {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         long intervalMillis = 0;
-        calendar.set(2017, 8 , 7 , 15 , 38 , 10);
+        calendar.set(year, month , day , hour , minute , 0);
         intervalMillis = 0;
 
         Intent intent = new Intent(ALARM_ACTION);
@@ -62,7 +60,9 @@ public class AlarmManagerUtil {
         PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent
                 .FLAG_CANCEL_CURRENT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            am.setWindow(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intervalMillis, sender);
+            //am.setWindow(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intervalMillis, sender);
+//            long triggerAtTime = System.currentTimeMillis() + 10 * 1000;
+            am.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() , sender);
         } else {
             am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
         }
