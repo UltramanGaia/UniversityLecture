@@ -163,7 +163,7 @@ public class MapActivity extends AppCompatActivity
             // 设置为高精度定位模式
             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
             // 只是为了获取当前位置，所以设置为单次定位
-            mLocationOption.setOnceLocation(true);
+            //mLocationOption.setOnceLocation(true);
             // 设置定位参数
             mlocationClient.setLocationOption(mLocationOption);
             mlocationClient.startLocation();

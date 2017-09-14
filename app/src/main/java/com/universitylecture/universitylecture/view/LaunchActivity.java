@@ -65,6 +65,7 @@ public class LaunchActivity extends BaseActivity {
     private TextView title_in_title_bar_of_launch;
     private Button submit;
 
+    //地图部分
     private TextView lecture_position;
     private Button choose_position;
 

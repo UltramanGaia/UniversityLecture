@@ -59,7 +59,7 @@ public class HttpUtil {
             ObjectInputStream inObj = new ObjectInputStream(input);
 
             Object readObj = inObj.readObject();
-            Log.e("HttpUtil", "readObject");
+            Log.e("HttpUtil", "readObject" + readObj.toString());
 
             inObj.close();
             input.close();
@@ -73,6 +73,4 @@ public class HttpUtil {
         }
         return null;
     }
-
-
 }
