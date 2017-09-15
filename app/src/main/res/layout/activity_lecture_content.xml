@@ -5,7 +5,7 @@
     android:background="@drawable/subbackground"
     >
 
-    <include layout="@layout/title_in_my_information"></include>
+    <include layout="@layout/title_in_lecture_information_of_lecturelist"></include>
 
     <ScrollView
         android:layout_width="fill_parent"

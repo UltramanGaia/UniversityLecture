@@ -77,7 +77,6 @@
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -128,9 +127,15 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:name=".view.NaviBaseWalkActivity"></activity>
-
-        <!--<meta-data android:name="Mob-AppKey" android:value="1e81bc5f2c43f"/>
-        <meta-data android:name="Mob-AppSecret" android:value="d76cb4cc64ce4d4ccf287d9f063a8338"/>-->
+        <receiver android:name=".alarm.LoongggAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.loonggg.alarm.clock"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name=".alarm.ClockAlarmActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            ></activity>
     </application>
 
 </manifest>

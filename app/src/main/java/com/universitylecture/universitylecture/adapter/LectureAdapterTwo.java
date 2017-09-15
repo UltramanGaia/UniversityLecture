@@ -36,6 +36,8 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
     private View mFooterView;
     private View mHeaderView;
 
+    private String alarm;//传入set为有闹钟选择按钮，unset为没有
+
     class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout lecture_item;
         ImageView lectureImage;
@@ -71,9 +73,10 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context ){
+    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context , String alarmSet){
         mContext = context;
         mLectureLIst = lectureList;
+        alarm = alarmSet;
     }
 
 
@@ -112,6 +115,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Lecture lecture = mLectureLIst.get(position);
                 Intent intent = new Intent(mContext , ActivityLectureContent.class);
                 intent.putExtra("lecture_item",lecture);
+                intent.putExtra("alarm" , alarm );
                 mContext.startActivity(intent);
             }
         });

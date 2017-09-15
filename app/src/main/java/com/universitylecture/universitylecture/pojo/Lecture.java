@@ -2,13 +2,14 @@ package com.universitylecture.universitylecture.pojo;
 
 import java.io.Serializable;
 
+import java.io.Serializable;
+
 /**
  * Created by fengqingyundan on 2017/5/27.
  */
 //讲座类
 public class Lecture implements Serializable{
     private static final long serialVersionUID = 1L;
-
     private String ID;
     private String title;        //标题
     private String time;         //时间

@@ -125,7 +125,7 @@ public class MyLectureFragment extends Fragment {
         lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_myLectures_recyclerview);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());
         lectures_recyclerView.setLayoutManager(layoutManager);
-        adapter = new LectureAdapterTwo(lectures,getActivity());
+        adapter = new LectureAdapterTwo(lectures,getActivity(),"unset");
         lectures_recyclerView.setAdapter(adapter);
         lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
 
@@ -134,10 +134,6 @@ public class MyLectureFragment extends Fragment {
         //setHeaderView(lectures_recyclerView);
     }
 
-//    private void setHeaderView(RecyclerView view){
-//        View header = LayoutInflater.from(MyApplication.getContext()) .inflate(R.layout.header, view, false);
-//        adapter.setHeaderView(header);
-//    }
     private void setFooterView(RecyclerView recyclerView){
         footer = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.refrest_rooter, recyclerView, false);
         footer.findViewById(R.id.footer_layout).setVisibility(View.GONE);

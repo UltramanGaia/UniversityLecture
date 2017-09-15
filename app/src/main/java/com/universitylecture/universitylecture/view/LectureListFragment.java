@@ -224,7 +224,7 @@ public class LectureListFragment extends Fragment {
                     public void run() {
                         //配置recylerview三部曲
 
-                        adapter = new LectureAdapterTwo(lectures,getActivity());
+                        adapter = new LectureAdapterTwo(lectures,getActivity(),"set");
                         lectures_recyclerView.setAdapter(adapter);
                        /* //设置分隔线
 //                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
@@ -277,15 +277,17 @@ public class LectureListFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                int sizeAfterRefresh = adapter.getmLectureLIst().size();
+//                                int sizeAfterRefresh = adapter.getmLectureLIst().size();
+//
+//                                if( sizeBeforeRefresh != sizeAfterRefresh ){
+//                                    footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
+//                                }else {
+//                                    footer.findViewById(R.id.progressBarInRooter).setVisibility(View.GONE);
+//                                    footer.findViewById(R.id.load_more).setVisibility(View.GONE);
+//                                    footer.findViewById(R.id.load_complete).setVisibility(View.VISIBLE);
+//                                }
 
-                                if( sizeBeforeRefresh != sizeAfterRefresh ){
-                                    footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
-                                }else {
-                                    footer.findViewById(R.id.progressBarInRooter).setVisibility(View.GONE);
-                                    footer.findViewById(R.id.load_more).setVisibility(View.GONE);
-                                    footer.findViewById(R.id.load_complete).setVisibility(View.VISIBLE);
-                                }
+                                footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
                                 adapter.notifyDataSetChanged();
                             }
                         });
@@ -329,6 +331,13 @@ public class LectureListFragment extends Fragment {
                         swipeRefresh.setRefreshing(false);
                     }
                 });
+
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
+//                    }
+//                });
             }
         }).start();
     }

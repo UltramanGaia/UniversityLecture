@@ -30,6 +30,7 @@ public class selectInstituteForLaunch extends BaseActivity {
     @InjectView(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;
 
+
     private String instituteHeader = "学院";
 
     private ConstellationAdapter instituteAdapter;
