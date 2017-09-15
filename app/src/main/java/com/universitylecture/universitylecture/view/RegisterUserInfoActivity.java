@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
 /**
@@ -38,7 +40,8 @@ public class RegisterUserInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_register_userinfo);
         init();
 
-        final User sendUser = (User) getIntent().getSerializableExtra("user");
+        final User sendUser = new User();
+        sendUser.setPhoneNumber(getIntent().getStringExtra("phoneNumber"));
 
         sexGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -74,7 +77,9 @@ public class RegisterUserInfoActivity extends BaseActivity {
                                     if (sendUser.getSex().isEmpty())
                                         OutputMessage.outputMessage("请选择性别");
                                     else {
-                                        User returnUser =(User) HttpUtil.doPost(sendUser, "RegisterServlet");
+//                                        User returnUser =(User) HttpUtil.doPost(sendUser, "RegisterServlet");
+                                        User returnUser = JSON2ObjectUtil.login(HttpUtilJSON.doPost(
+                                                Object2JSONUtil.register(sendUser), "register"));
                                         if (returnUser != null) {
                                             Looper.prepare();
                                             Toast.makeText(RegisterUserInfoActivity.this, "注册成功", Toast.LENGTH_SHORT).show();

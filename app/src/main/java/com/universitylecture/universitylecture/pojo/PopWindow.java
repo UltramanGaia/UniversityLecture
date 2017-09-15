@@ -49,7 +49,7 @@ public class PopWindow extends PopupWindow{
         // mPopupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
         // 设置SelectPicPopupWindow弹出窗体动画效果
         this.setAnimationStyle(R.style.AnimationPreview);
-        final User inner_user = user;
+        final User inner_user = this.user;
         conentView.findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -77,7 +77,7 @@ public class PopWindow extends PopupWindow{
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(mContext , MyTwoDCodeActivity.class);
-                intent.putExtra("phoneNumber",inner_user.getPhoneNumber());
+                intent.putExtra("user_id",inner_user.getId() + "");
                 ((Activity) mContext).startActivity(intent);
                 PopWindow.this.dismiss();
             }
