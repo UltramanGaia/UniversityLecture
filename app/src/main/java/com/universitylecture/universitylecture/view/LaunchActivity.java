@@ -53,6 +53,9 @@ public class LaunchActivity extends BaseActivity {
     private ImageView lecture_poster;
     private String picPath = null;
 
+    private double lecture_latitude = 0;
+    private double lecture_longitude = 0;
+
     //time和institude的linearlayout,用来处理点击事件
     private View TimeInLaunch;
     private View InstituteInLaunch;
@@ -61,6 +64,9 @@ public class LaunchActivity extends BaseActivity {
     private Button back;
     private TextView title_in_title_bar_of_launch;
     private Button submit;
+
+    private TextView lecture_position;
+    private Button choose_position;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +125,7 @@ public class LaunchActivity extends BaseActivity {
                         final File file = new File(picPath);
                         if (file != null) {
                             final Lecture sendLecture = new Lecture(title, time, classroom, institute, introduction, lecturer,
-                                    credit, content, sponsor, co_sponsor, picPath);
+                                    credit, content, sponsor, co_sponsor, picPath, lecture_latitude, lecture_longitude);
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -134,6 +140,7 @@ public class LaunchActivity extends BaseActivity {
                                             OutputMessage.outputMessage("发布讲座成功");
                                         else
                                             OutputMessage.outputMessage("发布讲座失败");
+                                        LaunchActivity.super.onBackPressed();
                                     }
                                 }
                             }).start();
@@ -172,6 +179,16 @@ public class LaunchActivity extends BaseActivity {
                 startActivityForResult(intent, 3);
             }
         });
+
+        choose_position = (Button)findViewById(R.id.choose_position);
+        choose_position.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( LaunchActivity.this , MapActivity.class);
+                startActivityForResult(intent , 4);
+            }
+        });
+
     }
 
     private void initView(){
@@ -187,6 +204,8 @@ public class LaunchActivity extends BaseActivity {
 
         lectureTimeText = (TextView) findViewById(R.id.time_text_in_launch);
         lectureInstituteText = (TextView) findViewById(R.id.institute_text_in_launch);
+
+        lecture_position = (TextView) findViewById(R.id.lecture_position);
 
         title_in_title_bar_of_launch = (TextView) findViewById(R.id.title_in_title_bar);
         title_in_title_bar_of_launch.setText("发布讲座");
@@ -248,9 +267,17 @@ public class LaunchActivity extends BaseActivity {
                     } catch (Exception e) {
                     }
                 }
-
-                super.onActivityResult(requestCode, resultCode, data);
+                break;
+            case 4:
+                if(resultCode == RESULT_OK){
+                   lecture_latitude = data.getDoubleExtra("latitude",0);
+                   lecture_longitude = data.getDoubleExtra("longitude",0);
+                   lecture_position.setText(lecture_latitude + "," + lecture_longitude);
+                    Log.d(TAG, "onActivityResult: " + lecture_position.getText().toString() );
+                }
+                break;
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**

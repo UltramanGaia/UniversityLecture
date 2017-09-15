@@ -23,13 +23,18 @@ import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
 import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
+
+//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 
 
 //讲座列表界面
@@ -57,6 +62,7 @@ public class LectureListFragment extends Fragment {
     private String selectedCity;
     private String selectedTime;
     private String selectedInstitude;
+    private Integer page = 0;
 
 
     private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
@@ -121,8 +127,11 @@ public class LectureListFragment extends Fragment {
 
 
                         //select lectures
-                        Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
-                        final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                        /*Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
+                        final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));*/
+
+                        lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture(selectedTime,selectedInstitude,String.valueOf(0)),"selectLecture"));
+
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -201,9 +210,12 @@ public class LectureListFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-                final Lecture lecture = new Lecture("10","不限",5);
+                /*final Lecture lecture = new Lecture("10","不限",5);
                 lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                */
+
+                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
+
                 Log.e("lecture size in thread", "initData: " + lectures.size());
 
 
@@ -214,8 +226,11 @@ public class LectureListFragment extends Fragment {
 
                         adapter = new LectureAdapterTwo(lectures,getActivity());
                         lectures_recyclerView.setAdapter(adapter);
-                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-
+                       /* //设置分隔线
+//                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+                        lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
+                        lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
+                       */
                         //设置rooter
                         setFooterView(lectures_recyclerView);
                         //setHeaderView(lectures_recyclerView);
@@ -233,28 +248,44 @@ public class LectureListFragment extends Fragment {
         lectures_recyclerView.addOnScrollListener(new UpOnScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
+                final int sizeBeforeRefresh = adapter.getmLectureLIst().size();
                 //此处设置更新逻辑
+
+                //以下为设置底部栏的配件
                 footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.VISIBLE);
+                footer.findViewById(R.id.progressBarInRooter).setVisibility(View.VISIBLE);
+                footer.findViewById(R.id.load_more).setVisibility(View.VISIBLE);
+                footer.findViewById(R.id.load_complete).setVisibility(View.GONE);
+
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
 
                         //更新逻辑写在此处
+                        ArrayList<Lecture> lectureArrayList = adapter.getmLectureLIst();
+//                        final Lecture lecture = new Lecture("10","不限",lectureArrayList.size() + 5);
+//                        lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
 
+                        lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(++page)),"selectLecture"));
 
-                        ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
-                        if(tempLectures.size() > 0){
-                            final Lecture lecture = new Lecture("10","不限",tempLectures.size() + 5);
-                            ArrayList<Lecture> returnLectures = (ArrayList<Lecture>) HttpUtil.doPost(lecture,"SelectLectureServlet");
-                            tempLectures.addAll(tempLectures.size(),returnLectures);
-                            adapter.setmLectureLIst(tempLectures);
-                        }
+                        if (lectures.size() > 0)
+                            lectureArrayList.addAll(lectureArrayList.size(),lectures);
+                        adapter.setmLectureLIst(lectureArrayList);
 
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
+                                int sizeAfterRefresh = adapter.getmLectureLIst().size();
+
+                                if( sizeBeforeRefresh != sizeAfterRefresh ){
+                                    footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
+                                }else {
+                                    footer.findViewById(R.id.progressBarInRooter).setVisibility(View.GONE);
+                                    footer.findViewById(R.id.load_more).setVisibility(View.GONE);
+                                    footer.findViewById(R.id.load_complete).setVisibility(View.VISIBLE);
+                                }
                                 adapter.notifyDataSetChanged();
                             }
                         });
@@ -285,13 +316,11 @@ public class LectureListFragment extends Fragment {
             public void run() {
 
                 //更新逻辑写在此处
-                ArrayList<Lecture> tempLectures = adapter.getmLectureLIst();
-                if(tempLectures.size() > 0 ){
-                    final Lecture lecture = new Lecture("10","不限",5);
-                    lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-                    adapter.setmLectureLIst(lectures);
-                }
+//                final Lecture lecture = new Lecture("10","不限",5);
+//                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
 
+                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
+                adapter.setmLectureLIst(lectures);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override

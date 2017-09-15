@@ -17,7 +17,9 @@ import java.net.URL;
 
 public class HttpUtil {
 
-    public static final String strUrl = "http://192.168.1.132:8080/UniversityLectureServer/";
+    //public static final String strUrl = "http://192.168.1.137:8080/UniversityLectureServer/";
+    public static final String strUrl = "http://172.16.1.76:8080/UniversityLectureServer/";
+
     public static Object doPost(Object object,String surl) {
         if (object instanceof Lecture)
             Log.e("lecture", "doPost: "+((Lecture)object).getInstitute());
@@ -30,7 +32,7 @@ public class HttpUtil {
             httpURLConnection.setConnectTimeout(8000);
             httpURLConnection.setReadTimeout(8000);
             httpURLConnection.setUseCaches(false);
-            httpURLConnection.setRequestProperty("Content-type","application/x-java-serialized-object");
+            httpURLConnection.setRequestProperty("Content-type","application/json");
             Log.d("HttpUtil", "connect");
 
             OutputStream os = httpURLConnection.getOutputStream();

@@ -18,7 +18,9 @@ import android.widget.Toast;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.PopWindow;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -31,7 +33,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     // 我的讲座的fragment
-    private MyLectureFragment myLectureFragment;
+    private MyTwoDCodeActivity.MyLectureFragment myLectureFragment;
     // 讲座列表的fragment
     private LectureListFragment lectureListFragment;
     // 讲座圈的fragment
@@ -76,7 +78,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         setTabSelection(0);
 
-        ZXingLibrary.initDisplayOpinion(this);
+
+        ZXingLibrary.initDisplayOpinion(this);//初始化zxing库
+
     }
 
 
@@ -109,7 +113,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
-
+        //右上角加号初始化
         moreButton = (Button) findViewById(R.id.more);
         moreButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -137,13 +141,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                User returnUser = (User) HttpUtil.doPost(user,"VerifyLecturePublisherServlet");
-                                if(returnUser != null) {
+//                                User returnUser = (User) HttpUtil.doPost(user,"VerifyLecturePublisherServlet");
+
+                                String data = HttpUtilJSON.doPost(Object2JSONUtil.isLecturePublisher(user.getPhoneNumber()),"verifyLecturePublisher");
+                                String message = JSON2ObjectUtil.getMessage(data);
+                                if(message.equals("OK")) {
                                     Intent intent = new Intent( MainActivity.this , LaunchActivity.class );
                                     startActivity(intent);
                                 }
                                 else
-                                    OutputMessage.outputMessage("只有管理员才能发布讲座");
+                                    OutputMessage.outputMessage(message);
                             }
                         }).start();
                         break;
@@ -205,7 +212,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (index) {
             case 0:
                 if (myLectureFragment == null) {
-                    myLectureFragment = new MyLectureFragment();
+                    myLectureFragment = new MyTwoDCodeActivity.MyLectureFragment();
                     transaction.add(R.id.content,  myLectureFragment);
                 } else {
                     transaction.show(myLectureFragment);
@@ -278,6 +285,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
                     Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();

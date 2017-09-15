@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mob.MobSDK;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
 import cn.smssdk.EventHandler;
@@ -31,6 +34,7 @@ public class RegisterMobileActivity extends BaseActivity {
 
     private String phoneNumber;
     private String code;
+    private EventHandler eventHandler;
     private Handler mHandler = new Handler();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,8 @@ public class RegisterMobileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_moblie);
         init();
-        SMSSDK.initSDK(this, "1e81bc5f2c43f", "d76cb4cc64ce4d4ccf287d9f063a8338");
-        EventHandler eventHandler = new EventHandler() {
+        MobSDK.init(this,"1e81bc5f2c43f","d76cb4cc64ce4d4ccf287d9f063a8338");
+        eventHandler = new EventHandler() {
             @Override
             public void afterEvent(int event, int result, Object data) {
                 Message msg = new Message();
@@ -49,6 +53,7 @@ public class RegisterMobileActivity extends BaseActivity {
                 handler.sendMessage(msg);
             }
         };
+
         SMSSDK.registerEventHandler(eventHandler);
 
         sendCodeBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +63,6 @@ public class RegisterMobileActivity extends BaseActivity {
                 if (!judgePhoneNums(phoneNumber))
                     return;
                 SMSSDK.getVerificationCode("86", phoneNumber);
-
                 new Thread(new MyCountDownTimer()).start();
 
                 handler.sendEmptyMessage(-8);
@@ -71,27 +75,28 @@ public class RegisterMobileActivity extends BaseActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
+                        phoneNumber = mobileText.getText().toString();
                         if(phoneNumber.isEmpty())
-                            Toast.makeText(RegisterMobileActivity.this,"请输入手机号",
-                                    Toast.LENGTH_SHORT).show();
+                            OutputMessage.outputMessage("请输入手机号");
                         else {
                             code = codeText.getText().toString();
                             if(code.isEmpty())
-                                Toast.makeText(RegisterMobileActivity.this,"请输入验证码",
-                                        Toast.LENGTH_SHORT).show();
+                                OutputMessage.outputMessage("请输入验证码");
                             else {
                                 User sendUser = new User();
                                 sendUser.setPhoneNumber(phoneNumber);
                                 sendUser.setCode(code);
-                                User returnUser =(User) HttpUtil.doPost(sendUser, "VerifyCodeServlet");
-                                if (returnUser.getMessage().equals("OK")) {
+
+                                String data = HttpUtilJSON.doPost(Object2JSONUtil.verifyCode(phoneNumber,code),"verifyCode");
+                                String message = JSON2ObjectUtil.getMessage(data);
+//                                User returnUser =(User) HttpUtil.doPost(sendUser, "VerifyCodeServlet");
+                                if (message.equals("OK")) {
                                     Intent intent = new Intent(RegisterMobileActivity.this,RegisterUserInfoActivity.class);
-                                    intent.putExtra("user",returnUser);
+                                    intent.putExtra("phoneNumber",phoneNumber);
                                     startActivity(intent);
                                 }
                                 else
-                                    OutputMessage.outputMessage(returnUser.getMessage());
+                                    OutputMessage.outputMessage(message);
                             }
                         }
 
@@ -155,7 +160,6 @@ public class RegisterMobileActivity extends BaseActivity {
         super.onDestroy();
     }
 
-
     class MyCountDownTimer implements Runnable{
 
         @Override
@@ -183,7 +187,7 @@ public class RegisterMobileActivity extends BaseActivity {
                 @Override
                 public void run() {
                     sendCodeBtn.setClickable(true);
-                    sendCodeBtn.setText("发送验证码");
+                    sendCodeBtn.setText("获取验证码");
                 }
             });
             time = 60; //最后再恢复倒计时时长
