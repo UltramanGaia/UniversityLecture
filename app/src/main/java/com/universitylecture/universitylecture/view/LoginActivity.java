@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
 public class LoginActivity extends BaseActivity {
@@ -51,7 +53,6 @@ public class LoginActivity extends BaseActivity {
         public void run() {
             String phoneNumber = phoneNumberText.getText().toString();
             String password = passwordText.getText().toString();
-            User sendUser = new User(phoneNumber,password);
 
             if(phoneNumber.isEmpty()) {
                 Looper.prepare();
@@ -64,7 +65,9 @@ public class LoginActivity extends BaseActivity {
                 Looper.loop();
             }
             else {
-                User returnUser =(User) HttpUtil.doPost(sendUser, "LoginServlet");
+//                User returnUser =(User) HttpUtil.doPost(sendUser, "LoginServlet");
+                User returnUser = JSON2ObjectUtil.login(HttpUtilJSON.doPost(
+                        Object2JSONUtil.login(phoneNumber,password), "login"));
 
                 if (returnUser != null) {
                     Looper.prepare();

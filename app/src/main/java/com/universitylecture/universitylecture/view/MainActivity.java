@@ -19,7 +19,9 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -142,13 +144,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                User returnUser = (User) HttpUtil.doPost(user,"VerifyLecturePublisherServlet");
-                                if(returnUser != null) {
+//                                User returnUser = (User) HttpUtil.doPost(user,"VerifyLecturePublisherServlet");
+
+                                String data = HttpUtilJSON.doPost(Object2JSONUtil.isLecturePublisher(user.getPhoneNumber()),"verifyLecturePublisher");
+                                String message = JSON2ObjectUtil.getMessage(data);
+                                if(message.equals("OK")) {
                                     Intent intent = new Intent( MainActivity.this , LaunchActivity.class );
                                     startActivity(intent);
                                 }
                                 else
-                                    OutputMessage.outputMessage("只有管理员才能发布讲座");
+                                    OutputMessage.outputMessage(message);
                             }
                         }).start();
                         break;

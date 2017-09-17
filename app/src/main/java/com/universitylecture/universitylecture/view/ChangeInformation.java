@@ -8,10 +8,13 @@ import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
 import static android.view.Window.FEATURE_NO_TITLE;
+import static com.universitylecture.universitylecture.view.PersonalInformation.phoneNumber;
 
 /**
  * Created by fengqingyundan on 2017/6/15.
@@ -79,7 +82,7 @@ public class ChangeInformation extends BaseActivity {
                     //更新手机号码
 
                     //服务器验证逻辑写在这里
-                    PersonalInformation.phoneNumber = changed;
+                    phoneNumber = changed;
                     user.setPhoneNumber(changed);
                     new Thread(changeInformationTask).start();
                 }
@@ -133,7 +136,10 @@ public class ChangeInformation extends BaseActivity {
     Runnable changeInformationTask = new Runnable() {
         @Override
         public void run() {
-            User returnUser =(User) HttpUtil.doPost(user,"UpdateUserServlet");
+//            User returnUser =(User) HttpUtil.doPost(user,"UpdateUserServlet");
+
+            User returnUser = JSON2ObjectUtil.login(HttpUtilJSON.doPost(
+                    Object2JSONUtil.register(user), "update"));
             if (returnUser != null)
                 OutputMessage.outputMessage("保存成功");
             else

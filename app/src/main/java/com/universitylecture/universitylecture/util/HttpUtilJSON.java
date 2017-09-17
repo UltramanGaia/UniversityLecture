@@ -2,28 +2,21 @@ package com.universitylecture.universitylecture.util;
 
 import android.util.Log;
 
-import com.universitylecture.universitylecture.pojo.Lecture;
-
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by helloworld on 2017/6/3.
+ * Created by helloworld on 2017/9/12.
  */
 
-public class HttpUtil {
+public class HttpUtilJSON {
 
-
-    //public static final String strUrl = "http://192.168.1.137:8080/UniversityLectureServer/";
     public static final String strUrl = "http://118.89.45.18:8080/UniversityLectureServer/";
 
-    public static Object doPost(Object object,String surl) {
-        if (object instanceof Lecture)
-            Log.e("lecture", "doPost: "+((Lecture)object).getInstitute());
+    public static String doPost(String content,String surl) {
         try {
             URL url = new URL(strUrl + surl);
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -33,27 +26,29 @@ public class HttpUtil {
             httpURLConnection.setConnectTimeout(8000);
             httpURLConnection.setReadTimeout(8000);
             httpURLConnection.setUseCaches(false);
-            httpURLConnection.setRequestProperty("Content-type","application/json");
-            Log.d("HttpUtil", "connect");
+            httpURLConnection.setRequestProperty("Content-type","application/json;charset=UTF-8");
+            Log.e("HttpUtil", "connect : " + content);
 
             OutputStream os = httpURLConnection.getOutputStream();
-            ObjectOutputStream outObj = new ObjectOutputStream(os);
-            outObj.writeObject(object);
+
+            os.write(content.getBytes());
             Log.e("HttpUtil", "writeObject");
-            outObj.flush();
-            outObj.close();
+            os.flush();
             os.close();
 
-            InputStream input = httpURLConnection.getInputStream();
-            ObjectInputStream inObj = new ObjectInputStream(input);
-            Object readObj = inObj.readObject();
-            Log.e("HttpUtil", "readObject" + readObj.toString());
 
-            inObj.close();
+            InputStream input = httpURLConnection.getInputStream();
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            byte[] data = new byte[1024];
+            int len = 0;
+            while ((len = input.read(data)) != -1)
+                outputStream.write(data,0,len);
+            Log.e("HttpUtil", "readObject");
+
             input.close();
 
             httpURLConnection.disconnect();
-            return readObj;
+            return new String(outputStream.toByteArray());
 
         }
         catch(Exception e) {

@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.mob.MobSDK;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 
 import cn.smssdk.EventHandler;
@@ -73,28 +75,28 @@ public class RegisterMobileActivity extends BaseActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
+                        phoneNumber = mobileText.getText().toString();
                         if(phoneNumber.isEmpty())
-                            Toast.makeText(RegisterMobileActivity.this,"请输入手机号",
-                                    Toast.LENGTH_SHORT).show();
+                            OutputMessage.outputMessage("请输入手机号");
                         else {
                             code = codeText.getText().toString();
                             if(code.isEmpty())
-                                Toast.makeText(RegisterMobileActivity.this,"请输入验证码",
-                                        Toast.LENGTH_SHORT).show();
+                                OutputMessage.outputMessage("请输入验证码");
                             else {
                                 User sendUser = new User();
                                 sendUser.setPhoneNumber(phoneNumber);
                                 sendUser.setCode(code);
-                                User returnUser =(User) HttpUtil.doPost(sendUser, "VerifyCodeServlet");
-                                //SMSSDK.submitVerificationCode("86",phoneNumber,code);
-                                if (returnUser.getMessage().equals("OK")) {
+
+                                String data = HttpUtilJSON.doPost(Object2JSONUtil.verifyCode(phoneNumber,code),"verifyCode");
+                                String message = JSON2ObjectUtil.getMessage(data);
+//                                User returnUser =(User) HttpUtil.doPost(sendUser, "VerifyCodeServlet");
+                                if (message.equals("OK")) {
                                     Intent intent = new Intent(RegisterMobileActivity.this,RegisterUserInfoActivity.class);
-                                    intent.putExtra("user",returnUser);
+                                    intent.putExtra("phoneNumber",phoneNumber);
                                     startActivity(intent);
                                 }
                                 else
-                                    OutputMessage.outputMessage(returnUser.getMessage());
+                                    OutputMessage.outputMessage(message);
                             }
                         }
 

@@ -23,7 +23,10 @@ import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
 import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,6 +62,7 @@ public class LectureListFragment extends Fragment {
     private String selectedCity;
     private String selectedTime;
     private String selectedInstitude;
+    private Integer page = 0;
 
 
     private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
@@ -123,8 +127,11 @@ public class LectureListFragment extends Fragment {
 
 
                         //select lectures
-                        Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
-                        final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                        /*Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
+                        final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));*/
+
+                        lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture(selectedTime,selectedInstitude,String.valueOf(0)),"selectLecture"));
+
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -203,9 +210,14 @@ public class LectureListFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final Lecture lecture = new Lecture("10","不限",5);
+                /*final Lecture lecture = new Lecture("10","不限",5);
                 lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                */
+
+                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
+
                 Log.e("lecture size in thread", "initData: " + lectures.size());
+
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -252,10 +264,15 @@ public class LectureListFragment extends Fragment {
 
                         //更新逻辑写在此处
                         ArrayList<Lecture> lectureArrayList = adapter.getmLectureLIst();
-                        final Lecture lecture = new Lecture("10","不限",lectureArrayList.size() + 5);
-                        lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-                        lectureArrayList.addAll(lectureArrayList.size(),lectures);
+//                        final Lecture lecture = new Lecture("10","不限",lectureArrayList.size() + 5);
+//                        lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+
+                        lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(++page)),"selectLecture"));
+
+                        if (lectures.size() > 0)
+                            lectureArrayList.addAll(lectureArrayList.size(),lectures);
                         adapter.setmLectureLIst(lectureArrayList);
+
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -290,7 +307,6 @@ public class LectureListFragment extends Fragment {
             @Override
             public void onRefresh() {
                 refresh();
-
             }
         });
     }
@@ -302,9 +318,10 @@ public class LectureListFragment extends Fragment {
             public void run() {
 
                 //更新逻辑写在此处
+//                final Lecture lecture = new Lecture("10","不限",5);
+//                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
 
-                final Lecture lecture = new Lecture("10","不限",5);
-                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
                 adapter.setmLectureLIst(lectures);
 
                 getActivity().runOnUiThread(new Runnable() {

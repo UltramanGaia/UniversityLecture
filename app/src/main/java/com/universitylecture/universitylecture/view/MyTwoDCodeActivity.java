@@ -1,7 +1,7 @@
 package com.universitylecture.universitylecture.view;
 
-import android.content.Intent;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,8 +19,6 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
-//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
-import com.universitylecture.universitylecture.pojo.SpaceItemDecoration;
 import com.universitylecture.universitylecture.util.MyApplication;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
@@ -28,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.Window.FEATURE_NO_TITLE;
+
+//import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 
 /**
  * Created by fengqingyundan on 2017/8/23.
@@ -50,7 +50,7 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
         //生成二维码照片
         myTwoDCode = (ImageView) findViewById(R.id.myTwoDCode);
         Intent intent = getIntent();
-        String content = intent.getStringExtra("phoneNumber");//二维码内容
+        String content = intent.getStringExtra("user_id");//二维码内容
         Bitmap mBitmap = CodeUtils.createImage(content, 400, 400, null);
         myTwoDCode.setImageBitmap(mBitmap);
 
