@@ -13,7 +13,11 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.PopWindowInLectureContent;
 import com.universitylecture.universitylecture.util.Constant;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
+import com.universitylecture.universitylecture.util.OutputMessage;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import static android.view.Window.FEATURE_NO_TITLE;
@@ -133,9 +137,22 @@ public class ActivityLectureContent extends BaseActivity {
                 }
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     //获取了扫描结果，进行处理
+                    final String lectureId = lecture.getID();
+                    final String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String m = Object2JSONUtil.joinLecture(lectureId,result);
+                            String t = HttpUtilJSON.doPost(m,"joinLecture");
+                            String message = JSON2ObjectUtil.getMessage(t);
+//                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+                            if(message.equals("OK"))
+                                OutputMessage.outputMessage("扫码成功");
+                            else
+                                OutputMessage.outputMessage("扫码失败");
+                        }
+                    }).start();
 
-                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
