@@ -23,7 +23,9 @@ import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
-import com.universitylecture.universitylecture.util.HttpUtil;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.util.UploadUtil;
 
@@ -93,17 +95,17 @@ public class LaunchActivity extends BaseActivity {
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick( View v ){
-                String title = lectureTitle.getText().toString();
+                /*String title = lectureTitle.getText().toString();
                 String classroom = lectureClassroom.getText().toString();
                 String introduction = lectureIntroduction.getText().toString();
-                String lecturer = lectureLecturer.getText().toString();
+                final String lecturer = lectureLecturer.getText().toString();
                 String credit = lectureCredit.getText().toString();
                 String content = lectureContent.getText().toString();
                 String sponsor = lectureSponsor.getText().toString();
                 String co_sponsor = lectureCoSponsor.getText().toString();
                 String time = lectureTimeText.getText().toString();
-                String institute = lectureInstituteText.getText().toString();
-                /*String title = "as";
+                String institute = lectureInstituteText.getText().toString();*/
+                String title = "as";
                 String classroom = "asfas";
                 String introduction = "asf";
                 String lecturer = "scv";
@@ -111,8 +113,8 @@ public class LaunchActivity extends BaseActivity {
                 String content = "sacxz";
                 String sponsor = "vzx";
                 String co_sponsor = "asc";
-                String time = "2017:07:14 18:30:00";
-                String institute = "asf";*/
+                String time = "2017-09-22 18:30:00";
+                String institute = "asf";
 
                 //上传数据到服务器的数据写在这里
                 if (title.isEmpty() || classroom.isEmpty() || introduction.isEmpty() || lecturer.isEmpty() || credit.isEmpty() || content.isEmpty() ||
@@ -130,13 +132,18 @@ public class LaunchActivity extends BaseActivity {
                                 @Override
                                 public void run() {
                                     /*Lecture returnLecture = (Lecture) HttpUtil.doPost(sendLecture, "AddLectureServlet");*/
-                                    String imageUri = UploadUtil.uploadFile(file,"UploadImageServlet");
+                                    String content = UploadUtil.uploadFile(file,"upload");
+
+                                    String imageUri = JSON2ObjectUtil.getMessage(content);
                                     if (imageUri == null)
                                         OutputMessage.outputMessage("发布讲座失败");
                                     else {
                                         sendLecture.setImagePath(imageUri);
-                                        Lecture returnLecture = (Lecture) HttpUtil.doPost(sendLecture,"AddLectureServlet");
-                                        if (returnLecture != null)
+//                                      Lecture returnLecture = (Lecture) HttpUtil.doPost(sendLecture,"AddLectureServlet");
+                                        /*String m = Object2JSONUtil.addLecture(sendLecture);
+                                        String t = HttpUtilJSON.doPost(m,"addLecture");*/
+                                        String message = JSON2ObjectUtil.getMessage(HttpUtilJSON.doPost(Object2JSONUtil.addLecture(sendLecture),"addLecture"));
+                                        if (message != null)
                                             OutputMessage.outputMessage("发布讲座成功");
                                         else
                                             OutputMessage.outputMessage("发布讲座失败");

@@ -22,7 +22,6 @@ import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
-import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
@@ -220,8 +219,8 @@ public class LectureListFragment extends Fragment {
 
 
                 getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+                        @Override
+                        public void run() {
                         //配置recylerview三部曲
 
                         adapter = new LectureAdapterTwo(lectures,getActivity(),"set");

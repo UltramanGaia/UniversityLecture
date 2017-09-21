@@ -22,7 +22,7 @@ public class UploadUtil {
     private static final String TAG = "uploadFile";
     private static final int TIME_OUT = 10 * 1000; // 超时时间
     private static final String CHARSET = "utf-8"; // 设置编码
-    private static final String RequestURL = "http://192.168.1.132:8080/UniversityLectureServer/";
+    private static final String RequestURL = "http://192.168.1.132:8090/UniversityLectureServer/";
     /**
      * 上传文件到服务器
      * @param file 需要上传的文件
@@ -95,22 +95,6 @@ public class UploadUtil {
                 ));
                 String imageUri = reader.readLine();
                 return imageUri;
-
-                //if (res == 200) {
-                    /*Log.e(TAG, "request success");
-                    InputStream input = conn.getInputStream();
-                    StringBuffer sb1 = new StringBuffer();
-                    int ss;
-                    while ((ss = input.read()) != -1) {
-                        sb1.append((char) ss);
-                    }
-                    result = sb1.toString();
-                    Log.e(TAG, "result : " + result);
-                } else {
-                    Log.e(TAG, "request error");*/
-
-
-                //}
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
