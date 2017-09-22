@@ -3,6 +3,7 @@ package com.universitylecture.universitylecture.view;
 import android.os.Bundle;
 
 import com.universitylecture.universitylecture.R;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 

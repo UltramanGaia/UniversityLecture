@@ -18,6 +18,7 @@ import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 /**
  * Created by helloworld on 2017/6/18.

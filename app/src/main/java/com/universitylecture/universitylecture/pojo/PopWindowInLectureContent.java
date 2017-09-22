@@ -13,10 +13,8 @@ import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.alarm.AlarmManagerUtil;
-import com.universitylecture.universitylecture.view.PersonalInformation;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
-
-import java.util.Calendar;
 
 /**
  * Created by fengqingyundan on 2017/9/7.

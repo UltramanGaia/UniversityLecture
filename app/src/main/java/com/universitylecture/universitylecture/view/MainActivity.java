@@ -13,23 +13,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.universitylecture.universitylecture.view.sidebar.LaunchActivity;
+import com.universitylecture.universitylecture.view.sidebar.MyInformation;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
+import com.universitylecture.universitylecture.view.tool.DropDownMenu;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import butterknife.InjectView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.view.Window.FEATURE_NO_TITLE;
+//主界面
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     // 我的讲座的fragment

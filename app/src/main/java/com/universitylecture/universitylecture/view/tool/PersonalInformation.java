@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.tool;
 
 /**
  * Created by fengqingyundan on 2017/6/15.

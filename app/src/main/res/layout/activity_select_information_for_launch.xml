@@ -5,7 +5,7 @@
 
     <include layout="@layout/title_in_my_information"></include>
 
-    <com.universitylecture.universitylecture.view.DropDownMenu
+    <com.universitylecture.universitylecture.view.tool.DropDownMenu
         android:id="@+id/dropDownMenu"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"

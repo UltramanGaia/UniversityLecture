@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.sidebar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,15 +12,17 @@ import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 
 import static android.view.Window.FEATURE_NO_TITLE;
-import static com.universitylecture.universitylecture.view.PersonalInformation.phoneNumber;
+import static com.universitylecture.universitylecture.view.tool.PersonalInformation.phoneNumber;
 
 /**
  * Created by fengqingyundan on 2017/6/15.
  */
 //修改个人信息页面
-public class ChangeInformation extends BaseActivity {
+public class ChangeInformationActivity extends BaseActivity {
     //活动传回来的数据
     private String data;
 
@@ -51,7 +53,7 @@ public class ChangeInformation extends BaseActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChangeInformation.super.onBackPressed();
+                ChangeInformationActivity.super.onBackPressed();
             }
         });
 
@@ -87,7 +89,7 @@ public class ChangeInformation extends BaseActivity {
                     new Thread(changeInformationTask).start();
                 }
                 //保存成功后返回上一页面
-                ChangeInformation.super.onBackPressed();
+                ChangeInformationActivity.super.onBackPressed();
             }
 
         });

@@ -16,6 +16,7 @@ import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;

@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.tool;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
+import com.universitylecture.universitylecture.util.DeviceUtils;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ import java.util.List;
 /**
  * Created by dongjunkun on 2015/6/17.
  */
+//讲座列表页面的筛选框
 public class DropDownMenu extends LinearLayout {
 
     //顶部菜单布局

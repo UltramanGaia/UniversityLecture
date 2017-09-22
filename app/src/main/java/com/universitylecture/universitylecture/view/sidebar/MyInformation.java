@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.sidebar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.User;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
@@ -38,7 +40,7 @@ public class MyInformation extends BaseActivity {
         supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_my_information);
 
-        intent = new Intent(MyInformation.this , ChangeInformation.class);
+        intent = new Intent(MyInformation.this , ChangeInformationActivity.class);
 
         initView();//初始化控件
         initData();//初始化信息内容

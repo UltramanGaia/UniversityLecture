@@ -14,7 +14,9 @@ import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
+//登录界面
 public class LoginActivity extends BaseActivity {
 
     private EditText phoneNumberText;

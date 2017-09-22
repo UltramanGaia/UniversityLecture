@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.map;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -25,7 +25,7 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.universitylecture.universitylecture.R;
-
+//发布讲座页面的导航地图
 public class MapActivity extends AppCompatActivity
         implements
         OnMapClickListener,LocationSource,AMapLocationListener {

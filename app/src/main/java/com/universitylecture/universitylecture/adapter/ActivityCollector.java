@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.adapter;
 
 import android.app.Activity;
 
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by fengqingyundan on 2017/6/26.
  */
-
+//活动的管理器，用来点击退出应用时退出所有活动
 public class ActivityCollector {
     public static List<Activity> activities = new ArrayList<>();
 

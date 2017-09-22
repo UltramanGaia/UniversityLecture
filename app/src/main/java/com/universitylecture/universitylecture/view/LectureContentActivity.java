@@ -14,6 +14,8 @@ import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.PopWindowInLectureContent;
 import com.universitylecture.universitylecture.util.Constant;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.view.map.NaviBaseWalkActivity;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import static android.view.Window.FEATURE_NO_TITLE;
@@ -21,8 +23,8 @@ import static android.view.Window.FEATURE_NO_TITLE;
 /**
  * Created by fengqingyundan on 2017/6/25.
  */
-
-public class ActivityLectureContent extends BaseActivity {
+//讲座内容界面
+public class LectureContentActivity extends BaseActivity {
     private ImageView lectureImage;
     private TextView lectureName;
     private TextView lectureTime;
@@ -60,7 +62,7 @@ public class ActivityLectureContent extends BaseActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityLectureContent.super.onBackPressed();
+                LectureContentActivity.super.onBackPressed();
             }
         });
 
@@ -69,7 +71,7 @@ public class ActivityLectureContent extends BaseActivity {
             @Override
             public void onClick(View v) {
                 ////
-                Intent intent = new Intent(ActivityLectureContent.this,NaviBaseWalkActivity.class);
+                Intent intent = new Intent(LectureContentActivity.this,NaviBaseWalkActivity.class);
                 intent.putExtra("positionx",113.4075616300106);
                 intent.putExtra("positiony",23.04584466695405);
                 startActivity(intent);
@@ -82,7 +84,7 @@ public class ActivityLectureContent extends BaseActivity {
             alarmSet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PopWindowInLectureContent popWindow = new PopWindowInLectureContent( ActivityLectureContent.this , lecture);
+                    PopWindowInLectureContent popWindow = new PopWindowInLectureContent( LectureContentActivity.this , lecture);
                     popWindow.showPopupWindow(findViewById(R.id.alarmSet));
                 }
             });
@@ -139,7 +141,7 @@ public class ActivityLectureContent extends BaseActivity {
 
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE)== CodeUtils.RESULT_FAILED) {
-                    Toast.makeText(ActivityLectureContent.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LectureContentActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
             }
         }

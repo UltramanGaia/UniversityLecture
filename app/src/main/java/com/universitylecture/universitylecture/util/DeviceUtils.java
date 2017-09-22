@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.util;
 
 import android.annotation.TargetApi;
 import android.content.Context;

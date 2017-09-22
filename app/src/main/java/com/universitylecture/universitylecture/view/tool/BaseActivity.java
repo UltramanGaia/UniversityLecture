@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.tool;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.universitylecture.universitylecture.adapter.ActivityCollector;
+
 /**
  * Created by fengqingyundan on 2017/6/26.
  */
-
+//所有活动都继承于这个活动，被ActivityCollector所管理
 public class BaseActivity extends AppCompatActivity {
 
     private ForceOfflineReceiver receiver;

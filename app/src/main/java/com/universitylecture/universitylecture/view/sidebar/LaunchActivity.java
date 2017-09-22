@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.sidebar;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -26,6 +26,10 @@ import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.util.HttpUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.util.UploadUtil;
+import com.universitylecture.universitylecture.view.sidebar.SelectInformationForLaunch2;
+import com.universitylecture.universitylecture.view.map.MapActivity;
+import com.universitylecture.universitylecture.view.selectInstituteForLaunch;
+import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 import java.io.File;
 
@@ -34,7 +38,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 /**
  * Created by fengqingyundan on 2017/6/14.
  */
-
+//发布讲座页面
 public class LaunchActivity extends BaseActivity {
     private static final String TAG = "LaunchActivity";
 
@@ -156,7 +160,7 @@ public class LaunchActivity extends BaseActivity {
         TimeInLaunch = (LinearLayout)findViewById(R.id.time_in_launch);
         TimeInLaunch.setOnClickListener( new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent( LaunchActivity.this , SelectInformationForLaunch.class);
+                Intent intent = new Intent( LaunchActivity.this , SelectInformationForLaunch2.class);
                 startActivityForResult(intent , 1);
             }
         });

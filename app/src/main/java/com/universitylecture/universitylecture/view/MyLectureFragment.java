@@ -15,6 +15,8 @@ import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.view.tool.LectureSystem;
+import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;

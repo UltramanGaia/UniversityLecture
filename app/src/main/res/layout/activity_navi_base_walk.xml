@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.universitylecture.universitylecture.view.NaviBaseWalkActivity">
+    tools:context="com.universitylecture.universitylecture.view.map.NaviBaseWalkActivity">
     <com.amap.api.navi.AMapNaviView
         android:id="@+id/navi_view"
         android:layout_width="match_parent"

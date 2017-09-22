@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.map;
 
 import android.app.Activity;
 import android.os.Bundle;

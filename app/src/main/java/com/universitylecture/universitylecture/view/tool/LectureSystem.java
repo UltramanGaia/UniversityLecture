@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.tool;
 
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.LecturePublisher;
@@ -12,7 +12,6 @@ import java.util.List;
  * Created by fengqingyundan on 2017/5/28.
  */
 //讲座系统类，为单例模式，掌管学校、学生用户、讲座发布者的信息
-
 public class LectureSystem {
     private List schools = new ArrayList<School>();
     private List clients = new ArrayList<User>();

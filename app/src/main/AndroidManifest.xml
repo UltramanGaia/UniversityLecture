@@ -87,7 +87,7 @@
             android:name=".view.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.LaunchActivity"
+            android:name=".view.sidebar.LaunchActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.selectInstituteForLaunch"
@@ -96,13 +96,13 @@
             android:name=".view.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.MyInformation"
+            android:name=".view.sidebar.MyInformation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.ChangeInformation"
+            android:name=".view.sidebar.ChangeInformationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.SelectInformationForLaunch"
+            android:name=".view.sidebar.SelectInformationForLaunch"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.RegisterMobileActivity"
@@ -115,18 +115,18 @@
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".view.ActivityLectureContent"
+            android:name=".view.LectureContentActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.MyTwoDCodeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.MapActivity" />
+        <activity android:name=".view.map.MapActivity" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
-        <activity android:name=".view.NaviBaseWalkActivity"></activity>
+        <activity android:name=".view.map.NaviBaseWalkActivity"></activity>
         <receiver android:name=".alarm.LoongggAlarmReceiver">
             <intent-filter>
                 <action android:name="com.loonggg.alarm.clock"/>

@@ -18,7 +18,7 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.util.Constant;
 import com.universitylecture.universitylecture.util.MyApplication;
-import com.universitylecture.universitylecture.view.ActivityLectureContent;
+import com.universitylecture.universitylecture.view.LectureContentActivity;
 
 import java.util.ArrayList;
 
@@ -113,7 +113,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
             public void onClick(View v){
                 int position = holder.getAdapterPosition();
                 Lecture lecture = mLectureLIst.get(position);
-                Intent intent = new Intent(mContext , ActivityLectureContent.class);
+                Intent intent = new Intent(mContext , LectureContentActivity.class);
                 intent.putExtra("lecture_item",lecture);
                 intent.putExtra("alarm" , alarm );
                 mContext.startActivity(intent);
