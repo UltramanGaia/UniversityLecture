@@ -222,8 +222,8 @@ public class LectureListFragment extends Fragment {
 
 
                 getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+                        @Override
+                        public void run() {
                         //配置recylerview三部曲
 
                         adapter = new LectureAdapterTwo(lectures,getActivity(),"set");
