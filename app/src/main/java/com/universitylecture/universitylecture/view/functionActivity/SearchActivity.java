@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.functionActivity;
 
 import android.os.Bundle;
 

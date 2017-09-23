@@ -24,6 +24,12 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.RegeocodeAddress;
+import com.amap.api.services.geocoder.RegeocodeQuery;
+import com.amap.api.services.geocoder.RegeocodeResult;
 import com.universitylecture.universitylecture.R;
 //发布讲座页面的导航地图
 public class MapActivity extends AppCompatActivity
@@ -55,6 +61,8 @@ public class MapActivity extends AppCompatActivity
     private OnLocationChangedListener mListener;
     private AMapLocationClientOption mLocationOption;
 
+    //逆地理编码
+    private GeocodeSearch geocoderSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +82,7 @@ public class MapActivity extends AppCompatActivity
                 Intent intent = new Intent();
                 intent.putExtra("latitude", centerLatLng.latitude);
                 intent.putExtra("longitude",centerLatLng.longitude);
+                intent.putExtra("location" , text_view_point.getText());
                 setResult(RESULT_OK,intent);
                 finish();
             }
@@ -87,7 +96,23 @@ public class MapActivity extends AppCompatActivity
             setUpMap();
         }
 
+        //得到逆地理编码异步查询结果
+        geocoderSearch = new GeocodeSearch(this);
+        geocoderSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
+            @Override
+            public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
+                RegeocodeAddress regeocodeAddress = regeocodeResult.getRegeocodeAddress();
+                String formatAddress = regeocodeAddress.getFormatAddress();
+                text_view_point.setText(formatAddress);
+            }
+
+            @Override
+            public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
+
+            }
+        });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -142,10 +167,17 @@ public class MapActivity extends AppCompatActivity
     public void onMapClick(LatLng latLng) {
         markerOption.icon(ICON_YELLOW);
         centerLatLng = latLng;
-        text_view_point.setText( centerLatLng.longitude + "," + centerLatLng.latitude);
+
+        //逆地理编码
+        LatLonPoint centerLatLonPoint = new LatLonPoint(centerLatLng.latitude,centerLatLng.longitude);
+        RegeocodeQuery query = new RegeocodeQuery(centerLatLonPoint, 200,GeocodeSearch.AMAP);
+        geocoderSearch.getFromLocationAsyn(query);
+
+        //text_view_point.setText( centerLatLng.longitude + "," + centerLatLng.latitude);
         if (null == lastMarker) {
             lastMarker = mAMap.addMarker(markerOption);
         }
+
         lastMarker.setPosition(latLng);
 
 

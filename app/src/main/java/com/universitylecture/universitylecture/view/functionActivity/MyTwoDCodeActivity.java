@@ -1,29 +1,16 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.functionActivity;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
-import com.universitylecture.universitylecture.pojo.Lecture;
-import com.universitylecture.universitylecture.pojo.School;
-import com.universitylecture.universitylecture.util.MyApplication;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 

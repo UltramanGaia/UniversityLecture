@@ -66,7 +66,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="4931ed779e3c0b1c08f3a37a13b45521" />
+            android:value="dcf355ffa261fd0bbfb30e6d43041a46" />
 
         <service android:name="com.amap.api.location.APSService" />
 
@@ -81,7 +81,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".view.functionActivity.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.MainActivity"
@@ -93,7 +93,7 @@
             android:name=".view.selectInstituteForLaunch"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.SettingActivity"
+            android:name=".view.sidebar.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.sidebar.MyInformation"
@@ -102,7 +102,7 @@
             android:name=".view.sidebar.ChangeInformationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.sidebar.SelectInformationForLaunch"
+            android:name=".view.sidebar.SelectInformationForLaunch2"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.RegisterMobileActivity"
@@ -115,10 +115,10 @@
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".view.LectureContentActivity"
+            android:name=".view.functionActivity.LectureContentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.MyTwoDCodeActivity"
+            android:name=".view.functionActivity.MyTwoDCodeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".view.map.MapActivity" />
         <activity
