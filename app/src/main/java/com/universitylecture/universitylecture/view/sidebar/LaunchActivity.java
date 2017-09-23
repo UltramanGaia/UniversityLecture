@@ -100,7 +100,7 @@ public class LaunchActivity extends BaseActivity {
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick( View v ){
-                /*String title = lectureTitle.getText().toString();
+                String title = lectureTitle.getText().toString();
                 String classroom = lectureClassroom.getText().toString();
                 String introduction = lectureIntroduction.getText().toString();
                 final String lecturer = lectureLecturer.getText().toString();
@@ -109,17 +109,17 @@ public class LaunchActivity extends BaseActivity {
                 String sponsor = lectureSponsor.getText().toString();
                 String co_sponsor = lectureCoSponsor.getText().toString();
                 String time = lectureTimeText.getText().toString();
-                String institute = lectureInstituteText.getText().toString();*/
-                String title = "as";
-                String classroom = "asfas";
-                String introduction = "asf";
-                String lecturer = "scv";
-                String credit = "xzv";
-                String content = "sacxz";
-                String sponsor = "vzx";
-                String co_sponsor = "asc";
-                String time = "2017-09-22 18:30:00";
-                String institute = "asf";
+                String institute = lectureInstituteText.getText().toString();
+//                String title = "as";
+//                String classroom = "asfas";
+//                String introduction = "asf";
+//                String lecturer = "scv";
+//                String credit = "xzv";
+//                String content = "sacxz";
+//                String sponsor = "vzx";
+//                String co_sponsor = "asc";
+//                String time = "2017-09-22 18:30:00";
+//                String institute = "asf";
 
                 //上传数据到服务器的数据写在这里
                 if (title.isEmpty() || classroom.isEmpty() || introduction.isEmpty() || lecturer.isEmpty() || credit.isEmpty() || content.isEmpty() ||
@@ -284,7 +284,8 @@ public class LaunchActivity extends BaseActivity {
                 if(resultCode == RESULT_OK){
                    lecture_latitude = data.getDoubleExtra("latitude",0);
                    lecture_longitude = data.getDoubleExtra("longitude",0);
-                   lecture_position.setText(lecture_latitude + "," + lecture_longitude);
+                    String location = data.getStringExtra("location");
+                   lecture_position.setText(location);
                     Log.d(TAG, "onActivityResult: " + lecture_position.getText().toString() );
                 }
                 break;

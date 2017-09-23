@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.sidebar;
 
 import android.os.Bundle;
 

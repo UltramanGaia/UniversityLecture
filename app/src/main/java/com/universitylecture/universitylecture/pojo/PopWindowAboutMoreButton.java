@@ -10,10 +10,7 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.util.HttpUtil;
-import com.universitylecture.universitylecture.util.OutputMessage;
-import com.universitylecture.universitylecture.view.MyTwoDCodeActivity;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.universitylecture.universitylecture.view.functionActivity.MyTwoDCodeActivity;
 
 /**
  * Created by fengqingyundan on 2017/8/22.

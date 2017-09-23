@@ -1,4 +1,4 @@
-package com.universitylecture.universitylecture.view;
+package com.universitylecture.universitylecture.view.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;

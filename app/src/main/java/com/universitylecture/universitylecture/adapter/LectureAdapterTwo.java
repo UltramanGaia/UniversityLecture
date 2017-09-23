@@ -18,7 +18,7 @@ import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.util.Constant;
 import com.universitylecture.universitylecture.util.MyApplication;
-import com.universitylecture.universitylecture.view.LectureContentActivity;
+import com.universitylecture.universitylecture.view.functionActivity.LectureContentActivity;
 
 import java.util.ArrayList;
 
