@@ -150,8 +150,6 @@ public class LectureListFragment extends Fragment {
                                 mDropDownMenu.closeMenu();
                             }
                         });
-
-
                     }
                 }).start();
 

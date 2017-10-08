@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
@@ -33,6 +34,7 @@ public class MyLectureFragment extends Fragment {
     private LectureAdapterTwo adapter;
     private   RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
+    private TextView noLecture;
     View footer;
 
     @Override
@@ -84,7 +86,6 @@ public class MyLectureFragment extends Fragment {
     }
 
     private void setSwipeRefreshLayout(){
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
         swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         //按键逻辑
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -117,12 +118,20 @@ public class MyLectureFragment extends Fragment {
                 });
             }
         }).start();
+
+        if(lectures.size() == 0 ){
+            swipeRefresh.setVisibility(View.GONE);
+            noLecture.setVisibility(View.VISIBLE);
+        }else {
+            swipeRefresh.setVisibility(View.VISIBLE);
+            noLecture.setVisibility(View.GONE);
+        }
     }
 
     private void init(LayoutInflater inflater, ViewGroup container){
 
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragement_my_lecture_recycleview, container, false);
+        view = inflater.inflate(R.layout.fragement_my_lecture, container, false);
         //配置recylerview三部曲
         lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_myLectures_recyclerview);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());
@@ -152,10 +161,13 @@ public class MyLectureFragment extends Fragment {
             }
         }).start();
 
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
 
-
-
-
+        noLecture = (TextView) view.findViewById(R.id.no_lecture_in_my_lecturelist);
+        if(lectures.size() == 0 ){
+            swipeRefresh.setVisibility(View.GONE);
+            noLecture.setVisibility(View.VISIBLE);
+        }
 
 
         //设置rooter
