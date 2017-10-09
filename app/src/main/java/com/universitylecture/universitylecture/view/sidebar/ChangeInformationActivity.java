@@ -40,7 +40,7 @@ public class ChangeInformationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(FEATURE_NO_TITLE);
-        setContentView(R.layout.activitu_change_information);
+        setContentView(R.layout.activity_change_information);
 
         initData();//初始化除按键外的信息
         initButton();//初始化按键

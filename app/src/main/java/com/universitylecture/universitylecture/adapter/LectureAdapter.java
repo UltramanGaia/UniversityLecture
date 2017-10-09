@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * Created by fengqingyundan on 2017/6/1.
  */
 //为了使用recyclerview而建立的容器类
-public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static final int TYPE_FOOTER = 0;  //说明是带有Footer的
     public static final int TYPE_NORMAL = 1;  //说明是不footer的
     public static final int TYPE_HEADER = 2;
@@ -73,7 +73,7 @@ public class LectureAdapterTwo extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public LectureAdapterTwo(ArrayList<Lecture> lectureList , Context context , String alarmSet){
+    public LectureAdapter(ArrayList<Lecture> lectureList , Context context , String alarmSet){
         mContext = context;
         mLectureLIst = lectureList;
         alarm = alarmSet;

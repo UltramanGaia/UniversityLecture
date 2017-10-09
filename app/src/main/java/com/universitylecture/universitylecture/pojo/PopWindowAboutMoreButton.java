@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import com.universitylecture.universitylecture.R;
+import com.universitylecture.universitylecture.view.functionActivity.AskQuestionActivity;
 import com.universitylecture.universitylecture.view.functionActivity.MyTwoDCodeActivity;
 
 /**
@@ -48,34 +49,22 @@ public class PopWindowAboutMoreButton extends PopupWindow{
         this.setAnimationStyle(R.style.AnimationPreview);
 
         final User inner_user = user;
-//        conentView.findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View arg0) {
-//                final User inner_inner_user = inner_user;
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        User returnUser = (User) HttpUtil.doPost(inner_inner_user,"VerifyLecturePublisherServlet");
-//                        if(returnUser != null) {
-//                            Intent  intent = new Intent(mContext, CaptureActivity.class);
-//                            ((Activity) mContext).startActivityForResult(intent, 1 );
-//                        }
-//                        else
-//                            OutputMessage.outputMessage("你没有权限进行扫描");
-//                    }
-//                }).start();
-//
-//
-//                PopWindowAboutMoreButton.this.dismiss();
-//            }
-//        });
 
         conentView.findViewById(R.id.myTwoDCode).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(mContext , MyTwoDCodeActivity.class);
+                intent.putExtra("user_id",inner_user.getId() + "");
+                ((Activity) mContext).startActivity(intent);
+                PopWindowAboutMoreButton.this.dismiss();
+            }
+        });
+
+        conentView.findViewById(R.id.askQuestion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext , AskQuestionActivity.class);
                 intent.putExtra("user_id",inner_user.getId() + "");
                 ((Activity) mContext).startActivity(intent);
                 PopWindowAboutMoreButton.this.dismiss();

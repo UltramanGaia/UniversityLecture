@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
+import com.universitylecture.universitylecture.adapter.LectureAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
@@ -31,7 +31,7 @@ public class MyLectureFragment extends Fragment {
     private ArrayList<Lecture> lectures = new ArrayList<>();
     private View view;
     private SwipeRefreshLayout swipeRefresh;
-    private LectureAdapterTwo adapter;
+    private LectureAdapter adapter;
     private   RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
     private TextView noLecture;
@@ -152,7 +152,7 @@ public class MyLectureFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter = new LectureAdapterTwo(lectures,getActivity(),"unset");
+                        adapter = new LectureAdapter(lectures,getActivity(),"unset");
                         lectures_recyclerView.setAdapter(adapter);
                         lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
                         setFooterView(lectures_recyclerView);

@@ -14,4 +14,13 @@
         android:text="我的二维码"
         android:textSize="16sp"
         android:background="@android:color/white"/>
+
+    <Button
+        android:id="@+id/askQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="提问"
+        android:textSize="16sp"
+        android:background="@android:color/white"/>
 </LinearLayout>

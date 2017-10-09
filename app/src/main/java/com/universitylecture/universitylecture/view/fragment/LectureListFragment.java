@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.ConstellationAdapter;
 import com.universitylecture.universitylecture.adapter.GirdDropDownAdapter;
-import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
+import com.universitylecture.universitylecture.adapter.LectureAdapter;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.School;
@@ -69,7 +69,7 @@ public class LectureListFragment extends Fragment {
 
     private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
     private SwipeRefreshLayout swipeRefresh;
-    private LectureAdapterTwo adapter;
+    private LectureAdapter adapter;
     private RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
     View footer;
@@ -224,7 +224,7 @@ public class LectureListFragment extends Fragment {
                         public void run() {
                         //配置recylerview三部曲
 
-                        adapter = new LectureAdapterTwo(lectures,getActivity(),"set");
+                        adapter = new LectureAdapter(lectures,getActivity(),"set");
                         lectures_recyclerView.setAdapter(adapter);
                        /* //设置分隔线
 //                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
