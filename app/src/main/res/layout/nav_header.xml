@@ -1,42 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="220dp"
-    android:background="@drawable/sliding_background"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/sliding_menu_bg"
+    android:padding="0dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/icon_image"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
-        android:layout_above="@+id/username"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
-        android:src="@drawable/long_head_image" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/phoneNumber"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:text="龙哥"
-        android:textColor="#FFF"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon_image"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:src="@drawable/long_head_image"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
 
-    <TextView
-        android:id="@+id/phoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="13631432791"
-        android:textColor="#FFF"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/username"
-        android:layout_alignStart="@+id/username" />
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/phoneNumber"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/icon_image"
+            android:layout_toRightOf="@+id/icon_image"
+            android:text="Nickole"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/icon_image"
+            android:layout_alignLeft="@+id/username"
+            android:layout_alignStart="@+id/username"
+            android:text="13631432791"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/qr_code" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayout"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/my_information_in_nav"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            android:text="个人资料"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorHint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/my_message_in_nav"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            android:text="我的消息"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorHint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/my_favourite_in_nav"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            android:text="我的收藏"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorHint"
+            android:textSize="16sp" /> 
+
+        <Button
+            android:id="@+id/help_and_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            android:text="帮助与反馈"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorHint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/about_in_nav"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            android:text="关于"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorHint"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/setting_in_nav"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:background="@android:color/transparent"
+                android:drawablePadding="10dp"
+                android:text="设置"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorHint"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/log_out_in_nav"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/transparent"
+                android:drawablePadding="10dp"
+                android:text="退出登录"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorHint"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

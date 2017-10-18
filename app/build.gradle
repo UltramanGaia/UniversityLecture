@@ -39,6 +39,10 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'org.litepal.android:core:1.5.1'
+    compile 'com.jude:rollviewpager:1.4.6'
+    compile 'com.githang:status-bar-compat:latest.integration'
+    compile 'com.daidingkang:flowlayouttag:1.0.0'
+
     testCompile 'junit:junit:4.12'
 }
 

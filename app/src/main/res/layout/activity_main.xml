@@ -5,111 +5,143 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.universitylecture.universitylecture.view.MainActivity">
 
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".MainActivity" >
 
-        <include layout="@layout/title"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.19" />
-
-        <FrameLayout
-            android:id="@+id/content"
+        <com.universitylecture.universitylecture.view.sidebar.SlideMenu
+            android:id="@+id/slideMenu"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1">
-
-        </FrameLayout>
-
+            android:layout_height="match_parent">
+            <!--菜单界面的布局-->
+            <include layout="@layout/nav_header"/>
+            <!--主界面的布局-->
         <LinearLayout
+            android:id="@+id/main_ui"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:layout_weight="0.01">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_weight="1">
 
-                <ImageButton
-                    android:id="@+id/my_lecture_image_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:clickable="false"
-                    app:srcCompat="@drawable/my_lecture_pressed" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="我的讲座"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <include layout="@layout/title" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/lecture_list_image_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:clickable="false"
-                    app:srcCompat="@drawable/lecture_list_normal" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="讲座列表"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
+            </FrameLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="0.01"
+                android:background="@color/white"
+                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/lecture_circle_image_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:clickable="false"
-                    app:srcCompat="@drawable/lecture_circle_normal" />
+                <LinearLayout
+                    android:id="@+id/my_lecture_image_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="讲座圈"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
+                    <ImageButton
+                        android:id="@+id/my_lecture_image_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/my_lecture_pressed" />
+
+                    <TextView
+                        android:id="@+id/my_lecture_image_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-2dp"
+                        android:text="我的"
+                        android:textAlignment="center"
+                        android:textColor="@color/purple"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lecture_list_image_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/lecture_list_image_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/lecture_list_normal" />
+
+                    <TextView
+                        android:id="@+id/lecture_list_image_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-2dp"
+                        android:text="发现"
+                        android:textAlignment="center"
+                        android:textColor="@color/sbc_header_text"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lecture_circle_image_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/lecture_circle_image_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/lecture_circle_normal" />
+
+                    <TextView
+                        android:id="@+id/lecture_circle_image_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-2dp"
+                        android:text="讲座圈"
+                        android:textAlignment="center"
+                        android:textColor="@color/sbc_header_text"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
 
-    </LinearLayout>
+        </com.universitylecture.universitylecture.view.sidebar.SlideMenu>
+    </RelativeLayout>
 
 
     <!-- 左侧抽屉显示的内容-->
