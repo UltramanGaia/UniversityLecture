@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="#00bfef"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/go_back_in_comment"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/home_back"
+        android:text="   返回"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:id="@+id/answer_question_in_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加回答"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>
