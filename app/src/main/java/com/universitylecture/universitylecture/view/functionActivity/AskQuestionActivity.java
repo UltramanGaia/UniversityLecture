@@ -66,7 +66,7 @@ public class AskQuestionActivity extends BaseActivity {
                 String topicLectureToString = topicLecture.getText().toString();
                 String questionToQuestion = question.getText().toString();
                 String descriptionToString = description.getText().toString();
-                String userId = getIntent().getStringExtra("user_id");
+                String askerId = getIntent().getStringExtra("user_id");
                 //上传数据到服务器的数据写在这里
 
 

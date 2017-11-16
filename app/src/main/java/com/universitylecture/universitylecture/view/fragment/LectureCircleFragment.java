@@ -142,7 +142,7 @@ public class LectureCircleFragment extends Fragment {
         comments_recyclerView.setLayoutManager(layoutManager);
 
         //样例数据
-        Comment comment = new Comment("001","宣讲会","老师叫什么名字","想问一下那个老师的具体信息","cf");
+        Comment comment = new Comment("001","宣讲会","老师叫什么名字","想问一下那个老师的具体信息加啥酒店附近安居房加拉斯砥砺奋进辣椒水的分类加就龙舒杰打飞机阿拉斯加放假啊六级啊受到了放假啦寄顺丰","cf");
         for(int i = 0 ; i < 10 ; i++){
             comments.add(comment);
         }

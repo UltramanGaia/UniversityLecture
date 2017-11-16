@@ -139,6 +139,9 @@
         <activity
             android:name=".view.functionActivity.AskQuestionActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.LectureCircleActivity.AnswerListActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

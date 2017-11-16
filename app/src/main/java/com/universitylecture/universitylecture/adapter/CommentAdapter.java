@@ -19,6 +19,7 @@ import com.universitylecture.universitylecture.pojo.Comment;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.util.Constant;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.view.LectureCircleActivity.AnswerListActivity;
 import com.universitylecture.universitylecture.view.functionActivity.LectureContentActivity;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
  * Created by fengqingyundan on 2017/10/8.
  */
 
+//讲座圈页面中评论列表的adapter
 public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static final int TYPE_FOOTER = 0;  //说明是带有Footer的
     public static final int TYPE_NORMAL = 1;  //说明是不footer的
@@ -98,11 +100,10 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             public void onClick(View v){
                 int position = holder.getAdapterPosition();
                 Comment comment = mCommentList.get(position);
-                Toast.makeText(mContext , "点击了一下" , Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(mContext , LectureContentActivity.class);
-//                intent.putExtra("lecture_item",lecture);
-//                intent.putExtra("alarm" , alarm );
-//                mContext.startActivity(intent);
+//                Toast.makeText(mContext , "点击了一下" , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , AnswerListActivity.class);
+                intent.putExtra("comment_item",comment);
+                mContext.startActivity(intent);
             }
         });
         return holder;
