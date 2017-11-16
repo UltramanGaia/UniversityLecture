@@ -1,5 +1,6 @@
 package com.universitylecture.universitylecture.view.LectureCircleActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import com.universitylecture.universitylecture.pojo.Comment;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.util.MyApplication;
 import com.universitylecture.universitylecture.view.functionActivity.LectureContentActivity;
+import com.universitylecture.universitylecture.view.map.NaviBaseWalkActivity;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 import java.util.ArrayList;
@@ -75,7 +77,7 @@ public class AnswerListActivity extends BaseActivity {
         answerRecyclerView.setLayoutManager(layoutManager);
 
         //初始化数据，这里我使用了样例数据
-        Answer answer = new Answer("01","很好看","001","阮子琦","2017-11-11");
+        Answer answer = new Answer("很好看",001,"阮子琦","2017-11-11");
         for(int i = 0 ; i < 10 ; i++){
             answers.add(answer);
         }
@@ -100,6 +102,13 @@ public class AnswerListActivity extends BaseActivity {
         });
 
         answerQuestion = (TextView) findViewById(R.id.answer_question_in_comment);
+        answerQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AnswerListActivity.this,AnswerQuestionActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setFooterView(RecyclerView recyclerView){

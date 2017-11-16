@@ -142,6 +142,9 @@
         <activity
             android:name=".view.LectureCircleActivity.AnswerListActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.LectureCircleActivity.AnswerQuestionActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
