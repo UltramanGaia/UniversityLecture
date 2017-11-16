@@ -1,7 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+<com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.universitylecture.universitylecture.view.sidebar.RollViewPagerPlus
+            android:id="@+id/roll_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:rollviewpager_play_delay="3000"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/graduates" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="学术型"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/talk" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="宣讲会"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button16"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/race" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="比赛"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button13"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/medal" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="表彰会"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button125"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/publicclass" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="公开课"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button16"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/recruit" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="招聘会"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button16"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/sing" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="文艺汇演"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button16"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/classify" />
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="更多精彩"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="273dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="正在开办"
+                android:textColor="@color/contents_text"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="更多>"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/opening"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="273dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="附近热门"
+                android:textColor="@color/contents_text"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="更多>"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/nearhot"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
 
     <com.universitylecture.universitylecture.view.tool.DropDownMenu
         android:id="@+id/dropDownMenu"
@@ -21,22 +286,21 @@
         app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
         />
 
-    <android.support.v4.widget.SwipeRefreshLayout
+        <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_layoyt_in_lecture_list"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         >
 
-        <android.support.v7.widget.RecyclerView
+            <android.support.v7.widget.RecyclerView
             android:id="@+id/lectures_of_lecture_list_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            android:scrollbarThumbVertical="@drawable/my_bar"
-            >
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-
-
-</LinearLayout>
+            android:scrollbarThumbVertical="@drawable/my_bar">
+            </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView>
+    <include layout="@layout/title_in_home" />
+</RelativeLayout>

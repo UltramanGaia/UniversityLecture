@@ -1,32 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.universitylecture.universitylecture.view.functionActivity.SearchActivity">
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:textAllCaps="false"
-        android:text="Search" />
+        <FrameLayout
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.1"
+            android:background="@drawable/edittext_search_focused">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="3dp"
+                    android:src="@drawable/search_icon" />
+
+                <com.universitylecture.universitylecture.view.searchView.EditTextWithClear
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/transparent"
+                    android:gravity="start|center_vertical"
+                    android:hint="输入讲座名/主讲人/场馆"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/search_back"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="0.6"
+            android:background="@color/transparent"
+            android:text="取消"
+            android:textAllCaps="false"
+            android:textColor="@color/grgray"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="-10dp"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="历史搜索"
+                    android:layout_weight="0.9"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/tv_clear"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/trashbin"
+                    android:gravity="center"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <com.universitylecture.universitylecture.view.searchView.SearchListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/no_search_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="暂无搜索历史"
+                android:textAlignment="center"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <com.universitylecture.universitylecture.view.searchView.FlowLayout
+                android:id="@+id/his_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="热门搜索"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+            <com.universitylecture.universitylecture.view.searchView.FlowLayout
+                android:id="@+id/hot_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
 </LinearLayout>

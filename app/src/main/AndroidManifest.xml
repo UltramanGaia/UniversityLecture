@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.universitylecture.universitylecture">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -63,7 +64,8 @@
         android:icon="@mipmap/universitylecture"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:theme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="dcf355ffa261fd0bbfb30e6d43041a46" />
@@ -81,7 +83,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.functionActivity.SearchActivity"
+            android:name=".view.searchView.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.MainActivity"
