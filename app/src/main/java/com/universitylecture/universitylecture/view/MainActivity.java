@@ -1,5 +1,6 @@
 package com.universitylecture.universitylecture.view;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.view.fragment.LectureCircleFragment;
 import com.universitylecture.universitylecture.view.fragment.LectureListFragment;
 import com.universitylecture.universitylecture.view.fragment.MyLectureFragment;
+import com.universitylecture.universitylecture.view.functionActivity.MyTwoDCodeActivity;
 import com.universitylecture.universitylecture.view.sidebar.LaunchActivity;
 import com.universitylecture.universitylecture.view.sidebar.MyInformation;
 import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
@@ -62,11 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     // drawer layout
     private DrawerLayout drawerLayout;
-    private CircleImageView drawerToggleImageButton;
     private NavigationView navigationView;
-
-    // 更多选项按钮
-    private Button moreButton;//顶部加号部分
 
     // fragment管理器
     private FragmentManager fragmentManager;
@@ -89,8 +87,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button btnAbout;
     private Button btnMySetting;
     private Button btnLogOut;
-
-    private SlideMenu slideMenu;
+    private Button myTwoDCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +106,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void initView() {
-        slideMenu = (SlideMenu) findViewById(R.id.slideMenu);
         myLectureImageButton = (ImageButton) findViewById(R.id.my_lecture_image_button);
         myLectureImageLayout = (LinearLayout) findViewById(R.id.my_lecture_image_layout);
         myLectureImageText = (TextView) findViewById(R.id.my_lecture_image_text);
@@ -140,29 +136,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         PersonalInformation.sex = "男";*/
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerToggleImageButton = (CircleImageView) findViewById(R.id.toggle_drawer_open);
-        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                slideMenu.switchMenu();
-            }
-        });
-
-        //右上角加号初始化
-        moreButton = (Button) findViewById(R.id.more);
-        moreButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(MainActivity.this, user);
-                popWindow.showPopupWindow(findViewById(R.id.more));
-            }
-        });
-
 
         /*
         抽屉栏
          */
         initNavIcon();
+
+        /*
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);//设置抽屉ITEM图标为原来的颜色
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -202,11 +182,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                 return true;
             }
-        });
+        });*/
 
-        View headerView=navigationView.getHeaderView(0);
-        userName = (TextView) headerView.findViewById(R.id.username);
-        phoneNumber = (TextView) headerView.findViewById(R.id.phoneNumber);
+        //View headerView=navigationView.getHeaderView(0);
+        userName = (TextView) findViewById(R.id.username);
+        phoneNumber = (TextView) findViewById(R.id.phoneNumber);
 
     }
 
@@ -218,11 +198,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btnAbout=(Button)findViewById(R.id.about_in_nav);
         btnMySetting=(Button)findViewById(R.id.setting_in_nav);
         btnLogOut=(Button)findViewById(R.id.log_out_in_nav);
+        myTwoDCode=(Button)findViewById(R.id.two_d_Code);
+
+        myTwoDCode.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MyTwoDCodeActivity.class);
+                intent.putExtra("user_id",user.getId() + "");
+                startActivity(intent);
+            }
+        });
 
         Drawable drawable1=getResources().getDrawable(R.drawable.my_information);
         drawable1.setBounds(0,0,80,80);
         btnMyInformation.setCompoundDrawables(drawable1,null,null,null);
-
+        btnMyInformation.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( MainActivity.this , MyInformation.class );
+                intent.putExtra("user",user);
+                startActivity(intent);
+            }
+        });
         Drawable drawable2=getResources().getDrawable(R.drawable.message);
         drawable2.setBounds(0,0,80,80);
         btnMyMessage.setCompoundDrawables(drawable2,null,null,null);
@@ -246,6 +243,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Drawable drawable7=getResources().getDrawable(R.drawable.exit);
         drawable7.setBounds(0,0,60,60);
         btnLogOut.setCompoundDrawables(drawable7,null,null,null);
+        btnLogOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( "com.universitylecture.universitylecture.FORCE_OFFLINE");
+                sendBroadcast(intent);
+            }
+        });
     }
 
     /**
@@ -386,9 +390,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         updatePersonalInformation();//更新抽屉栏个人信息
     }
 
-    public SlideMenu getSlideMenu(){
-        return slideMenu;
-    }
 
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data){
 //        if (requestCode == 1 ) {

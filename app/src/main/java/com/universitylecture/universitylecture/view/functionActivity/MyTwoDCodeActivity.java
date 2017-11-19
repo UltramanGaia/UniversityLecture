@@ -1,5 +1,6 @@
 package com.universitylecture.universitylecture.view.functionActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -20,14 +21,14 @@ import static android.view.Window.FEATURE_NO_TITLE;
  * Created by fengqingyundan on 2017/8/23.
  */
 //二维码页面的二维码
-public class MyTwoDCodeActivity extends AppCompatActivity {
+public class MyTwoDCodeActivity extends Activity {
     private ImageView myTwoDCode;
     private TextView title;
     private Button back;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(FEATURE_NO_TITLE);
+        //supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_my_two_d_code);
 
         initView();
@@ -41,9 +42,6 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
         Bitmap mBitmap = CodeUtils.createImage(content, 400, 400, null);
         myTwoDCode.setImageBitmap(mBitmap);
 
-        title = (TextView) findViewById(R.id.title_in_title_bar);
-        title.setText("我的二维码");
-
         back = (Button) findViewById(R.id.go_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,5 +49,34 @@ public class MyTwoDCodeActivity extends AppCompatActivity {
                 MyTwoDCodeActivity.super.onBackPressed();
             }
         });
+    }
+
+    /**
+     * 用于控制NavigationBar的隐藏和显示
+     */
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUI();
+        }
+    }
+
+    private void showSystemUI() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void hideSystemUI() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                      | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 }

@@ -4,13 +4,22 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.PopupWindow;
 
 import com.universitylecture.universitylecture.R;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
+import com.universitylecture.universitylecture.util.OutputMessage;
+import com.universitylecture.universitylecture.view.MainActivity;
 import com.universitylecture.universitylecture.view.functionActivity.MyTwoDCodeActivity;
+import com.universitylecture.universitylecture.view.sidebar.LaunchActivity;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 
 /**
  * Created by fengqingyundan on 2017/8/22.
@@ -20,6 +29,9 @@ public class PopWindowAboutMoreButton extends PopupWindow{
     private View conentView;
     private Context mContext;
     private User user;
+    private Button myTwoDCode;
+    private Button publishLecture;
+
     public PopWindowAboutMoreButton(final Activity context, User user ){
         this.user = user;
         mContext = context;
@@ -28,10 +40,22 @@ public class PopWindowAboutMoreButton extends PopupWindow{
         conentView = inflater.inflate(R.layout.popup_window_about_more_button, null);
         int h = context.getWindowManager().getDefaultDisplay().getHeight();
         int w = context.getWindowManager().getDefaultDisplay().getWidth();
+
+        myTwoDCode = (Button) conentView.findViewById(R.id.myTwoDCode);
+        Drawable drawable1 = conentView.getResources().getDrawable(R.drawable.mytwodcode);
+        drawable1.setBounds(0,0,60,60);
+        myTwoDCode.setCompoundDrawables(drawable1,null,null,null);
+
+        publishLecture = (Button) conentView.findViewById(R.id.publishLecture);
+        Drawable drawable2 = conentView.getResources().getDrawable(R.drawable.publishlecture);
+        drawable2.setBounds(0,0,60,60);
+        publishLecture.setCompoundDrawables(drawable2,null,null,null);
+
+
         // 设置SelectPicPopupWindow的View
         this.setContentView(conentView);
         // 设置SelectPicPopupWindow弹出窗体的宽
-        this.setWidth(w / 2 + 40);
+        this.setWidth(w / 2 - 80);
         // 设置SelectPicPopupWindow弹出窗体的高
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         // 设置SelectPicPopupWindow弹出窗体可点击
@@ -72,12 +96,34 @@ public class PopWindowAboutMoreButton extends PopupWindow{
 //        });
 
         conentView.findViewById(R.id.myTwoDCode).setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(mContext , MyTwoDCodeActivity.class);
                 intent.putExtra("user_id",inner_user.getId() + "");
                 ((Activity) mContext).startActivity(intent);
+                PopWindowAboutMoreButton.this.dismiss();
+            }
+        });
+
+        conentView.findViewById(R.id.publishLecture).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+//                                User returnUser = (User) HttpUtil.doPost(user,"VerifyLecturePublisherServlet");
+
+                        String data = HttpUtilJSON.doPost(Object2JSONUtil.isLecturePublisher(PersonalInformation.phoneNumber),"verifyLecturePublisher");
+                        String message = JSON2ObjectUtil.getMessage(data);
+                        if(message.equals("OK")) {
+                            Intent intent = new Intent( mContext , LaunchActivity.class );
+                            ((Activity) mContext).startActivity(intent);
+                        }
+                        else
+                            OutputMessage.outputMessage(message);
+                    }
+                }).start();
+
                 PopWindowAboutMoreButton.this.dismiss();
             }
         });
@@ -96,4 +142,5 @@ public class PopWindowAboutMoreButton extends PopupWindow{
             this.dismiss();
         }
     }
+
 }

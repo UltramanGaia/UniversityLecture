@@ -31,11 +31,10 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/phoneNumber"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp"
+            android:layout_alignTop="@+id/icon_image"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="18dp"
             android:layout_toEndOf="@+id/icon_image"
-            android:layout_toRightOf="@+id/icon_image"
             android:text="Nickole"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
@@ -54,7 +53,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/two_d_Code"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentEnd="true"
@@ -62,7 +61,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/qr_code" />
+            android:background="@drawable/nav_qrcode_button" />
 
     </RelativeLayout>
 
@@ -77,61 +76,61 @@
             android:id="@+id/my_information_in_nav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/nav_button_selector"
             android:drawablePadding="10dp"
+            android:paddingLeft="20dp"
             android:text="个人资料"
             android:textAlignment="textStart"
-            android:textColor="@color/colorHint"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/my_message_in_nav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/transparent"
+            android:paddingLeft="20dp"
+            android:background="@drawable/nav_button_selector"
             android:drawablePadding="10dp"
             android:text="我的消息"
             android:textAlignment="textStart"
-            android:textColor="@color/colorHint"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/my_favourite_in_nav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/transparent"
+            android:paddingLeft="20dp"
+            android:background="@drawable/nav_button_selector"
             android:drawablePadding="10dp"
             android:text="我的收藏"
             android:textAlignment="textStart"
-            android:textColor="@color/colorHint"
+            android:textColor="@color/white"
             android:textSize="16sp" /> 
 
         <Button
             android:id="@+id/help_and_feedback"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/transparent"
+            android:paddingLeft="20dp"
+            android:background="@drawable/nav_button_selector"
             android:drawablePadding="10dp"
             android:text="帮助与反馈"
             android:textAlignment="textStart"
-            android:textColor="@color/colorHint"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/about_in_nav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/transparent"
+            android:paddingLeft="20dp"
+            android:background="@drawable/nav_button_selector"
             android:drawablePadding="10dp"
             android:text="关于"
             android:textAlignment="textStart"
-            android:textColor="@color/colorHint"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -150,7 +149,7 @@
                 android:drawablePadding="10dp"
                 android:text="设置"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorHint"
+                android:textColor="@drawable/nav_button_text_color"
                 android:textSize="16sp" />
 
             <Space
@@ -167,7 +166,7 @@
                 android:drawablePadding="10dp"
                 android:text="退出登录"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorHint"
+                android:textColor="@drawable/nav_button_text_color"
                 android:textSize="16sp" />
         </LinearLayout>
 

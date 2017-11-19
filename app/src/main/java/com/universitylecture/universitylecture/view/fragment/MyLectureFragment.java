@@ -9,14 +9,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.School;
+import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
 import com.universitylecture.universitylecture.view.tool.LectureSystem;
 import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
@@ -25,14 +29,22 @@ import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 //我的讲座界面
 public class MyLectureFragment extends Fragment {
     private ArrayList<Lecture> lectures = new ArrayList<>();
     private View view;
     private SwipeRefreshLayout swipeRefresh;
     private LectureAdapterTwo adapter;
-    private   RecyclerView lectures_recyclerView;
+    private RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
+
+    private CircleImageView drawerToggleImageButton;
+    private SlideMenu slideMenu;
+    private Button moreButton;
+    private User user;
+
     View footer;
 
     @Override
@@ -153,10 +165,26 @@ public class MyLectureFragment extends Fragment {
         }).start();
 
 
+        //左上角头像框点击事件
+        slideMenu = (SlideMenu) getActivity().findViewById(R.id.slideMenu);
+        drawerToggleImageButton = (CircleImageView) view.findViewById(R.id.toggle_drawer_open_in_my_lecture);
+        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                slideMenu.switchMenu();
+            }
+        });
 
-
-
-
+        //右上角加号头像框点击事件
+        moreButton = (Button)  view.findViewById(R.id.more_in_my_lecture);
+        user = new User(PersonalInformation.id, PersonalInformation.name, PersonalInformation.password, PersonalInformation.sex, PersonalInformation.phoneNumber);
+        moreButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(getActivity(), user);
+                popWindow.showPopupWindow( view.findViewById(R.id.more_in_my_lecture));
+            }
+        });
 
         //设置rooter
 

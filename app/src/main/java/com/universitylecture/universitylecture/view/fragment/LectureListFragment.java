@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -33,7 +34,9 @@ import com.universitylecture.universitylecture.adapter.GirdDropDownAdapter;
 import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.School;
+import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
@@ -45,6 +48,7 @@ import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
 import com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView;
 import com.universitylecture.universitylecture.view.tool.DropDownMenu;
 import com.universitylecture.universitylecture.view.tool.LectureSystem;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
 
 import java.util.ArrayList;
@@ -52,6 +56,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 //import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 
@@ -93,6 +98,9 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
 
     private RollViewPagerPlus mRollViewPager;
     private SlideMenu slideMenu;
+    private CircleImageView drawerToggleImageButton;
+    private Button moreButton;
+    private User user;
 
     //toolbar透明渐变
     private TranslucentScrollView scrollView;
@@ -153,6 +161,27 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
 
     private void initView() {
         mDropDownMenu = (DropDownMenu) view.findViewById(R.id.dropDownMenu);
+
+        //左上角头像框点击事件
+        drawerToggleImageButton = (CircleImageView) view.findViewById(R.id.toggle_drawer_open_in_home);
+        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                slideMenu.switchMenu();
+            }
+        });
+
+        //右上角加号头像框点击事件
+        moreButton = (Button)  view.findViewById(R.id.more_in_home);
+        user = new User(PersonalInformation.id,PersonalInformation.name,PersonalInformation.password,PersonalInformation.sex,PersonalInformation.phoneNumber);
+        moreButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(getActivity(), user);
+                popWindow.showPopupWindow( view.findViewById(R.id.more_in_home));
+            }
+        });
+
 
         lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_lecture_list_recyclerview);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());
@@ -260,10 +289,10 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
         mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, content);
 
         //设置toolbar透明渐变
-        scrollView = (TranslucentScrollView) view.findViewById(R.id.scrollview);
+        scrollView = (TranslucentScrollView) view.findViewById(R.id.home_scrollview);
         scrollView.setOnScrollChangedListener(this);
         toolbar = (Toolbar) view.findViewById(R.id.title_in_home);
-        toolbar.setBackgroundColor(Color.argb(0, 18, 176, 242));
+        //toolbar.setBackgroundColor(Color.argb(0, 18, 176, 242));
         initMeasure();
     }
 

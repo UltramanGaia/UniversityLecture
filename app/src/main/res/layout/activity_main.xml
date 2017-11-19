@@ -20,8 +20,12 @@
             <!--菜单界面的布局-->
             <include layout="@layout/nav_header"/>
             <!--主界面的布局-->
-        <LinearLayout
+
+        <RelativeLayout
             android:id="@+id/main_ui"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -31,15 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/title" />
-
-                </LinearLayout>
 
             </FrameLayout>
 
@@ -140,11 +135,23 @@
             </LinearLayout>
         </LinearLayout>
 
+            <ImageView
+                android:id="@+id/transparent_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/translucence_black_bg"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
         </com.universitylecture.universitylecture.view.sidebar.SlideMenu>
+
+
+
     </RelativeLayout>
 
 
-    <!-- 左侧抽屉显示的内容-->
+    <!-- 左侧抽屉显示的内容
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
@@ -153,6 +160,6 @@
         app:menu="@menu/nav_menu"
         app:headerLayout="@layout/nav_header">
     </android.support.design.widget.NavigationView>
-
+    -->
 
 </android.support.v4.widget.DrawerLayout>

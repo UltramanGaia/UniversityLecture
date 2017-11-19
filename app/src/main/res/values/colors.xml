@@ -2,11 +2,13 @@
 <resources>
     <color name="colorPrimary">#8459E7</color>
     <color name="colorPrimaryDark">#572DDA</color>
-    <color name="colorAccent">#9EE1FF</color>
+    <color name="colorAccent">#5EE5DF</color>
     <color name="white">#ffffff</color>
     <color name="gray">#cccccc</color>
     <color name="purple">#6343d9</color>
     <color name="light_gray">#a7a7a7</color>
+    <color name="small_text">#e6e6e6</color>
+    <color name="translucence_black_bg">#80000000</color>
 
 
     <color name="drop_down_selected">#DA7CDA</color>
@@ -19,10 +21,14 @@
     <color name="colorHint">#dddddd</color>
 
     <color name="title_transparent_black">#22000000</color>
+    <color name="qrcode_transparent_black">#cc000000</color>
     <color name="light_black">#141414</color>
     <color name="line_and_outline_grey">#d9d9d9</color>
 
     <color name="tag_normal">#F5F5F5</color>
     <color name="tag_pressed">#a7a7a7</color>
     <color name="transparent">#00000000</color>
+
+    <drawable name="nav_button_white">#ffffff</drawable>
+    <drawable name="nav_button_gray">#a7a7a7</drawable>
 </resources>
