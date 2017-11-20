@@ -14,10 +14,6 @@
         <item name="android:listDivider">@drawable/divider</item>
         <!-- 抽屉菜单效果 -->
         <item name="drawerArrowStyle">@style/AppTheme.JDDrawerArrowStyle</item>
-        <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
-        <item name="android:statusBarColor">@android:color/transparent</item>
 
     </style>
 
@@ -46,10 +42,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:listDivider">@drawable/divider</item>
-        <item name="android:windowTranslucentStatus">false</item>
+        <!--<item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
+        <item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
 
     <style name="AnimationPreview">
@@ -98,10 +94,7 @@
         <item name="windowNoTitle">true</item>
         <!-- 抽屉菜单效果 -->
         <item name="drawerArrowStyle">@style/AppTheme.JDDrawerArrowStyle</item>
-        <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
-        <item name="android:statusBarColor">@android:color/transparent</item>
+
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>

@@ -31,4 +31,17 @@
         android:textAlignment="textStart"
         android:textSize="14sp"
         android:background="@color/transparent"/>
+
+    <Button
+        android:id="@+id/askQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:text="我要提问"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        android:textSize="14sp"
+        android:background="@color/transparent"/>
 </LinearLayout>
