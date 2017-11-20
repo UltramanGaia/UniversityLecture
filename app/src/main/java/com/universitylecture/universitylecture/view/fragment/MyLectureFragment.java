@@ -134,6 +134,7 @@ public class MyLectureFragment extends Fragment {
             }
         }).start();
 
+
         if(lectures.size() == 0 ){
             lectures_recyclerView.setVisibility(View.GONE);
             noLecture.setVisibility(View.VISIBLE);
@@ -141,6 +142,7 @@ public class MyLectureFragment extends Fragment {
             lectures_recyclerView.setVisibility(View.VISIBLE);
             noLecture.setVisibility(View.GONE);
         }
+
     }
 
     private void init(LayoutInflater inflater, ViewGroup container){
@@ -184,6 +186,7 @@ public class MyLectureFragment extends Fragment {
         }).start();
 
 
+
         //左上角头像框点击事件
         slideMenu = (SlideMenu) getActivity().findViewById(R.id.slideMenu);
         drawerToggleImageButton = (CircleImageView) view.findViewById(R.id.toggle_drawer_open_in_my_lecture);
@@ -204,6 +207,7 @@ public class MyLectureFragment extends Fragment {
                 popWindow.showPopupWindow( view.findViewById(R.id.more_in_my_lecture));
             }
         });
+
 
 
         //设置rooter
