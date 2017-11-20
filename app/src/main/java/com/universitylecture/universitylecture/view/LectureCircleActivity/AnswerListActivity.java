@@ -14,14 +14,12 @@ import com.lcodecore.extextview.ExpandTextView;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.CommentAdapter;
 import com.universitylecture.universitylecture.pojo.Comment;
-import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.Topic;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
-import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
 
 import java.util.ArrayList;
 
@@ -76,16 +74,37 @@ public class AnswerListActivity extends BaseActivity {
         layoutManager = new LinearLayoutManager(this);
         answerRecyclerView.setLayoutManager(layoutManager);
 
-        //初始化数据，这里我使用了样例数据
-        Comment comment = new Comment(01,"很好看",01,001,"阮子琦","2017-11-11 10:00:00");
-        for(int i = 0 ; i < 10 ; i++){
-            answers.add(comment);
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        //设置adapter,对数据进行填充
-        adapter = new CommentAdapter(answers);
-        answerRecyclerView.setAdapter(adapter);
-        setFooterView(answerRecyclerView);
+//                Answer answer = new Answer("很好看",001,"阮子琦","2017-11-11");
+//                for(int i = 0 ; i < 10 ; i++){
+//                    answers.add(answer);
+//                }
+                answers = JSON2ObjectUtil.getComments(HttpUtilJSON.doPost(Object2JSONUtil.selectComments(
+                        Integer.valueOf(topic.getID()), String.valueOf(0)),"comments"));
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //设置adapter,对数据进行填充
+                        adapter = new CommentAdapter(answers);
+                        answerRecyclerView.setAdapter(adapter);
+                        setFooterView(answerRecyclerView);
+
+                    }
+                });
+            }
+        }).start();
+
+        //初始化数据，这里我使用了样例数据
+//        Comment comment = new Comment(01,"很好看",01,001,"阮子琦","2017-11-11 10:00:00");
+//        for(int i = 0 ; i < 10 ; i++){
+//            answers.add(comment);
+//        }
+
 
 //        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layoyt_in_question_answer_list);
 

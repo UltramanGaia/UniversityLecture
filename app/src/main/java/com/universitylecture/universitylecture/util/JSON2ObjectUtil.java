@@ -1,6 +1,8 @@
 package com.universitylecture.universitylecture.util;
 
+import com.universitylecture.universitylecture.pojo.Comment;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.Topic;
 import com.universitylecture.universitylecture.pojo.User;
 
 import org.json.JSONArray;
@@ -76,6 +78,56 @@ public class JSON2ObjectUtil {
         }
 
         return lectures;
+
+    }
+
+    public static ArrayList<Topic> getTopics(String content) {
+
+        ArrayList<Topic> topics = new ArrayList<>();
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            JSONArray jsonArray = new JSONArray(content);
+            for (int i = 0;i < jsonArray.length();i++) {
+                Topic topic = new Topic();
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                topic.setLecture_id(Integer.valueOf(jsonObject.getString("lectureId")));
+                topic.setTitle(jsonObject.getString("title"));
+                topic.setTime(sdf.format(Long.parseLong(jsonObject.getString("time"))));
+                topic.setDescription(jsonObject.getString("description"));
+                topic.setUser_id(Integer.valueOf(jsonObject.getString("userId")));
+                topics.add(topic);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return topics;
+
+    }
+
+    public static ArrayList<Comment> getComments(String content) {
+
+        ArrayList<Comment> comments = new ArrayList<>();
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            JSONArray jsonArray = new JSONArray(content);
+            for (int i = 0;i < jsonArray.length();i++) {
+                Comment comment = new Comment();
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                comment.setTopic_id(Integer.valueOf(jsonObject.getString("topicId")));
+                comment.setUser_id(Integer.valueOf(jsonObject.getString("userId")));
+                comment.setContent(jsonObject.getString("content"));
+                comment.setUsername(jsonObject.getString("username"));
+                comment.setTime(sdf.format(Long.parseLong(jsonObject.getString("time"))));
+                comments.add(comment);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return comments;
 
     }
 }
