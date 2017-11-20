@@ -21,6 +21,7 @@ import java.util.ArrayList;
 //讲座圈界面
 public class LectureCircleFragment extends Fragment {
     private ArrayList<Topic> topics = new ArrayList<>();
+
     private View view;
     private SwipeRefreshLayout swipeRefresh;
     private TopicAdapter adapter;
@@ -29,13 +30,42 @@ public class LectureCircleFragment extends Fragment {
     private TextView noLecture;
     View footer;
 
+    private CircleImageView drawerToggleImageButton;
+    private SlideMenu slideMenu;
+    private Button moreButton;
+    private User user;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_lecture_circle, container, false);
+
+        //左上角头像框点击事件
+        slideMenu = (SlideMenu) getActivity().findViewById(R.id.slideMenu);
+        drawerToggleImageButton = (CircleImageView) view.findViewById(R.id.toggle_drawer_open_in_lecture_circle);
+        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                slideMenu.switchMenu();
+            }
+        });
+
+        //右上角加号头像框点击事件
+        moreButton = (Button)  view.findViewById(R.id.more_in_lecture_circle);
+        user = new User(PersonalInformation.id, PersonalInformation.name, PersonalInformation.password, PersonalInformation.sex, PersonalInformation.phoneNumber);
+        moreButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(getActivity(), user);
+                popWindow.showPopupWindow( view.findViewById(R.id.more_in_lecture_circle));
+            }
+        });
+
         init(inflater,container);//初始化界面
         setSwipeRefreshLayout();//设置下拉刷新的逻辑
         setUpOnScrollRefresh();//设置上拉刷新的逻辑
         //View view = inflater.inflate(R.layout.fragment_lecture_circle, container, false);
+
 
         // Inflate the layout for this fragment
         return view;
@@ -121,7 +151,7 @@ public class LectureCircleFragment extends Fragment {
 
     public void init(LayoutInflater inflater,ViewGroup container){
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_lecture_circle, container, false);
+//        view = inflater.inflate(R.layout.fragment_lecture_circle, container, false);
 
         //配置recylerview三部曲
         topics_recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_in_lecture_circle);
@@ -142,9 +172,11 @@ public class LectureCircleFragment extends Fragment {
 
         swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt_in_lecture_circle);
     }
+
     private void setFooterView(RecyclerView recyclerView){
         footer = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.refrest_rooter, recyclerView, false);
         footer.findViewById(R.id.footer_layout).setVisibility(View.GONE);
         adapter.setFooterView(footer);
     }
+
 }

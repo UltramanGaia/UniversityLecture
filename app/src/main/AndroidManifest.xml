@@ -121,7 +121,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.functionActivity.MyTwoDCodeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/qrcode_bg" />
         <activity android:name=".view.map.MapActivity" />
         <activity
             android:name="com.mob.tools.MobUIShell"

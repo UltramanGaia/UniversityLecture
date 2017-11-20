@@ -1,53 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_height="wrap_content"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/title_in_lecture_information_of_lecturelist"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:weightSum="1">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+    android:layout_height="wrap_content"
+    app:contentInsetStart="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/go_back_in_lecture_information"
-            android:layout_width="66dp"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/home_back"
-            android:text="返回"
-            android:textAlignment="textStart"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:layout_margin="10dp"
+            android:background="@drawable/back_button" />
 
         <TextView
             android:id="@+id/title_in_title_bar"
-            android:layout_width="193dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_weight="1"
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/alarmSet"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:background="@drawable/qrcode"
-            android:textAllCaps="false"
-            android:textSize="30dp"
-            android:visibility="invisible"></Button>
+            android:background="@drawable/alarm_button"
+             />
 
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.Toolbar>

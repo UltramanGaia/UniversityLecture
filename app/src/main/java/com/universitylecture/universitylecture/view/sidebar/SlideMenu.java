@@ -4,16 +4,22 @@ package com.universitylecture.universitylecture.view.sidebar;
  * Created by Nickole on 2017/10/15.
  */
 import android.content.Context;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Scroller;
+
+import com.universitylecture.universitylecture.R;
 
 public class SlideMenu extends FrameLayout {
     private View menuView,mainView;
-    private int menuWidth;
+    private int menuWidth,mainWidth;
     private Scroller scroller;
+    private int slideState = 0;  //记录当前滑动状态
+
     public SlideMenu(Context context) {
         super(context);
         init();
@@ -35,18 +41,28 @@ public class SlideMenu extends FrameLayout {
         menuView = getChildAt(0);
         mainView = getChildAt(1);
         menuWidth = menuView.getLayoutParams().width;
+        mainWidth = mainView.getLayoutParams().width;
     }
+
     //使Menu也具有滑动功能
     public boolean onInterceptTouchEvent(MotionEvent ev){
+
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 downX = (int) ev.getX();
                 break;
             case MotionEvent.ACTION_MOVE:
+                if (slideState == 0 && downX > 100)
+                    return false;
                 int deltaX = (int) (ev.getX() - downX);
+
                 if (Math.abs(deltaX) > 8){
                     return true;
                 }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (slideState == 1 && (int) ev.getX() == downX)
+                    closeMenu();
                 break;
         }
         return super.onInterceptTouchEvent(ev);
@@ -85,9 +101,9 @@ public class SlideMenu extends FrameLayout {
                 break;
             case MotionEvent.ACTION_UP:
                 //当滑动距离小于Menu宽度的一半时，平滑滑动到主页面
-                if(getScrollX()>-menuWidth/2){
+                if (getScrollX() > -menuWidth / 2) {
                     closeMenu();
-                }else {
+                } else {
                     //当滑动距离大于Menu宽度的一半时，平滑滑动到Menu页面
                     openMenu();
                 }
@@ -98,12 +114,19 @@ public class SlideMenu extends FrameLayout {
     //关闭menu
     public void closeMenu(){
         scroller.startScroll(getScrollX(),0,0-getScrollX(),0,400);
+        slideState = 0;
         invalidate();
+        ImageView transBackground = (ImageView) findViewById(R.id.transparent_bg);
+        transBackground.setVisibility(GONE);
     }
     //打开menu
     public void openMenu(){
         scroller.startScroll(getScrollX(),0,-menuWidth-getScrollX(),0,400);
+        slideState = 1;
         invalidate();
+        ImageView transBackground = (ImageView) findViewById(R.id.transparent_bg);
+        transBackground.setVisibility(VISIBLE);
+        transBackground.setOnClickListener(null);
     }
     /**
      * Scroller不主动去调用这个方法

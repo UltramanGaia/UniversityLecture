@@ -9,15 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.LectureAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.School;
+import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
 import com.universitylecture.universitylecture.view.tool.LectureSystem;
 import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
@@ -26,15 +30,23 @@ import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 //我的讲座界面
 public class MyLectureFragment extends Fragment {
     private ArrayList<Lecture> lectures = new ArrayList<>();
     private View view;
     private SwipeRefreshLayout swipeRefresh;
     private LectureAdapter adapter;
-    private   RecyclerView lectures_recyclerView;
+    private RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
     private TextView noLecture;
+
+    private CircleImageView drawerToggleImageButton;
+    private SlideMenu slideMenu;
+    private Button moreButton;
+    private User user;
+
     View footer;
 
     @Override
@@ -99,6 +111,9 @@ public class MyLectureFragment extends Fragment {
 
     //下拉更新逻辑
     public void refresh(){
+
+        noLecture.setVisibility(View.GONE);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -119,13 +134,15 @@ public class MyLectureFragment extends Fragment {
             }
         }).start();
 
-//        if(lectures.size() == 0 ){
-//            swipeRefresh.setVisibility(View.GONE);
-//            noLecture.setVisibility(View.VISIBLE);
-//        }else {
-//            swipeRefresh.setVisibility(View.VISIBLE);
-//            noLecture.setVisibility(View.GONE);
-//        }
+
+        if(lectures.size() == 0 ){
+            lectures_recyclerView.setVisibility(View.GONE);
+            noLecture.setVisibility(View.VISIBLE);
+        }else {
+            lectures_recyclerView.setVisibility(View.VISIBLE);
+            noLecture.setVisibility(View.GONE);
+        }
+
     }
 
     private void init(LayoutInflater inflater, ViewGroup container){
@@ -140,6 +157,9 @@ public class MyLectureFragment extends Fragment {
         List schools = lectureSystem.getSchools();
         School school = (School) schools.get(0);
         //lectures = school.getLectures();  //加载用户数据
+
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
+        noLecture = (TextView) view.findViewById(R.id.no_lecture_in_my_lecturelist);
 
         new Thread(new Runnable() {
             @Override
@@ -156,18 +176,38 @@ public class MyLectureFragment extends Fragment {
                         lectures_recyclerView.setAdapter(adapter);
                         lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
                         setFooterView(lectures_recyclerView);
+                        if(lectures.size() == 0 ) {
+                            lectures_recyclerView.setVisibility(View.GONE);
+                            noLecture.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
             }
         }).start();
 
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
 
-//        noLecture = (TextView) view.findViewById(R.id.no_lecture_in_my_lecturelist);
-//        if(lectures.size() == 0 ){
-//            swipeRefresh.setVisibility(View.GONE);
-//            noLecture.setVisibility(View.VISIBLE);
-//        }
+
+        //左上角头像框点击事件
+        slideMenu = (SlideMenu) getActivity().findViewById(R.id.slideMenu);
+        drawerToggleImageButton = (CircleImageView) view.findViewById(R.id.toggle_drawer_open_in_my_lecture);
+        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                slideMenu.switchMenu();
+            }
+        });
+
+        //右上角加号头像框点击事件
+        moreButton = (Button)  view.findViewById(R.id.more_in_my_lecture);
+        user = new User(PersonalInformation.id, PersonalInformation.name, PersonalInformation.password, PersonalInformation.sex, PersonalInformation.phoneNumber);
+        moreButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(getActivity(), user);
+                popWindow.showPopupWindow( view.findViewById(R.id.more_in_my_lecture));
+            }
+        });
+
 
 
         //设置rooter

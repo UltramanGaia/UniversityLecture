@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/my_information_in_nav"
+            android:id="@+id/my_information"
             android:icon="@mipmap/my_information"
             android:title="个人资料">
         </item>

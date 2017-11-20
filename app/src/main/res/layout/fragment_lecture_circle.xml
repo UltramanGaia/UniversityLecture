@@ -2,22 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.universitylecture.universitylecture.LectureCircleFragment">
 
+    <include layout="@layout/title_in_lecture_circle" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_layoyt_in_lecture_circle"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        >
+        android:layout_width="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_in_lecture_circle"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:scrollbarThumbVertical="@drawable/my_bar"
-            >
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_in_lecture_circle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:scrollbarThumbVertical="@drawable/my_bar" />
+            <!--<TextView-->
+                <!--android:id="@+id/textView3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:text="你还未发布过讲座圈"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textSize="18sp"-->
+                <!--/>-->
+        </LinearLayout>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

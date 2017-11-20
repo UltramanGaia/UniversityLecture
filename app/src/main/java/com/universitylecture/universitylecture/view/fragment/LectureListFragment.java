@@ -35,7 +35,9 @@ import com.universitylecture.universitylecture.adapter.GirdDropDownAdapter;
 import com.universitylecture.universitylecture.adapter.LectureAdapter;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.School;
+import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.HttpUtilJSON;
 import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
@@ -48,6 +50,7 @@ import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
 import com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView;
 import com.universitylecture.universitylecture.view.tool.DropDownMenu;
 import com.universitylecture.universitylecture.view.tool.LectureSystem;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
 
 import java.util.ArrayList;
@@ -55,6 +58,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 //import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 
@@ -97,6 +101,9 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
 
     private RollViewPagerPlus mRollViewPager;
     private SlideMenu slideMenu;
+    private CircleImageView drawerToggleImageButton;
+    private Button moreButton;
+    private User user;
 
     //toolbar透明渐变
     private TranslucentScrollView scrollView;
@@ -202,6 +209,7 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
             }
         });
 
+
         button5 = (Button) view.findViewById(R.id.button5);
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,111 +271,25 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
     }
 
     private void initView() {
-//        mDropDownMenu = (DropDownMenu) view.findViewById(R.id.dropDownMenu);
-//
-//        lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_lecture_list_recyclerview);
-//        layoutManager = new LinearLayoutManager(MyApplication.getContext());
-//        lectures_recyclerView.setLayoutManager(layoutManager);
-//
-//        //init city menu
-//        final ListView cityView = new ListView(MyApplication.getContext());
-//        cityAdapter = new GirdDropDownAdapter(MyApplication.getContext(), Arrays.asList(citys));
-//        cityView.setDividerHeight(0);
-//        cityView.setAdapter(cityAdapter);
-//
-//        //init time menu
-//        final ListView timeView = new ListView(MyApplication.getContext());
-//        timeView.setDividerHeight(0);
-//        timeAdapter = new ListDropDownAdapter(MyApplication.getContext(), Arrays.asList(time));
-//        timeView.setAdapter(timeAdapter);
-//
-//        //init institude
-//        final View institudeView = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.custom_layout, null);
-//        GridView constellation = ButterKnife.findById(institudeView, R.id.constellation);
-//        institudeAdapter = new ConstellationAdapter(MyApplication.getContext(), Arrays.asList(institude));
-//        constellation.setAdapter(institudeAdapter);
-//        TextView ok = ButterKnife.findById(institudeView, R.id.ok);
-//        ok.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mDropDownMenu.setTabText(constellationPosition == 0 ? headers[2] : institude[constellationPosition]);
-//                selectedInstitude = constellationPosition == 0 ? "不限" : institude[constellationPosition];
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//
-//                        //select lectures
-//                        /*Lecture lecture = new Lecture(selectedTime,selectedInstitude,5);
-//                        final ArrayList<Lecture> lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));*/
-//
-//                        lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture(selectedTime,selectedInstitude,String.valueOf(0)),"selectLecture"));
-//
-//
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                //配置recylerview三部曲
-//
-//                                adapter.setmLectureLIst(lectures);
-//                                lectures_recyclerView.setAdapter(adapter);
-//                                lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-//
-//                                //设置rooter
-//                                setFooterView(lectures_recyclerView);
-//                                //setHeaderView(lectures_recyclerView);
-//                                mDropDownMenu.closeMenu();
-//                            }
-//                        });
-//                    }
-//                }).start();
-//
-//            }
-//        });
-//
-//        //init popupViews
-//        popupViews.add(cityView);
-//        popupViews.add(timeView);
-//        popupViews.add(institudeView);
-//
-//        //add item click event
-//        cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                cityAdapter.setCheckItem(position);
-//                mDropDownMenu.setTabText(position == 0 ? headers[0] : citys[position]);
-//                selectedCity = position == 0 ? "" : citys[position];
-//                mDropDownMenu.closeMenu();
-//            }
-//        });
-//
-//        timeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                timeAdapter.setCheckItem(position);
-//                mDropDownMenu.setTabText(position == 0 ? headers[1] : time[position]);
-//                selectedTime = position == 0 ? "" : time[position];
-//                mDropDownMenu.closeMenu();
-//            }
-//        });
-//
-//
-//        constellation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                institudeAdapter.setCheckItem(position);
-//                constellationPosition = position;
-//            }
-//        });
-//
-//        //init context view
-//        TextView content = new TextView(MyApplication.getContext());
-//        content.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0));
-//
-//        //init dropdownview
-//        mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, content);
+       //左上角头像框点击事件
+        drawerToggleImageButton = (CircleImageView) view.findViewById(R.id.toggle_drawer_open_in_home);
+        drawerToggleImageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                slideMenu.switchMenu();
+            }
+        });
 
+        //右上角加号头像框点击事件
+        moreButton = (Button)  view.findViewById(R.id.more_in_home);
+        user = new User(PersonalInformation.id,PersonalInformation.name,PersonalInformation.password,PersonalInformation.sex,PersonalInformation.phoneNumber);
+        moreButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                PopWindowAboutMoreButton popWindow = new PopWindowAboutMoreButton(getActivity(), user);
+                popWindow.showPopupWindow( view.findViewById(R.id.more_in_home));
+            }
+        });
         //设置toolbar透明渐变
         scrollView = (TranslucentScrollView) view.findViewById(R.id.scrollview);
         scrollView.setOnScrollChangedListener(this);
@@ -376,157 +298,6 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
         initMeasure();
     }
 
-//    //本方法余下为从mylecture部分copy过来
-//    private void initData(){
-//        LectureSystem lectureSystem = LectureSystem.getLectureSystem();
-//        List schools = lectureSystem.getSchools();
-//        School school = (School) schools.get(0);
-//        //lectures = school.getLectures();
-//
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                /*final Lecture lecture = new Lecture("10","不限",5);
-//                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-//                */
-//
-//                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
-//
-//                Log.e("lecture size in thread", "initData: " + lectures.size());
-//
-//
-//                getActivity().runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                        //配置recylerview三部曲
-//
-//                        adapter = new LectureAdapter(lectures,getActivity(),"set");
-//                        lectures_recyclerView.setAdapter(adapter);
-//                       /* //设置分隔线
-////                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-//                        lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
-//                        lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
-//                       */
-//                        //设置rooter
-//                        setFooterView(lectures_recyclerView);
-//                        //setHeaderView(lectures_recyclerView);
-//                    }
-//                });
-//
-//            }
-//        }).start();
-//
-//        Log.e("lecture size out thread", "initData: " + lectures.size());
-//
-//    }
-
-//    public  void setUpOnScrollRefresh() {
-//        lectures_recyclerView.addOnScrollListener(new UpOnScrollListener(layoutManager) {
-//            @Override
-//            public void onLoadMore(int currentPage) {
-//                final int sizeBeforeRefresh = adapter.getmLectureLIst().size();
-//                //此处设置更新逻辑
-//
-//                //以下为设置底部栏的配件
-//                footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.VISIBLE);
-//                footer.findViewById(R.id.progressBarInRooter).setVisibility(View.VISIBLE);
-//                footer.findViewById(R.id.load_more).setVisibility(View.VISIBLE);
-//                footer.findViewById(R.id.load_complete).setVisibility(View.GONE);
-//
-//
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        //更新逻辑写在此处
-//                        ArrayList<Lecture> lectureArrayList = adapter.getmLectureLIst();
-////                        final Lecture lecture = new Lecture("10","不限",lectureArrayList.size() + 5);
-////                        lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-//
-//                        lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(++page)),"selectLecture"));
-//
-//                        if (lectures.size() > 0)
-//                            lectureArrayList.addAll(lectureArrayList.size(),lectures);
-//                        adapter.setmLectureLIst(lectureArrayList);
-//
-//
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-////                                int sizeAfterRefresh = adapter.getmLectureLIst().size();
-////
-////                                if( sizeBeforeRefresh != sizeAfterRefresh ){
-////                                    footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
-////                                }else {
-////                                    footer.findViewById(R.id.progressBarInRooter).setVisibility(View.GONE);
-////                                    footer.findViewById(R.id.load_more).setVisibility(View.GONE);
-////                                    footer.findViewById(R.id.load_complete).setVisibility(View.VISIBLE);
-////                                }
-//
-//                                footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
-//                                adapter.notifyDataSetChanged();
-//                            }
-//                        });
-//                    }
-//                }).start();
-//
-//            }
-//        });
-//
-//    }
-//
-//    private void setSwipeRefreshLayout(){
-//        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt_in_lecture_list);
-//        swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
-//        //按键逻辑
-//        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                refresh();
-//            }
-//        });
-//    }
-//
-//    //下拉更新逻辑
-//    public void refresh(){
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                //更新逻辑写在此处
-////                final Lecture lecture = new Lecture("10","不限",5);
-////                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
-//
-//                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
-//                adapter.setmLectureLIst(lectures);
-//
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        adapter.notifyDataSetChanged();
-//                        swipeRefresh.setRefreshing(false);
-//                    }
-//                });
-//
-////                getActivity().runOnUiThread(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
-////                    }
-////                });
-//            }
-//        }).start();
-//    }
-//
-//    private void addLecture(){
-//        lectures.add( lectures.get(1) );
-//    }
-
-//    private void setFooterView(RecyclerView recyclerView){
-//        footer = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.refresh_rooter_in_lecture_list, recyclerView, false);
-//        footer.findViewById(R.id.footer_layout_in_lecture_list).setVisibility(View.GONE);
-//        adapter.setFooterView(footer);
-//    }
 
     //首页图片轮播
     private class TestNormalAdapter extends DynamicPagerAdapter {
