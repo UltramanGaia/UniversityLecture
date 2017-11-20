@@ -17,6 +17,7 @@ import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.view.MainActivity;
+import com.universitylecture.universitylecture.view.functionActivity.AskQuestionActivity;
 import com.universitylecture.universitylecture.view.functionActivity.MyTwoDCodeActivity;
 import com.universitylecture.universitylecture.view.sidebar.LaunchActivity;
 import com.universitylecture.universitylecture.view.tool.PersonalInformation;
@@ -31,6 +32,7 @@ public class PopWindowAboutMoreButton extends PopupWindow{
     private User user;
     private Button myTwoDCode;
     private Button publishLecture;
+    private Button askQuestion;
 
     public PopWindowAboutMoreButton(final Activity context, User user ){
         this.user = user;
@@ -51,11 +53,15 @@ public class PopWindowAboutMoreButton extends PopupWindow{
         drawable2.setBounds(0,0,60,60);
         publishLecture.setCompoundDrawables(drawable2,null,null,null);
 
+        askQuestion = (Button) conentView.findViewById(R.id.askQuestion);
+        Drawable drawable3 = conentView.getResources().getDrawable(R.drawable.question);
+        drawable3.setBounds(0,0,60,60);
+        askQuestion.setCompoundDrawables(drawable3,null,null,null);
 
         // 设置SelectPicPopupWindow的View
         this.setContentView(conentView);
         // 设置SelectPicPopupWindow弹出窗体的宽
-        this.setWidth(w / 2 - 80);
+        this.setWidth(w / 2 - 100);
         // 设置SelectPicPopupWindow弹出窗体的高
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         // 设置SelectPicPopupWindow弹出窗体可点击
@@ -124,6 +130,16 @@ public class PopWindowAboutMoreButton extends PopupWindow{
                     }
                 }).start();
 
+                PopWindowAboutMoreButton.this.dismiss();
+            }
+        });
+
+        conentView.findViewById(R.id.askQuestion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext , AskQuestionActivity.class);
+                intent.putExtra("user_id",inner_user.getId() + "");
+                ((Activity) mContext).startActivity(intent);
                 PopWindowAboutMoreButton.this.dismiss();
             }
         });

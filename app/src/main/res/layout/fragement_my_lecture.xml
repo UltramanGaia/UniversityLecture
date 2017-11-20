@@ -12,21 +12,26 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/lectures_of_myLectures_recyclerview"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/lectures_of_myLectures_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:scrollbarThumbVertical="@drawable/my_bar" />
+            <TextView
+            android:id = "@+id/no_lecture_in_my_lecturelist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:scrollbarThumbVertical="@drawable/my_bar"
-            >
-        </android.support.v7.widget.RecyclerView>
+            android:text="你还没有听过讲座哦"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:visibility="gone"/>
+        </LinearLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
-    <TextView
-        android:id = "@+id/no_lecture_in_my_lecturelist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="你还没有听过讲座哦"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:visibility="gone"/>
+
 </LinearLayout>

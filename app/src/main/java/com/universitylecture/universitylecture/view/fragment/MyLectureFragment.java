@@ -10,9 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.adapter.LectureAdapterTwo;
+import com.universitylecture.universitylecture.adapter.LectureAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.School;
@@ -36,9 +37,10 @@ public class MyLectureFragment extends Fragment {
     private ArrayList<Lecture> lectures = new ArrayList<>();
     private View view;
     private SwipeRefreshLayout swipeRefresh;
-    private LectureAdapterTwo adapter;
+    private LectureAdapter adapter;
     private RecyclerView lectures_recyclerView;
     private LinearLayoutManager layoutManager;
+    private TextView noLecture;
 
     private CircleImageView drawerToggleImageButton;
     private SlideMenu slideMenu;
@@ -96,7 +98,6 @@ public class MyLectureFragment extends Fragment {
     }
 
     private void setSwipeRefreshLayout(){
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
         swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         //按键逻辑
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -110,6 +111,9 @@ public class MyLectureFragment extends Fragment {
 
     //下拉更新逻辑
     public void refresh(){
+
+        noLecture.setVisibility(View.GONE);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -129,12 +133,20 @@ public class MyLectureFragment extends Fragment {
                 });
             }
         }).start();
+
+        if(lectures.size() == 0 ){
+            lectures_recyclerView.setVisibility(View.GONE);
+            noLecture.setVisibility(View.VISIBLE);
+        }else {
+            lectures_recyclerView.setVisibility(View.VISIBLE);
+            noLecture.setVisibility(View.GONE);
+        }
     }
 
     private void init(LayoutInflater inflater, ViewGroup container){
 
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragement_my_lecture_recycleview, container, false);
+        view = inflater.inflate(R.layout.fragement_my_lecture, container, false);
         //配置recylerview三部曲
         lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_myLectures_recyclerview);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());
@@ -143,6 +155,9 @@ public class MyLectureFragment extends Fragment {
         List schools = lectureSystem.getSchools();
         School school = (School) schools.get(0);
         //lectures = school.getLectures();  //加载用户数据
+
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
+        noLecture = (TextView) view.findViewById(R.id.no_lecture_in_my_lecturelist);
 
         new Thread(new Runnable() {
             @Override
@@ -155,10 +170,14 @@ public class MyLectureFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter = new LectureAdapterTwo(lectures,getActivity(),"unset");
+                        adapter = new LectureAdapter(lectures,getActivity(),"unset");
                         lectures_recyclerView.setAdapter(adapter);
                         lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
                         setFooterView(lectures_recyclerView);
+                        if(lectures.size() == 0 ) {
+                            lectures_recyclerView.setVisibility(View.GONE);
+                            noLecture.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
             }
@@ -185,6 +204,7 @@ public class MyLectureFragment extends Fragment {
                 popWindow.showPopupWindow( view.findViewById(R.id.more_in_my_lecture));
             }
         });
+
 
         //设置rooter
 
