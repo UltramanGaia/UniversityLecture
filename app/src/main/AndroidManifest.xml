@@ -151,6 +151,9 @@
         <activity
             android:name=".view.functionActivity.LectureListActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.searchView.SearchAnswerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
