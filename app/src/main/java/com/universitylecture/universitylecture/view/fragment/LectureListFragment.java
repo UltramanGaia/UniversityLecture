@@ -67,38 +67,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class LectureListFragment extends Fragment implements TranslucentScrollView.OnScrollChangedListener{
     private View view;
 
-
-
-//    public static DropDownMenu mDropDownMenu;
-//    private String headers[] = {"城市", "时间","学院"};
-//    private List<View> popupViews = new ArrayList<>();
-//
-//    private GirdDropDownAdapter cityAdapter;
-//    private ListDropDownAdapter timeAdapter;
-//    private ConstellationAdapter institudeAdapter;
-//
-//    private String citys[] = {"不限", "武汉", "北京", "上海", "成都", "广州", "深圳", "重庆", "天津", "西安", "南京", "杭州"};
-//    private String time[] = { "不限" , "一天之内" , "三天之内" , "五天之内" , "七天之内" , "七天之后" };
-//    private String institude[] = { "不限" , "计算机学院" , "软件学院" , "数学学院" , "外国语学院" , "体育学院" , "物理学院" , "艺术学院"
-//            , "机械学院" , "建筑学院" , "电子与信息学院" , "材料学院" , "轻工学院" , "经贸学院" , "自动化学院"
-//            , "电力学院" , "环境学院" , "工商管理学院" , "公管学院" , "马克思主义学院" , "经贸学院" , "外国语学院"
-//            , "法学院" , "新传学院" , "医学院" };
-//
-//    private int constellationPosition = 0;
-//
-//    private String selectedCity;
-//    private String selectedTime;
-//    private String selectedInstitude;
-//    private Integer page = 0;
-//
-//
-//    private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
-//    private SwipeRefreshLayout swipeRefresh;
-//    private LectureAdapter adapter;
-//    private RecyclerView lectures_recyclerView;
-//    private LinearLayoutManager layoutManager;
-//    View footer;
-
     private RollViewPagerPlus mRollViewPager;
     private SlideMenu slideMenu;
     private CircleImageView drawerToggleImageButton;
@@ -119,13 +87,18 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
     public Button button6,button7,button8;
 
     public LinearLayout linearLayout1,linearLayout2;
+
+    //两个recyclerView
+    public RecyclerView nowOpening,nearHot;
+    private LectureAdapter adapter1,adapter2;
+    private LinearLayoutManager layoutManager1,layoutManager2;
+    private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.e("TAG", "onCreateView: ");
         view = inflater.inflate(R.layout.fragment_lecture_list, container, false);
         // Inflate the layout for this fragment
-//        mDropDownMenu = (DropDownMenu) view.findViewById(R.id.dropDownMenu);
 
         searchView = (FrameLayout) view.findViewById(R.id.search_view);
         searchView.setOnClickListener(new View.OnClickListener() {
@@ -138,11 +111,7 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
 //        ButterKnife.inject(this,view);
         initView();
         initLinearLayout();
-//        initData();//初始化列表数据
-//
-//
-//        setSwipeRefreshLayout();//设置下拉刷新的逻辑
-//        setUpOnScrollRefresh();//设置上拉刷新的逻辑
+        initRecyclerView();
 
         //图片轮播
         mRollViewPager = (RollViewPagerPlus) view.findViewById(R.id.roll_view_pager);
@@ -168,6 +137,51 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
         return view;
     }
 
+    private void initRecyclerView(){
+        nowOpening = (RecyclerView) view.findViewById(R.id.opening_recycler_view);
+        layoutManager1 = new LinearLayoutManager(MyApplication.getContext());
+        nowOpening.setLayoutManager(layoutManager1);
+
+        nearHot = (RecyclerView) view.findViewById(R.id.near_hot_recycler_view);
+        layoutManager2 = new LinearLayoutManager(MyApplication.getContext());
+        nearHot.setLayoutManager(layoutManager2);
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                /*final Lecture lecture = new Lecture("10","不限",5);
+                lectures = (ArrayList<Lecture>) (HttpUtil.doPost(lecture,"SelectLectureServlet"));
+                */
+
+                lectures = JSON2ObjectUtil.getLectures(HttpUtilJSON.doPost(Object2JSONUtil.selectLecture("五天之内","不限",String.valueOf(0)),"selectLecture"));
+
+                Log.e("lecture size in thread", "initData: " + lectures.size());
+
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //配置recylerview三部曲
+
+                        adapter1 = new LectureAdapter(lectures,getActivity(),"set");
+                        nowOpening.setAdapter(adapter1);
+
+                        adapter2 = new LectureAdapter(lectures,getActivity(),"set");
+                        nearHot.setAdapter(adapter2);
+                       /* //设置分隔线
+//                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+                        lectures_recyclerView.addItemDecoration(new SpaceItemDecoration(30));
+                        lectures_recyclerView.addItemDecoration(new SimpleDividerItemDecoration(MyApplication.getContext()));
+                       */
+                        //设置rooter
+                        //setHeaderView(lectures_recyclerView);
+                    }
+                });
+
+            }
+        }).start();
+    }
     private void initLinearLayout(){
         button1 = (Button) view.findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
