@@ -8,15 +8,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.adapter.TopicAdapter;
+import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.Topic;
+import com.universitylecture.universitylecture.pojo.User;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 //讲座圈界面
 public class LectureCircleFragment extends Fragment {

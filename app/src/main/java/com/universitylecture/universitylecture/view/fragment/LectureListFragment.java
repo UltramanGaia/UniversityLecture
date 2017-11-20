@@ -291,7 +291,7 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
             }
         });
         //设置toolbar透明渐变
-        scrollView = (TranslucentScrollView) view.findViewById(R.id.scrollview);
+        scrollView = (TranslucentScrollView) view.findViewById(R.id.home_scrollview);
         scrollView.setOnScrollChangedListener(this);
         toolbar = (Toolbar) view.findViewById(R.id.title_in_home);
         toolbar.setBackgroundColor(Color.argb(0, 18, 176, 242));
