@@ -3,7 +3,13 @@
     android:id="@+id/lecture_content_relativeLayout"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/subbackground">
+    android:background="@color/transparent">
+
+    <ImageView
+        android:id="@+id/lecture_content_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
 
     <ImageView
         android:layout_width="match_parent"

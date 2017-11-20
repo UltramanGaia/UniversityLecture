@@ -6,8 +6,9 @@
 
     <ImageView
         android:id="@+id/lecture_image"
-        android:layout_width="96.6dp"
-        android:layout_height="131.1dp"
+        android:layout_width="96dp"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
         android:layout_gravity="center"
         android:layout_margin="10dp" />
 

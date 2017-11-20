@@ -4,9 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +28,9 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.PopWindowInLectureContent;
@@ -36,6 +44,15 @@ import com.universitylecture.universitylecture.view.tool.BaseActivity;
 import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.util.OutputMessage;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 import static com.universitylecture.universitylecture.util.MyApplication.getContext;
@@ -75,39 +92,30 @@ public class LectureContentActivity extends BaseActivity implements TranslucentS
     private RelativeLayout lectureContentLayout;
     private Bitmap sampleImg;
     private Bitmap gaussianBlurImg;
-
-    /**
-     * 用于控制NavigationBar的隐藏和显示
-     */
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            hideSystemUI();
-        }
-    }
-
-    private void showSystemUI() {
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-    }
-
-    private void hideSystemUI() {
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                      | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-    }
+    private ImageView lectureContentBackground;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(FEATURE_NO_TITLE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN//状态栏不会被隐藏但activity布局会扩展到状态栏所在位置
+                    // | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION//导航栏不会被隐藏但activity布局会扩展到导航栏所在位置
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //window.setNavigationBarColor(Color.TRANSPARENT);
+        }
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            //半透明导航栏
+            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            //半透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
         setContentView(R.layout.activity_lecture_content);
 
         lecture = (Lecture) getIntent().getSerializableExtra("lecture_item");
@@ -191,15 +199,28 @@ public class LectureContentActivity extends BaseActivity implements TranslucentS
 
         Glide.with(getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).into(lectureImage);
 
+
         //设置背景高斯模糊
-        lectureContentLayout = (RelativeLayout) findViewById(R.id.lecture_content_relativeLayout);
-        sampleImg = BitmapFactory.decodeResource(getResources(), R.drawable.xinshengdai); // 获取原图
-        sampleImg = scaleBitmap(sampleImg,0.7);
+        //lectureContentLayout = (RelativeLayout) findViewById(R.id.lecture_content_relativeLayout);
+        // sampleImg = Glide.with(getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).asBitmap(); // 获取原图
+
+        lectureContentBackground = (ImageView)  findViewById(R.id.lecture_content_background);
+
+        Glide.with(getContext())
+                .load(Constant.IMAGE_URI + lecture.getImagePath())
+               //.placeholder(R.drawable.bg_login)
+                .error(R.drawable.bg_login)
+                .bitmapTransform(new BlurTransformation(this, 14,3))
+                .crossFade()
+                .into(lectureContentBackground);
+
+        /*sampleImg = scaleBitmap(sampleImg,0.7);
         gaussianBlurImg = blur(sampleImg, 25f);
         gaussianBlurImg = blur(gaussianBlurImg, 25f);
         gaussianBlurImg = blur(gaussianBlurImg, 25f);
         gaussianBlurImg = blur(gaussianBlurImg, 25f);
-        lectureContentLayout.setBackground(new BitmapDrawable(gaussianBlurImg));
+        lectureContentLayout.setBackground(new BitmapDrawable(gaussianBlurImg));*/
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -307,4 +328,5 @@ public class LectureContentActivity extends BaseActivity implements TranslucentS
 
         return result;
     }
+
 }

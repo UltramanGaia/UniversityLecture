@@ -20,18 +20,19 @@
             android:layout_margin="10dp"
             android:src="@drawable/long_head_image" />
 
-        <FrameLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:text="讲座圈"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </FrameLayout>
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/more_in_lecture_circle"

@@ -47,6 +47,10 @@ dependencies {
     compile 'com.githang:status-bar-compat:latest.integration'
     compile 'com.daidingkang:flowlayouttag:1.0.0'
     testCompile 'junit:junit:4.12'
+    //加载图片
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //高斯模糊
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
 }
 
 repositories {

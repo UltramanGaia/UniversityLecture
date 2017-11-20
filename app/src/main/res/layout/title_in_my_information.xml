@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_height="wrap_content"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:weightSum="1">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+    app:contentInsetStart="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -43,7 +40,7 @@
             android:id="@+id/save_information"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
             android:background="@android:color/transparent"
             android:text="保存"
@@ -53,4 +50,4 @@
             android:textSize="18sp"
             android:visibility="invisible" />
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.Toolbar>

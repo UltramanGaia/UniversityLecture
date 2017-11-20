@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    app:contentInsetStart="0dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#00bfef"
+    android:layout_marginTop="20dp"
     android:orientation="horizontal"
     android:weightSum="1">
 
     <Button
         android:id="@+id/go_back_in_ask_question_title"
-        android:layout_width="63dp"
+        android:layout_width="66dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:layout_weight="1.04"
-        android:background="@drawable/home_back"
-        android:text="   返回"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/home_back"
+        android:text="返回"
+        android:textAlignment="textStart"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/title_in_title_bar"
         android:layout_width="193dp"
         android:layout_height="match_parent"
+        android:layout_weight="0.33"
         android:gravity="center"
-        android:text="提问"
+        android:text="我要提问"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-    <Space
-        android:layout_width="20dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.02" />
-
     <Button
         android:id="@+id/save_information_in_ask_question_title"
-        android:layout_width="42dp"
+        android:layout_width="66dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_vertical"
         android:layout_margin="8dp"
-        android:background="@drawable/save"
+        android:background="@android:color/transparent"
+        android:text="提交"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
-        />
-
+        android:textSize="18sp" />
 </LinearLayout>
+</android.support.v7.widget.Toolbar>
