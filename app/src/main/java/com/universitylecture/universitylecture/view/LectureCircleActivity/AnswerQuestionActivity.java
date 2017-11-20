@@ -1,19 +1,17 @@
 package com.universitylecture.universitylecture.view.LectureCircleActivity;
 
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.pojo.Answer;
 import com.universitylecture.universitylecture.pojo.Comment;
+import com.universitylecture.universitylecture.pojo.Topic;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
 import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 
 import static android.view.Window.FEATURE_NO_TITLE;
@@ -23,18 +21,19 @@ import static android.view.Window.FEATURE_NO_TITLE;
  */
 
 public class AnswerQuestionActivity extends BaseActivity {
-    private Answer answer;
+    private Comment comment;
 
     private EditText editText;
     private Button goback;
     private Button submit;
 
+    private Topic topic;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_answer_question);
 
-//        comment = (Comment) getIntent().getSerializableExtra("comment_item");
+        topic = (Topic) getIntent().getSerializableExtra("topic_item");
         initView();//初始化view
     }
 
@@ -58,7 +57,8 @@ public class AnswerQuestionActivity extends BaseActivity {
                 long time=System.currentTimeMillis();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String t=format.format(new Date(time)).split(" ")[0];
-                answer = new Answer(answerContent, PersonalInformation.id,PersonalInformation.name,t);
+                String topic_id = getIntent().getStringExtra("topic_id");
+                comment = new Comment(answerContent, Integer.parseInt(topic_id) ,PersonalInformation.id,PersonalInformation.name,t);
 
 
                 //上传数据到服务器的数据写在这里

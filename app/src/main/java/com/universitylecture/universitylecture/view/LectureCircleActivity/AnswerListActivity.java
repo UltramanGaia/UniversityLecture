@@ -12,15 +12,16 @@ import android.widget.TextView;
 
 import com.lcodecore.extextview.ExpandTextView;
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.adapter.AnswerAdapter;
 import com.universitylecture.universitylecture.adapter.CommentAdapter;
-import com.universitylecture.universitylecture.pojo.Answer;
 import com.universitylecture.universitylecture.pojo.Comment;
 import com.universitylecture.universitylecture.pojo.Lecture;
+import com.universitylecture.universitylecture.pojo.Topic;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
-import com.universitylecture.universitylecture.view.functionActivity.LectureContentActivity;
-import com.universitylecture.universitylecture.view.map.NaviBaseWalkActivity;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
+import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 
 //评论回复页面
 public class AnswerListActivity extends BaseActivity {
-    private Comment comment;
+    private Topic topic;
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private View footer;
@@ -47,9 +48,9 @@ public class AnswerListActivity extends BaseActivity {
     private TextView answerQuestion;
 
     //recyclerView部分
-    private ArrayList<Answer> answers = new ArrayList<>();
+    private ArrayList<Comment> answers = new ArrayList<>();
     private RecyclerView answerRecyclerView;
-    private AnswerAdapter adapter;
+    private CommentAdapter adapter;
     private LinearLayoutManager layoutManager;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +58,18 @@ public class AnswerListActivity extends BaseActivity {
         supportRequestWindowFeature(FEATURE_NO_TITLE);
         setContentView(R.layout.activity_answer_list);
 
-        comment = (Comment) getIntent().getSerializableExtra("comment_item");
+        topic = (Topic) getIntent().getSerializableExtra("topic_item");
         initView();//初始化view
         initButton();//初始化按键
     }
 
     private void initView(){
-        topicOfQuestion = (TextView) findViewById(R.id.topic_of_question);
         titleOfQuestion = (TextView) findViewById(R.id.title_of_question);
         content = (ExpandTextView) findViewById(R.id.content_of_question);
 
-        topicOfQuestion.setText(comment.getTopicLecture());
-        titleOfQuestion.setText(comment.getQuestion());
-        content.setText(comment.getDescription());
+//        topicOfQuestion.setText(comment.getTopicLecture());
+        titleOfQuestion.setText(topic.getTitle());
+        content.setText(topic.getDescription());
 
         //recyclerView三步曲
         answerRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_in_question_answer_list);
@@ -77,17 +77,17 @@ public class AnswerListActivity extends BaseActivity {
         answerRecyclerView.setLayoutManager(layoutManager);
 
         //初始化数据，这里我使用了样例数据
-        Answer answer = new Answer("很好看",001,"阮子琦","2017-11-11");
+        Comment comment = new Comment(01,"很好看",01,001,"阮子琦","2017-11-11 10:00:00");
         for(int i = 0 ; i < 10 ; i++){
-            answers.add(answer);
+            answers.add(comment);
         }
 
         //设置adapter,对数据进行填充
-        adapter = new AnswerAdapter(answers);
+        adapter = new CommentAdapter(answers);
         answerRecyclerView.setAdapter(adapter);
         setFooterView(answerRecyclerView);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layoyt_in_question_answer_list);
+//        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layoyt_in_question_answer_list);
 
 
     }
@@ -106,6 +106,7 @@ public class AnswerListActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AnswerListActivity.this,AnswerQuestionActivity.class);
+                intent.putExtra("topic_id",topic.getID());
                 startActivity(intent);
             }
         });

@@ -12,20 +12,6 @@
         >
 
         <EditText
-            android:id="@+id/topicLectureOfQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="5dip"
-            android:background="@drawable/bg_edittext_selector"
-            android:gravity="center_vertical"
-            android:padding="2.5dip"
-            android:singleLine="true"
-            android:textColorHint="#AAAAAA"
-            android:textSize="18dip"
-            android:hint="填入你的话题"
-            />
-
-        <EditText
             android:id="@+id/questionOfQuestion"
             android:layout_width="match_parent"
             android:layout_height="50dp"

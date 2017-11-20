@@ -14,13 +14,6 @@
         >
 
         <TextView
-            android:id="@+id/topic_of_question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"/>
-
-        <TextView
             android:id="@+id/title_of_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,20 +31,16 @@
             app:maxCollapsedLines="1"/>
     </LinearLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_layoyt_in_question_answer_list"
-        android:layout_height="match_parent"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_in_question_answer_list"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@drawable/my_bar"
+        android:visibility="visible"
         >
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_in_question_answer_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:scrollbarThumbVertical="@drawable/my_bar"
-            android:visibility="visible"
-            >
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>

@@ -1,51 +1,36 @@
 package com.universitylecture.universitylecture.adapter;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.universitylecture.universitylecture.R;
 import com.universitylecture.universitylecture.pojo.Comment;
-import com.universitylecture.universitylecture.pojo.Lecture;
-import com.universitylecture.universitylecture.util.Constant;
-import com.universitylecture.universitylecture.util.MyApplication;
-import com.universitylecture.universitylecture.view.LectureCircleActivity.AnswerListActivity;
-import com.universitylecture.universitylecture.view.functionActivity.LectureContentActivity;
 
 import java.util.ArrayList;
 
 /**
- * Created by fengqingyundan on 2017/10/8.
+ * Created by fengqingyundan on 2017/11/15.
  */
 
-//讲座圈页面中评论列表的adapter
 public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static final int TYPE_FOOTER = 0;  //说明是带有Footer的
     public static final int TYPE_NORMAL = 1;  //说明是不footer的
     public static final int TYPE_HEADER = 2;
-    
+
     //extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-    private Context mContext;//获取活动上下文，为点击事件服务
-    private ArrayList<Comment> mCommentList = new ArrayList<>();
+//    private Context mContext;//获取活动上下文，为点击事件服务
+    private ArrayList<Comment> mAnswerList = new ArrayList<>();
     private View mFooterView;
     private View mHeaderView;
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        LinearLayout comment_item;
-        TextView topicLecture;
-        TextView question;
-        TextView description;
-        TextView asker;
+        TextView nameOfAnswer;
+        TextView answerContent;
+        TextView answerTime;
 
         public ViewHolder(View view){
             super(view);
@@ -54,17 +39,15 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 return;
             }
 
-            comment_item = (LinearLayout) view.findViewById(R.id.comment_item_in_lecture_circle);
-            topicLecture = (TextView) view.findViewById(R.id.topicLecture_of_comment);
-            question = (TextView) view.findViewById(R.id.question_of_comment);
-            description = (TextView) view.findViewById(R.id.description_of_comment);
-            asker = (TextView) view.findViewById(R.id.asker_of_comment);
+            nameOfAnswer = (TextView) view.findViewById(R.id.name_of_answerer);
+            answerContent = (TextView) view.findViewById(R.id.content_of_answer);
+            answerTime = (TextView) view.findViewById(R.id.time_of_answer);
         }
     }
 
-    public CommentAdapter(ArrayList<Comment> commentList , Context context){
-        mContext = context;
-        mCommentList = commentList;
+    public CommentAdapter(ArrayList<Comment> answerList ){
+//        mContext = context;
+        mAnswerList = answerList;
     }
 
     public View getHeaderView() {
@@ -87,7 +70,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     //创建View，如果是FooterView，直接在Holder中返回
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public CommentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         if( mFooterView != null && viewType == TYPE_FOOTER){
             return new CommentAdapter.ViewHolder(mFooterView);
         }
@@ -95,17 +78,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_item,parent,false);
 
         //设置每一项的点击事件
-        final ViewHolder holder = new ViewHolder(view);
-        holder.comment_item.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                int position = holder.getAdapterPosition();
-                Comment comment = mCommentList.get(position);
-//                Toast.makeText(mContext , "点击了一下" , Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext , AnswerListActivity.class);
-                intent.putExtra("comment_item",comment);
-                mContext.startActivity(intent);
-            }
-        });
+        final CommentAdapter.ViewHolder holder = new CommentAdapter.ViewHolder(view);
         return holder;
 
     }
@@ -114,14 +87,12 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder,int position){
         if(getItemViewType(position) == TYPE_NORMAL){
             if(holder instanceof CommentAdapter.ViewHolder) {
-                Comment comment = mCommentList.get(position);
+                Comment comment = mAnswerList.get(position);
                 Log.e("position", "onBindViewHolder: " + position);
 
-                ((ViewHolder)holder).topicLecture.setText(comment.getTopicLecture());
-
-                ((ViewHolder)holder).question.setText(comment.getQuestion());
-                ((ViewHolder)holder).description.setText(comment.getDescription());
-                ((ViewHolder)holder).asker.setText(comment.getAsker());
+                ((ViewHolder)holder).nameOfAnswer.setText(comment.getUsername());
+                ((ViewHolder)holder).answerContent.setText(comment.getContent());
+                ((ViewHolder)holder).answerTime.setText(comment.getTime());
                 return;
             }
             return;
@@ -151,17 +122,17 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         //return mCommentList.size();
 
         if( mFooterView == null){
-            return mCommentList.size();
+            return mAnswerList.size();
         }else {
-            return mCommentList.size() + 1;
+            return mAnswerList.size() + 1;
         }
     }
 
-    public void setmCommentList(ArrayList<Comment> comments) {
-        mCommentList = comments;
+    public void setmAnswerList(ArrayList<Comment> answers) {
+        mAnswerList = answers;
     }
 
     public ArrayList<Comment> getmLectureLIst() {
-        return mCommentList;
+        return mAnswerList;
     }
 }

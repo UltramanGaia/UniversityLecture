@@ -119,13 +119,13 @@ public class MyLectureFragment extends Fragment {
             }
         }).start();
 
-        if(lectures.size() == 0 ){
-            swipeRefresh.setVisibility(View.GONE);
-            noLecture.setVisibility(View.VISIBLE);
-        }else {
-            swipeRefresh.setVisibility(View.VISIBLE);
-            noLecture.setVisibility(View.GONE);
-        }
+//        if(lectures.size() == 0 ){
+//            swipeRefresh.setVisibility(View.GONE);
+//            noLecture.setVisibility(View.VISIBLE);
+//        }else {
+//            swipeRefresh.setVisibility(View.VISIBLE);
+//            noLecture.setVisibility(View.GONE);
+//        }
     }
 
     private void init(LayoutInflater inflater, ViewGroup container){
@@ -163,11 +163,11 @@ public class MyLectureFragment extends Fragment {
 
         swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt);
 
-        noLecture = (TextView) view.findViewById(R.id.no_lecture_in_my_lecturelist);
-        if(lectures.size() == 0 ){
-            swipeRefresh.setVisibility(View.GONE);
-            noLecture.setVisibility(View.VISIBLE);
-        }
+//        noLecture = (TextView) view.findViewById(R.id.no_lecture_in_my_lecturelist);
+//        if(lectures.size() == 0 ){
+//            swipeRefresh.setVisibility(View.GONE);
+//            noLecture.setVisibility(View.VISIBLE);
+//        }
 
 
         //设置rooter
