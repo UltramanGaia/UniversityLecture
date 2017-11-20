@@ -21,4 +21,12 @@
             >
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
+    <TextView
+        android:id = "@+id/no_lecture_in_my_lecturelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="你还没有听过讲座哦"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:visibility="gone"/>
 </LinearLayout>

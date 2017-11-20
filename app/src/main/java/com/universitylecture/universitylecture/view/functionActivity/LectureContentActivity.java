@@ -132,8 +132,8 @@ public class LectureContentActivity extends BaseActivity implements TranslucentS
             public void onClick(View v) {
                 ////
                 Intent intent = new Intent(LectureContentActivity.this,NaviBaseWalkActivity.class);
-                intent.putExtra("positionx",113.4075616300106);
-                intent.putExtra("positiony",23.04584466695405);
+                intent.putExtra("latitude", lecture.getLatitude());
+                intent.putExtra("longitude",lecture.getLongitude());
                 startActivity(intent);
             }
         });

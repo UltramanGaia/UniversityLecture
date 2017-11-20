@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/title_in_question_answer_list"></include>
+
+    <LinearLayout
+        android:id="@+id/questionArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/topic_of_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/title_of_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"/>
+
+        <com.lcodecore.extextview.ExpandTextView
+            android:id="@+id/content_of_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            app:arrowAlign="center"
+            app:arrowPadding="8dp"
+            app:arrowPosition="below"
+            app:maxCollapsedLines="1"/>
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layoyt_in_question_answer_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_in_question_answer_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:scrollbarThumbVertical="@drawable/my_bar"
+            android:visibility="visible"
+            >
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

@@ -3,10 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/lectures_of_myLectures"
+    <TextView
+        android:text="这是第二页"
+        android:textSize="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-
-
+        android:layout_height="match_parent" />
 </LinearLayout>
