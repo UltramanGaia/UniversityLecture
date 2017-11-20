@@ -1,7 +1,7 @@
 package com.universitylecture.universitylecture.view.fragment;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +16,10 @@ import com.universitylecture.universitylecture.adapter.TopicAdapter;
 import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.Topic;
 import com.universitylecture.universitylecture.pojo.User;
+import com.universitylecture.universitylecture.util.HttpUtilJSON;
+import com.universitylecture.universitylecture.util.JSON2ObjectUtil;
 import com.universitylecture.universitylecture.util.MyApplication;
+import com.universitylecture.universitylecture.util.Object2JSONUtil;
 import com.universitylecture.universitylecture.view.sidebar.SlideMenu;
 import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.universitylecture.universitylecture.view.tool.UpOnScrollListener;
@@ -41,6 +44,7 @@ public class LectureCircleFragment extends Fragment {
     private SlideMenu slideMenu;
     private Button moreButton;
     private User user;
+    private Integer page = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,8 +99,15 @@ public class LectureCircleFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-                        Topic Topic = new Topic(002  ,"alaljdjf" , "jasofja" , 01,"2017-10-06 19:58:52");
-                        topics.add(Topic);
+//                        Topic Topic = new Topic(002  ,"alaljdjf" , "jasofja" , 01,"2017-10-06 19:58:52");
+//                        topics.add(Topic);
+
+                        ArrayList<Topic> topics = adapter.getmLectureLIst();
+
+                        page += 5;
+                        ArrayList<Topic> newTopics = JSON2ObjectUtil.getTopics(HttpUtilJSON.doPost(Object2JSONUtil.selectTopics(String.valueOf(page)),"topics"));
+                        if (newTopics.size() > 0)
+                            topics.addAll(topics.size(),newTopics);
                         adapter.setmCommentList(topics);
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -133,8 +144,10 @@ public class LectureCircleFragment extends Fragment {
             public void run() {
 
                 //更新逻辑写在此处
-                Topic Topic = new Topic(003 , "babab" , "babab" ,01 ,"2017-10-06 19:58:52");
-                topics.add(Topic);
+//                Topic Topic = new Topic(003 , "babab" , "babab" ,01 ,"2017-10-06 19:58:52");
+//                topics.add(Topic);
+
+                topics = JSON2ObjectUtil.getTopics(HttpUtilJSON.doPost(Object2JSONUtil.selectTopics(String.valueOf(0)),"topics"));
                 adapter.setmCommentList(topics);
 
                 getActivity().runOnUiThread(new Runnable() {
@@ -164,20 +177,35 @@ public class LectureCircleFragment extends Fragment {
         topics_recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_in_lecture_circle);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());
         topics_recyclerView.setLayoutManager(layoutManager);
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt_in_lecture_circle);
 
         //样例数据
-        Topic Topic = new Topic(001,"老师叫什么名字","想问一下那个老师的具体信息加啥酒店附近安居房加拉斯砥砺奋进辣椒水的分类加就龙舒杰打飞机阿拉斯加放假啊六级啊受到了放假啦寄顺丰",01,"2017-10-06 19:58:52");
-        for(int i = 0 ; i < 10 ; i++){
-            topics.add(Topic);
-        }
+//        Topic Topic = new Topic(001,"老师叫什么名字","想问一下那个老师的具体信息加啥酒店附近安居房加拉斯砥砺奋进辣椒水的分类加就龙舒杰打飞机阿拉斯加放假啊六级啊受到了放假啦寄顺丰",01,"2017-10-06 19:58:52");
+//        for(int i = 0 ; i < 10 ; i++){
+//            topics.add(Topic);
+//        }
 
-        //设置adapter,对数据进行填充
-        adapter = new TopicAdapter(topics,getActivity());
-        topics_recyclerView.setAdapter(adapter);
-        //topics_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-        setFooterView(topics_recyclerView);
 
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_layoyt_in_lecture_circle);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                topics = JSON2ObjectUtil.getTopics(HttpUtilJSON.doPost(Object2JSONUtil.selectTopics(String.valueOf(0)),"topics"));
+
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //设置adapter,对数据进行填充
+                        adapter = new TopicAdapter(topics,getActivity());
+                        topics_recyclerView.setAdapter(adapter);
+                        //comments_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+                        setFooterView(topics_recyclerView);
+
+                    }
+                });
+            }
+        }).start();
+
     }
 
     private void setFooterView(RecyclerView recyclerView){

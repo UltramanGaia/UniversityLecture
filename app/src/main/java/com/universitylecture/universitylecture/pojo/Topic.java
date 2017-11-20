@@ -23,6 +23,10 @@ public class Topic implements Serializable {
         this.time = time;
     }
 
+    public Topic() {
+
+    }
+
     public Topic(String title, String description, Integer user_id, String time) {
         this.title = title;
         this.description = description;
