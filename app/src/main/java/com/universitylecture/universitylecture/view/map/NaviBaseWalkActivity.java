@@ -51,8 +51,8 @@ public class NaviBaseWalkActivity extends NaviBaseActivity implements
         }
 
         Intent intent = getIntent();
-        destination.setLatitude(Double.parseDouble(intent.getStringExtra("latitude")));
-        destination.setLongitude(Double.parseDouble(intent.getStringExtra("longitude")));
+        destination.setLatitude(intent.getDoubleExtra("latitude",0.0));
+        destination.setLongitude(intent.getDoubleExtra("longitude",0.0));
 
         setContentView(R.layout.activity_navi_base_walk);
         mAMapNaviView = (AMapNaviView) findViewById(R.id.navi_view);
