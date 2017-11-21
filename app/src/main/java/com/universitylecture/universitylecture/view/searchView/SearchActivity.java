@@ -137,7 +137,7 @@ public class SearchActivity extends AppCompatActivity {
 //                    Toast.makeText(SearchActivity.this, "需要搜索的是" + et_search.getText(), Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(SearchActivity.this,SearchAnswerActivity.class);
-                    intent.putExtra("searchKey" , et_search.getText());
+                    intent.putExtra("searchKey" , et_search.getText().toString());
                     startActivity(intent);
 
                     // 2. 点击搜索键后，对该搜索字段在数据库是否存在进行检查（查询）

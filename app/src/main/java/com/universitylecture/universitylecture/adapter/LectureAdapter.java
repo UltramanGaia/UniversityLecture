@@ -114,6 +114,7 @@ public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 int position = holder.getAdapterPosition();
                 Lecture lecture = mLectureLIst.get(position);
                 Intent intent = new Intent(mContext , LectureContentActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 intent.putExtra("lecture_item",lecture);
                 intent.putExtra("alarm" , alarm );
                 mContext.startActivity(intent);

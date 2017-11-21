@@ -87,6 +87,19 @@ public class Object2JSONUtil {
         return String.valueOf(js);
     }
 
+    public static String searchLecture(String searchString) {
+        JSONObject js = new JSONObject();
+
+        try {
+            js.put("searchString",searchString);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return String.valueOf(js);
+    }
+
     public static String addLecture(Lecture lecture) {
 
         JSONObject js = new JSONObject();

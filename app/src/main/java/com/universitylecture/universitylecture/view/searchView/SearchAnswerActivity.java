@@ -129,6 +129,7 @@ public class SearchAnswerActivity extends BaseActivity {
 
     private void setSwipeRefreshLayout(){
         swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+
         //按键逻辑
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -190,24 +191,23 @@ public class SearchAnswerActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-//                String m = Object2JSONUtil.myLecture(PersonalInformation.id);
-//                String s = HttpUtilJSON.doPost(m,"myLecture");
-//                lectures = JSON2ObjectUtil.getLectures(s);
-//
-//
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        adapter = new LectureAdapter(lectures,getActivity(),"unset");
-//                        lectures_recyclerView.setAdapter(adapter);
-//                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
-//                        setFooterView(lectures_recyclerView);
-//                        if(lectures.size() == 0 ) {
-//                            lectures_recyclerView.setVisibility(View.GONE);
-//                            noLecture.setVisibility(View.VISIBLE);
-//                        }
-//                    }
-//                });
+                String m = Object2JSONUtil.searchLecture(searchKey);
+                String s = HttpUtilJSON.doPost(m,"searchLecture");
+                lectures = JSON2ObjectUtil.getLectures(s);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter = new LectureAdapter(lectures, getApplicationContext() , "unset");
+                        lectures_recyclerView.setAdapter(adapter);
+                        lectures_recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.HORIZONTAL));
+                        setFooterView(lectures_recyclerView);
+                        if(lectures.size() == 0 ) {
+                            lectures_recyclerView.setVisibility(View.GONE);
+                            noLecture.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
             }
         }).start();
 
