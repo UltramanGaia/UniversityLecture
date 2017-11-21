@@ -3,61 +3,83 @@ package com.universitylecture.universitylecture.pojo;
 import java.io.Serializable;
 
 /**
- * Created by fengqingyundan on 2017/10/8.
+ * Created by fengqingyundan on 2017/11/20.
  */
 
 public class Comment implements Serializable {
-    private String ID;
-    private String topicLecture;
-    private String question;
-    private String description;
-    private String askerId;
+    private Integer ID;
+    private String content;
+    private Integer topic_id;
+    private Integer user_id;
+    private String username;
+    private String time;
 
-    public Comment(String mid , String mtopicLecture , String mquestion , String mdescription , String maskerId){
-        ID = mid;
-        topicLecture = mtopicLecture;
-        question = mquestion;
-        description = mdescription;
-        askerId = maskerId;
+    public Comment(Integer ID, String content, Integer topic_id, Integer user_id, String username, String time) {
+        this.ID = ID;
+        this.content = content;
+        this.topic_id = topic_id;
+        this.user_id = user_id;
+        this.username = username;
+        this.time = time;
     }
 
-    public String getAsker() {
-        return askerId;
+    public Comment() {
+
     }
 
-    public void setAsker(String askerId) {
-        this.askerId = askerId;
+    public Comment(String content, Integer topic_id, Integer user_id, String username, String time) {
+        this.content = content;
+        this.topic_id = topic_id;
+        this.user_id = user_id;
+        this.username = username;
+        this.time = time;
     }
 
-    public String getID(){
+    public Integer getID() {
         return ID;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getTopicLecture(){
-        return topicLecture;
-    }
-
-    public void setID(String ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
-    public void setTopicLecture(String topicLecture) {
-        this.topicLecture = topicLecture;
+    public String getContent() {
+        return content;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Integer getTopic_id() {
+        return topic_id;
+    }
+
+    public void setTopic_id(Integer topic_id) {
+        this.topic_id = topic_id;
+    }
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

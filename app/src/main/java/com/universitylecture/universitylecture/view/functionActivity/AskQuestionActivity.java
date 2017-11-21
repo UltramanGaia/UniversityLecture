@@ -20,8 +20,10 @@ import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.util.UploadUtil;
 import com.universitylecture.universitylecture.view.sidebar.LaunchActivity;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
+import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
@@ -30,7 +32,6 @@ import static android.view.Window.FEATURE_NO_TITLE;
  */
 
 public class AskQuestionActivity extends BaseActivity {
-    private EditText topicLecture;
     private EditText question;
     private EditText description;
 
@@ -67,7 +68,6 @@ public class AskQuestionActivity extends BaseActivity {
     }
 
     private void initView(){
-        topicLecture = (EditText) findViewById(R.id.topicLectureOfQuestion);
         question = (EditText) findViewById(R.id.questionOfQuestion);
         description = (EditText) findViewById(R.id.description_of_question);
     }
@@ -86,10 +86,13 @@ public class AskQuestionActivity extends BaseActivity {
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick( View v ){
-                String topicLectureToString = topicLecture.getText().toString();
-                String questionToQuestion = question.getText().toString();
-                String descriptionToString = description.getText().toString();
-                String askerId = getIntent().getStringExtra("user_id");
+                String titleOfQuestion = question.getText().toString();
+                String descriptionOfQuestion = description.getText().toString();
+                long time=System.currentTimeMillis();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Integer user_id = PersonalInformation.id;
+                //构造Topic剩下的一个参数LectureId已经在构造函数中写死，赋为1
+
                 //上传数据到服务器的数据写在这里
 
 

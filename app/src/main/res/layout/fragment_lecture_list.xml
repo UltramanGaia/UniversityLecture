@@ -34,12 +34,13 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/linearlayout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/button1"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/graduates" />
@@ -54,13 +55,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button12"
+                    android:id="@+id/button2"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/talk" />
@@ -75,13 +77,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button16"
+                    android:id="@+id/button3"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/race" />
@@ -96,12 +99,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button13"
+                    android:id="@+id/button4"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/medal" />
@@ -126,12 +130,13 @@
                 android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/linearlayout5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button125"
+                    android:id="@+id/button5"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/publicclass" />
@@ -146,13 +151,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button16"
+                    android:id="@+id/button6"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/recruit" />
@@ -167,13 +173,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button16"
+                    android:id="@+id/button7"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/sing" />
@@ -188,12 +195,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/button16"
+                    android:id="@+id/button8"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/classify" />
@@ -213,6 +221,7 @@
 
 
         <LinearLayout
+            android:id="@+id/linearlayout9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -220,6 +229,7 @@
             android:weightSum="1">
 
             <TextView
+                android:id="@+id/textView9"
                 android:layout_width="273dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -228,7 +238,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button15"
+                android:id="@+id/button9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -244,6 +254,7 @@
             android:layout_marginRight="10dp" />
 
         <LinearLayout
+            android:id="@+id/linearlayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -260,7 +271,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button111"
+                android:id="@+id/button10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -274,39 +285,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
-
-
-    <com.universitylecture.universitylecture.view.tool.DropDownMenu
-        android:id="@+id/dropDownMenu"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ddmenuTextSize="13sp"
-        app:ddtextUnselectedColor="@color/drop_down_unselected"
-        app:ddtextSelectedColor="@color/drop_down_selected"
-        app:dddividerColor="@color/gray"
-        app:ddunderlineColor="@color/gray"
-        app:ddmenuMenuHeightPercent="0.5"
-        app:ddmenuSelectedIcon="@mipmap/drop_down_selected_icon"
-        app:ddmaskColor="@color/mask_color"
-        app:ddmenuBackgroundColor="@color/white"
-        app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
-        />
-
-        <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_layoyt_in_lecture_list"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/lectures_of_lecture_list_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbarThumbVertical="@drawable/my_bar"
-                android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
-        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 </com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView>
 

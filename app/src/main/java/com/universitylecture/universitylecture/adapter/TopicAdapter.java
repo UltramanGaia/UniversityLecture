@@ -11,31 +11,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.universitylecture.universitylecture.R;
-import com.universitylecture.universitylecture.pojo.Answer;
-import com.universitylecture.universitylecture.pojo.Comment;
+import com.universitylecture.universitylecture.pojo.Topic;
 import com.universitylecture.universitylecture.view.LectureCircleActivity.AnswerListActivity;
 
 import java.util.ArrayList;
 
 /**
- * Created by fengqingyundan on 2017/11/15.
+ * Created by fengqingyundan on 2017/10/8.
  */
 
-public class AnswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+//讲座圈页面中评论列表的adapter
+public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static final int TYPE_FOOTER = 0;  //说明是带有Footer的
     public static final int TYPE_NORMAL = 1;  //说明是不footer的
     public static final int TYPE_HEADER = 2;
-
+    
     //extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-//    private Context mContext;//获取活动上下文，为点击事件服务
-    private ArrayList<Answer> mAnswerList = new ArrayList<>();
+    private Context mContext;//获取活动上下文，为点击事件服务
+    private ArrayList<Topic> mTopicList = new ArrayList<>();
     private View mFooterView;
     private View mHeaderView;
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView nameOfAnswer;
-        TextView answerContent;
-        TextView answerTime;
+        LinearLayout topic_item;
+        TextView question;
+        TextView description;
 
         public ViewHolder(View view){
             super(view);
@@ -44,15 +44,15 @@ public class AnswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 return;
             }
 
-            nameOfAnswer = (TextView) view.findViewById(R.id.name_of_answerer);
-            answerContent = (TextView) view.findViewById(R.id.content_of_answer);
-            answerTime = (TextView) view.findViewById(R.id.time_of_answer);
+            topic_item = (LinearLayout) view.findViewById(R.id.topic_item_in_lecture_circle);
+            question = (TextView) view.findViewById(R.id.question_of_topic);
+            description = (TextView) view.findViewById(R.id.description_of_topic);
         }
     }
 
-    public AnswerAdapter(ArrayList<Answer> answerList ){
-//        mContext = context;
-        mAnswerList = answerList;
+    public TopicAdapter(ArrayList<Topic> commentList , Context context){
+        mContext = context;
+        mTopicList = commentList;
     }
 
     public View getHeaderView() {
@@ -75,15 +75,25 @@ public class AnswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     //创建View，如果是FooterView，直接在Holder中返回
-    public AnswerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         if( mFooterView != null && viewType == TYPE_FOOTER){
-            return new AnswerAdapter.ViewHolder(mFooterView);
+            return new TopicAdapter.ViewHolder(mFooterView);
         }
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.answer_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.topic_item,parent,false);
 
         //设置每一项的点击事件
-        final AnswerAdapter.ViewHolder holder = new AnswerAdapter.ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        holder.topic_item.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                int position = holder.getAdapterPosition();
+                Topic topic = mTopicList.get(position);
+//                Toast.makeText(mContext , "点击了一下" , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , AnswerListActivity.class);
+                intent.putExtra("topic_item",topic);
+                mContext.startActivity(intent);
+            }
+        });
         return holder;
 
     }
@@ -91,13 +101,12 @@ public class AnswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     //绑定View，这里是根据返回的这个position的类型，从而进行绑定的，   HeaderView和FooterView, 就不同绑定了
     public void onBindViewHolder(RecyclerView.ViewHolder holder,int position){
         if(getItemViewType(position) == TYPE_NORMAL){
-            if(holder instanceof AnswerAdapter.ViewHolder) {
-                Answer answer = mAnswerList.get(position);
+            if(holder instanceof TopicAdapter.ViewHolder) {
+                Topic Topic = mTopicList.get(position);
                 Log.e("position", "onBindViewHolder: " + position);
 
-                ((ViewHolder)holder).nameOfAnswer.setText(answer.getNameOfAnswer());
-                ((ViewHolder)holder).answerContent.setText(answer.getAnswerContent());
-                ((ViewHolder)holder).answerTime.setText(answer.getTime());
+                ((ViewHolder)holder).question.setText(Topic.getTitle());
+                ((ViewHolder)holder).description.setText(Topic.getDescription());
                 return;
             }
             return;
@@ -105,7 +114,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return;
         }
 
-//        Lecture lecture = mCommentList.get(position);
+//        Lecture lecture = mTopicList.get(position);
 //        ((ViewHolder)holder).lectureImage.setImageResource(lecture.getImageId());
 //        ((ViewHolder)holder).lectureName.setText(lecture.getName());
     }
@@ -124,20 +133,20 @@ public class AnswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public int getItemCount(){
-        //return mCommentList.size();
+        //return mTopicList.size();
 
         if( mFooterView == null){
-            return mAnswerList.size();
+            return mTopicList.size();
         }else {
-            return mAnswerList.size() + 1;
+            return mTopicList.size() + 1;
         }
     }
 
-    public void setmAnswerList(ArrayList<Answer> answers) {
-        mAnswerList = answers;
+    public void setmCommentList(ArrayList<Topic> comments) {
+        mTopicList = comments;
     }
 
-    public ArrayList<Answer> getmLectureLIst() {
-        return mAnswerList;
+    public ArrayList<Topic> getmLectureLIst() {
+        return mTopicList;
     }
 }

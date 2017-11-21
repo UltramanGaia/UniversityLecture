@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <!-- A CardView that contains a TextView -->
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,51 +13,49 @@
         card_view:cardCornerRadius="4dp">
 
         <LinearLayout
-            android:id="@+id/answer_item_in_answer_list"
+            android:id="@+id/topic_item_in_lecture_circle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:padding="15dp">
 
             <TextView
-                android:id="@+id/content_of_the_answer"
-                android:layout_width="match_parent"
+                android:id="@+id/question_of_topic"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:text="穷怕了是一种什么体验？"
+                android:textColor="@color/light_black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/description_of_topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="3"
-                android:text="我们只要明确，使用系统为我们提供的Transition框架，就可以轻而易举的实现了。首先要引入依赖co们使用。"
-                android:textColor="@color/contents_text"
-                android:textSize="14sp" />
+                android:maxLines="5"
+                android:text="穷怕了是一种什么体验？看到微博上有说一个17岁男生离家出走留书说:下辈子投胎不要在穷人家。类似这样的。周围有一朋友跟我说，她的初中同学，家境并不好，出来工作月薪上万，可她并没有顾及家里的情况。而是挥霍，并且想尽方法想周围炫耀，追求卓越感，个人觉得这可能就是穷怕了吧。" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="由"
+                    android:layout_marginRight="10dp"
+                    android:text="1791 人关注"
                     android:textColor="@color/grgray"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/name_of_answerer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="Nickole"
-                    android:textColor="@color/grgray"
-                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="回答"
+                    android:text="3 条回答"
                     android:textColor="@color/grgray"
                     android:textSize="12sp" />
 
@@ -74,7 +73,8 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
+
+
     </android.support.v7.widget.CardView>
 </LinearLayout>

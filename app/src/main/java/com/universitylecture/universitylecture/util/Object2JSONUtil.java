@@ -139,4 +139,27 @@ public class Object2JSONUtil {
 
         return String.valueOf(js);
     }
+
+    public static String selectTopics(String page) {
+        JSONObject js = new JSONObject();
+        try {
+            js.put("page",page);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(js);
+    }
+
+    public static String selectComments(Integer topicID, String page) {
+        JSONObject js = new JSONObject();
+        try {
+            js.put("page",page);
+            js.put("topicID", topicID);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(js);
+    }
 }

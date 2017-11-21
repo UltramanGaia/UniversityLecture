@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F0F0">
+    android:background="#F7F7F7">
 
     <include layout="@layout/title_in_answer_question"/>
 
@@ -10,14 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:background="#FFFFFF"
-        >
+        android:padding="5dp">
+
         <EditText
             android:id="@+id/answer_quetion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="18sp" />
+            android:layout_height="200dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_edittext_selector"
+            android:gravity="top"
+            android:hint="输入你的回答"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </LinearLayout>

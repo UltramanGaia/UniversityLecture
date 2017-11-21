@@ -1,6 +1,7 @@
 package com.universitylecture.universitylecture.view.searchView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -133,7 +134,11 @@ public class SearchActivity extends AppCompatActivity {
                     if (!(mCallBack == null)){
                         mCallBack.SearchAciton(et_search.getText().toString());
                     }
-                    Toast.makeText(SearchActivity.this, "需要搜索的是" + et_search.getText(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(SearchActivity.this, "需要搜索的是" + et_search.getText(), Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(SearchActivity.this,SearchAnswerActivity.class);
+                    intent.putExtra("searchKey" , et_search.getText());
+                    startActivity(intent);
 
                     // 2. 点击搜索键后，对该搜索字段在数据库是否存在进行检查（查询）
                     boolean hasData = hasData(et_search.getText().toString().trim());

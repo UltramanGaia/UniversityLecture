@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include layout="@layout/title_in_lecture_list_actiity"></include>
+
+    <com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView
+        android:id="@+id/scrollview2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.universitylecture.universitylecture.view.tool.DropDownMenu xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dropDownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dddividerColor="@color/gray"
+                app:ddmaskColor="@color/mask_color"
+                app:ddmenuBackgroundColor="@color/white"
+                app:ddmenuMenuHeightPercent="0.5"
+                app:ddmenuSelectedIcon="@mipmap/drop_down_selected_icon"
+                app:ddmenuTextSize="13sp"
+                app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
+                app:ddtextSelectedColor="@color/drop_down_selected"
+                app:ddtextUnselectedColor="@color/drop_down_unselected"
+                app:ddunderlineColor="@color/gray" />
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_layoyt_in_lecture_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/lectures_of_lecture_list_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbarThumbVertical="@drawable/my_bar"
+                    android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+    </com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView>
+
+</LinearLayout>

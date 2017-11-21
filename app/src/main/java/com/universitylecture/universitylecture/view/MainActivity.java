@@ -365,9 +365,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         //退出activity前关闭菜单
-        if (LectureListFragment.mDropDownMenu != null && LectureListFragment.mDropDownMenu.isShowing()) {
-            LectureListFragment.mDropDownMenu.closeMenu();
-        } else if(drawerLayout.isDrawerOpen(Gravity.START)){
+//        if (LectureListFragment.mDropDownMenu != null && LectureListFragment.mDropDownMenu.isShowing()) {
+//            LectureListFragment.mDropDownMenu.closeMenu();
+        if(drawerLayout.isDrawerOpen(Gravity.START)){
             drawerLayout.closeDrawers();
         }else{
             super.onBackPressed();

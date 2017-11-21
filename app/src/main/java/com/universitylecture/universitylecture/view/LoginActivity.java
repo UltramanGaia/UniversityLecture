@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,7 +22,7 @@ import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 //登录界面
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText phoneNumberText;
     private EditText passwordText;
