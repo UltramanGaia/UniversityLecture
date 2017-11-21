@@ -95,6 +95,7 @@ public class JSON2ObjectUtil {
                 topic.setTime(sdf.format(Long.parseLong(jsonObject.getString("time"))));
                 topic.setDescription(jsonObject.getString("description"));
                 topic.setUser_id(Integer.valueOf(jsonObject.getString("userId")));
+                topic.setID(Integer.valueOf(jsonObject.getString("id")));
                 topics.add(topic);
             }
 

@@ -14,6 +14,7 @@ import java.net.URL;
 
 public class HttpUtilJSON {
 
+//    public static final String strUrl = "http://172.16.1.76:8080/UniversityLectureServer/";
     public static final String strUrl = "http://118.89.45.18:8080/UniversityLectureServer/";
 
     public static String doPost(String content,String surl) {

@@ -155,7 +155,7 @@ public class Object2JSONUtil {
         JSONObject js = new JSONObject();
         try {
             js.put("page",page);
-            js.put("topicID", topicID);
+            js.put("topicId", topicID);
 
         } catch (JSONException e) {
             e.printStackTrace();
