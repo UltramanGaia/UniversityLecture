@@ -28,7 +28,10 @@
     <color name="tag_normal">#F5F5F5</color>
     <color name="tag_pressed">#a7a7a7</color>
     <color name="transparent">#00000000</color>
+    <color name="button_in_title_bg">#60ffffff</color>
 
     <drawable name="nav_button_white">#ffffff</drawable>
     <drawable name="nav_button_gray">#a7a7a7</drawable>
+
+
 </resources>

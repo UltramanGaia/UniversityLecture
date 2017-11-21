@@ -10,16 +10,17 @@
         android:id="@+id/questionArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="10dp"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/title_of_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
             android:text="你什么时候觉得智商被侮辱了？"
             android:textColor="@color/contents_text"
             android:textSize="20sp" />
@@ -28,6 +29,8 @@
             android:id="@+id/content_of_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="愿意在角落唱沙哑的歌，再大声也都是为你，这是什么歌啊，求大神愿意在角落唱沙哑的歌，再大声也都是为你，这是什么歌啊，求大神"
             android:textColor="#666666"
             android:textSize="14sp"
@@ -42,7 +45,8 @@
         android:id="@+id/recycler_view_in_question_answer_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:scrollbars="vertical"
         android:scrollbarThumbVertical="@drawable/my_bar"
         android:visibility="visible"

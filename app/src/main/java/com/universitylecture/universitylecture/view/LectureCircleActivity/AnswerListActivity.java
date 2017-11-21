@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -105,9 +106,12 @@ public class AnswerListActivity extends BaseActivity {
 //                for(int i = 0 ; i < 10 ; i++){
 //                    answers.add(answer);
 //                }
+                if (topic == null)
+                    Log.e("comment", topic.toString());
                 answers = JSON2ObjectUtil.getComments(HttpUtilJSON.doPost(Object2JSONUtil.selectComments(
-                        Integer.valueOf(topic.getID()), String.valueOf(0)),"comments"));
-
+                        topic.getID(), String.valueOf(0)),"comments"));
+//                answers = JSON2ObjectUtil.getComments(HttpUtilJSON.doPost(Object2JSONUtil.selectComments(
+//                        1, String.valueOf(0)),"comments"));
 
                 runOnUiThread(new Runnable() {
                     @Override

@@ -16,7 +16,7 @@
         <Button
             android:id="@+id/go_back"
             android:layout_width="66dp"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@android:color/transparent"
@@ -39,10 +39,10 @@
         <Button
             android:id="@+id/save_information"
             android:layout_width="66dp"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/button_border3"
             android:text="保存"
             android:textAlignment="center"
             android:textAllCaps="false"

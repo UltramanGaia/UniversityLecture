@@ -19,7 +19,7 @@
         <Button
             android:id="@+id/go_back_in_lecture_list_activity"
             android:layout_width="66dp"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@android:color/transparent"

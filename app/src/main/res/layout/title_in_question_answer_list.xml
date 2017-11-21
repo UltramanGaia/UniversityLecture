@@ -15,7 +15,7 @@
     <Button
         android:id="@+id/go_back_in_comment"
         android:layout_width="65dp"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_gravity="center"
         android:layout_margin="8dp"
         android:background="@android:color/transparent"
@@ -41,8 +41,8 @@
 
     <Button
         android:id="@+id/answer_question_in_comment"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:background="@drawable/answer"
