@@ -22,7 +22,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 //import com.universitylecture.universitylecture.pojo.SimpleDividerItemDecoration;
 
 /**
- * Created by fengqingyundan on 2017/8/23.
+ * Created by fengqingyundan on 2017/10/23.
  */
 //二维码页面的二维码
 public class MyTwoDCodeActivity extends Activity {

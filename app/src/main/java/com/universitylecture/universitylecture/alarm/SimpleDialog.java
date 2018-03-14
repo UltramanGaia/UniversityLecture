@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.universitylecture.universitylecture.R;
 
 /**
- * Created by fengqingyundan on 2017/9/9.
+ * Created by fengqingyundan on 2017/10/19.
  */
 
 //提醒的弹框

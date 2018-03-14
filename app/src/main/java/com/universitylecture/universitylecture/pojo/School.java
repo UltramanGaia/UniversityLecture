@@ -3,7 +3,7 @@ package com.universitylecture.universitylecture.pojo;
 import java.util.ArrayList;
 
 /**
- * Created by fengqingyundan on 2017/5/27.
+ * Created by fengqingyundan on 2017/10/27.
  */
 //学校类，掌管其学校举办的讲座
 

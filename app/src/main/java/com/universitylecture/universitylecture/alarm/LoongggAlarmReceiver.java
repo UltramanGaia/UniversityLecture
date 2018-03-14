@@ -7,7 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Vibrator;
 
 /**
- * Created by fengqingyundan on 2017/9/9.
+ * Created by fengqingyundan on 2017/10/19.
  */
 //接收闹钟到点提醒的广播
 public class LoongggAlarmReceiver extends BroadcastReceiver {

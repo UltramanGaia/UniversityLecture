@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import com.universitylecture.universitylecture.R;
 
 /**
- * Created by fengqingyundan on 2017/9/9.
+ * Created by fengqingyundan on 2017/10/19.
  */
 
 public class ClockAlarmActivity extends Activity {

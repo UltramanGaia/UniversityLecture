@@ -1,7 +1,7 @@
 package com.universitylecture.universitylecture.util;
 
 /**
- * Created by helloworld on 2017/7/11.
+ * Created by helloworld on 2017/11/11.
  */
 
 public class Constant {

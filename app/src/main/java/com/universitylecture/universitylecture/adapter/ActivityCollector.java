@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by fengqingyundan on 2017/6/26.
+ * Created by fengqingyundan on 2017/10/26.
  */
 //活动的管理器，用来点击退出应用时退出所有活动
 public class ActivityCollector {

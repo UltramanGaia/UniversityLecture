@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.UUID;
 
 /**
- * Created by helloworld on 2017/6/16.
+ * Created by helloworld on 2017/10/16.
  */
 
 public class UploadUtil {

@@ -26,7 +26,7 @@ import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 /**
- * Created by helloworld on 2017/6/18.
+ * Created by helloworld on 2017/10/18.
  */
 
 public class RegisterMobileActivity extends BaseActivity {

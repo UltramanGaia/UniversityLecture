@@ -45,6 +45,7 @@
                     android:layout_toEndOf="@+id/linearLayout"
                     android:background="@drawable/poster_border"
                     android:padding="6dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/xinshengdai" />
 
                 <TextView

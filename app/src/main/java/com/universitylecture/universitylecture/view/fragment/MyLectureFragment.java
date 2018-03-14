@@ -149,6 +149,7 @@ public class MyLectureFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragement_my_lecture, container, false);
+
         //配置recylerview三部曲
         lectures_recyclerView = (RecyclerView) view.findViewById(R.id.lectures_of_myLectures_recyclerview);
         layoutManager = new LinearLayoutManager(MyApplication.getContext());

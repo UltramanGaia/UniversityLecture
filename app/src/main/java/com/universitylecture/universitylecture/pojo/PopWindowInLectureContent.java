@@ -17,7 +17,7 @@ import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 /**
- * Created by fengqingyundan on 2017/9/7.
+ * Created by fengqingyundan on 2017/11/7.
  */
 
 public class PopWindowInLectureContent extends PopupWindow {

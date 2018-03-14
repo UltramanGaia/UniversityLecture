@@ -33,7 +33,7 @@ import butterknife.InjectView;
 import static android.view.Window.FEATURE_NO_TITLE;
 
 /**
- * Created by fengqingyundan on 2017/9/18.
+ * Created by fengqingyundan on 2017/10/18.
  */
 
 public class SelectInformationForLaunch2 extends BaseActivity {

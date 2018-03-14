@@ -9,7 +9,7 @@ import android.os.Build;
 import java.util.Calendar;
 
 /**
- * Created by fengqingyundan on 2017/9/6.
+ * Created by fengqingyundan on 2017/11/6.
  */
 
 //用于闹钟设置的类

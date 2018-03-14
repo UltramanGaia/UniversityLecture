@@ -58,7 +58,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 import static com.universitylecture.universitylecture.util.MyApplication.getContext;
 
 /**
- * Created by fengqingyundan on 2017/6/25.
+ * Created by fengqingyundan on 2017/10/25.
  */
 //讲座内容界面
 public class LectureContentActivity extends BaseActivity implements TranslucentScrollView.OnScrollChangedListener{

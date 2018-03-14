@@ -42,7 +42,7 @@ import java.io.File;
 import static android.view.Window.FEATURE_NO_TITLE;
 
 /**
- * Created by fengqingyundan on 2017/6/14.
+ * Created by fengqingyundan on 2017/10/14.
  */
 //发布讲座页面
 public class LaunchActivity extends BaseActivity {

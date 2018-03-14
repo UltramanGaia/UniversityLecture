@@ -22,9 +22,6 @@ import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 import static android.view.Window.FEATURE_NO_TITLE;
 import static com.universitylecture.universitylecture.view.tool.PersonalInformation.phoneNumber;
 
-/**
- * Created by fengqingyundan on 2017/6/15.
- */
 //修改个人信息页面
 public class ChangeInformationActivity extends BaseActivity {
     //活动传回来的数据

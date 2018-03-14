@@ -25,7 +25,7 @@ import com.universitylecture.universitylecture.util.OutputMessage;
 import com.universitylecture.universitylecture.view.tool.BaseActivity;
 
 /**
- * Created by helloworld on 2017/6/18.
+ * Created by helloworld on 2017/10/18.
  */
 
 public class RegisterUserInfoActivity extends BaseActivity {

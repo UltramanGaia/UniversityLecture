@@ -3,7 +3,7 @@ package com.universitylecture.universitylecture.pojo;
 import java.io.Serializable;
 
 /**
- * Created by fengqingyundan on 2017/5/27.
+ * Created by fengqingyundan on 2017/11/27.
  */
 //学生用户类
 public class User implements Serializable {

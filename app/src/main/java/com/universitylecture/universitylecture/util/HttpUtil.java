@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by helloworld on 2017/6/3.
+ * Created by helloworld on 2017/11/3.
  */
 
 public class HttpUtil {

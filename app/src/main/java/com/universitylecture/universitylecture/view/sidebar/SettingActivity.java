@@ -14,7 +14,7 @@ import static android.view.Window.FEATURE_NO_TITLE;
 
 
 /**
- * Created by fengqingyundan on 2017/6/14.
+ * Created by fengqingyundan on 2017/10/14.
  */
 //设置页面活动
 public class SettingActivity extends BaseActivity {

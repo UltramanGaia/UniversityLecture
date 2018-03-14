@@ -1,6 +1,5 @@
 package com.universitylecture.universitylecture.adapter;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -23,10 +22,10 @@ import com.universitylecture.universitylecture.view.functionActivity.LectureCont
 import java.util.ArrayList;
 
 /**
- * Created by fengqingyundan on 2017/11/1.
+ * Created by Nickole on 2018/3/14.
  */
-//为了使用recyclerview而建立的容器类
-public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+public class OpeningLectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static final int TYPE_FOOTER = 0;  //说明是带有Footer的
     public static final int TYPE_NORMAL = 1;  //说明是不footer的
     public static final int TYPE_HEADER = 2;
@@ -54,18 +53,18 @@ public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 return;
             }
 
-            lecture_item = (LinearLayout) view.findViewById(R.id.lecture_item_in_mylecture_or_lecturelist);
-            lectureName = (TextView) view.findViewById(R.id.lecture_name_in_mylecture_or_lecturelist);
-            lectureClassroom = (TextView) view.findViewById(R.id.lecture_classroom_in_mylecture_or_lecturelist);
-            lectureTime = (TextView) view.findViewById(R.id.lecture_time_in_mylecture_or_lecturelist);
-            lectureLecturer = (TextView) view.findViewById(R.id.lecture_lecturer_in_mylecture_or_lecturelist);
-            lectureIntroduction = (TextView) view.findViewById(R.id.lecture_introduction_in_mylecture_or_lecturelist);
+            lecture_item = (LinearLayout) view.findViewById(R.id.opening_item_layout);
+            lectureName = (TextView) view.findViewById(R.id.lecture_name_in_opening_lecture);
+            lectureClassroom = (TextView) view.findViewById(R.id.lecture_classroom_in_opening_lecture);
+            lectureTime = (TextView) view.findViewById(R.id.lecture_time_in_opening_lecture);
+            lectureLecturer = (TextView) view.findViewById(R.id.lecture_lecturer_in_opening_lecture);
+            lectureIntroduction = (TextView) view.findViewById(R.id.lecture_content_in_opening_lecture);
 
             DisplayMetrics dm = MyApplication.getContext().getResources().getDisplayMetrics();
             int width = dm.widthPixels;
             int height = dm.heightPixels;
 
-            lectureImage = (ImageView) view.findViewById(R.id.lecture_image_in_mylecture_or_lecturelist);
+            lectureImage = (ImageView) view.findViewById(R.id.lecture_image_in_opening_lecture);
             LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) lectureImage.getLayoutParams();
 //获取当前控件的布局对象
             params.height=width/3;//设置当前控件布局的高度
@@ -73,7 +72,7 @@ public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    public LectureAdapter(ArrayList<Lecture> lectureList , Context context , String alarmSet){
+    public OpeningLectureAdapter(ArrayList<Lecture> lectureList , Context context , String alarmSet){
         mContext = context;
         mLectureLIst = lectureList;
         alarm = alarmSet;
@@ -100,15 +99,15 @@ public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     //创建View，如果是FooterView，直接在Holder中返回
-    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+    public OpeningLectureAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         if( mFooterView != null && viewType == TYPE_FOOTER){
-            return new ViewHolder(mFooterView);
+            return new OpeningLectureAdapter.ViewHolder(mFooterView);
         }
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lecture_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_recycler_view,parent,false);
 
         //设置每一项的点击事件
-        final ViewHolder holder = new ViewHolder(view);
+        final OpeningLectureAdapter.ViewHolder holder = new OpeningLectureAdapter.ViewHolder(view);
         holder.lecture_item.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 int position = holder.getAdapterPosition();
@@ -127,19 +126,19 @@ public class LectureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     //绑定View，这里是根据返回的这个position的类型，从而进行绑定的，   HeaderView和FooterView, 就不同绑定了
     public void onBindViewHolder(RecyclerView.ViewHolder holder,int position){
         if(getItemViewType(position) == TYPE_NORMAL){
-            if(holder instanceof ViewHolder) {
+            if(holder instanceof OpeningLectureAdapter.ViewHolder) {
                 Lecture lecture = mLectureLIst.get(position);
                 Log.e("position", "onBindViewHolder: " + position);
 
-                ((ViewHolder)holder).lectureName.setText(lecture.getTitle());
+                ((OpeningLectureAdapter.ViewHolder)holder).lectureName.setText(lecture.getTitle());
 
                 String date = lecture.getTime().split(" ")[0];
                 String time = lecture.getTime().split(" ")[1];
-                ((ViewHolder)holder).lectureTime.setText(date + " " + time.split(":")[0] + ":" + time.split(":")[1]);
-                ((ViewHolder)holder).lectureClassroom.setText(lecture.getClassroom());
-                ((ViewHolder)holder).lectureLecturer.setText(lecture.getLecturer());
-                ((ViewHolder)holder).lectureIntroduction.setText(lecture.getIntroduction());
-                Glide.with(MyApplication.getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).into(((ViewHolder)holder).lectureImage);
+                ((OpeningLectureAdapter.ViewHolder)holder).lectureTime.setText(date + " " + time.split(":")[0] + ":" + time.split(":")[1]);
+                ((OpeningLectureAdapter.ViewHolder)holder).lectureClassroom.setText(lecture.getClassroom());
+                ((OpeningLectureAdapter.ViewHolder)holder).lectureLecturer.setText(lecture.getLecturer());
+                ((OpeningLectureAdapter.ViewHolder)holder).lectureIntroduction.setText(lecture.getIntroduction());
+                Glide.with(MyApplication.getContext()).load(Constant.IMAGE_URI + lecture.getImagePath()).into(((OpeningLectureAdapter.ViewHolder)holder).lectureImage);
 
                 return;
             }

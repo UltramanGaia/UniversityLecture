@@ -232,10 +232,11 @@
                 android:id="@+id/textView9"
                 android:layout_width="273dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:text="正在开办"
                 android:textColor="@color/contents_text"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button9"
@@ -250,14 +251,14 @@
             android:id="@+id/opening_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
         <LinearLayout
             android:id="@+id/linearlayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:weightSum="1">
 
@@ -265,10 +266,11 @@
                 android:id="@+id/textView18"
                 android:layout_width="273dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:text="附近热门"
+                android:textStyle="bold"
                 android:textColor="@color/contents_text"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/button10"
@@ -282,9 +284,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/near_hot_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </com.universitylecture.universitylecture.view.sidebar.TranslucentScrollView>
 

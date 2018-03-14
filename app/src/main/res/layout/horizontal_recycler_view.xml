@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/opening_item_layout"
     android:layout_width="280dp"
     android:layout_height="150dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="10dp"
+    android:elevation="6dp"
     android:background="@drawable/lecture_border">
 
     <ImageView
-        android:id="@+id/lecture_image"
+        android:id="@+id/lecture_image_in_opening_lecture"
         android:layout_width="96dp"
         android:layout_height="130dp"
         android:scaleType="centerCrop"
@@ -19,6 +25,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/lecture_time_in_opening_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -27,6 +34,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/lecture_name_in_opening_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -35,6 +43,7 @@
             android:textSize="18dp" />
 
         <TextView
+            android:id="@+id/lecture_content_in_opening_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -55,6 +64,7 @@
                 android:background="@drawable/speaker_purple" />
 
             <TextView
+                android:id="@+id/lecture_lecturer_in_opening_lecture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="梁征宇"
@@ -76,6 +86,7 @@
                 android:background="@drawable/place_purple" />
 
             <TextView
+                android:id="@+id/lecture_classroom_in_opening_lecture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="华工学术大讲堂"

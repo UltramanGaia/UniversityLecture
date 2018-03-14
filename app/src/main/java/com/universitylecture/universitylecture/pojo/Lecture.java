@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.io.Serializable;
 
 /**
- * Created by fengqingyundan on 2017/5/27.
+ * Created by fengqingyundan on 2017/10/27.
  */
 //讲座类
 public class Lecture implements Serializable{

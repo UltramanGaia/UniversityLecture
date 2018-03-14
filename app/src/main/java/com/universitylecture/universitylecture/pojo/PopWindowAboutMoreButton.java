@@ -23,7 +23,7 @@ import com.universitylecture.universitylecture.view.sidebar.LaunchActivity;
 import com.universitylecture.universitylecture.view.tool.PersonalInformation;
 
 /**
- * Created by fengqingyundan on 2017/8/22.
+ * Created by fengqingyundan on 2017/10/22.
  */
 
 public class PopWindowAboutMoreButton extends PopupWindow{

@@ -34,6 +34,7 @@ import com.universitylecture.universitylecture.adapter.ConstellationAdapter;
 import com.universitylecture.universitylecture.adapter.GirdDropDownAdapter;
 import com.universitylecture.universitylecture.adapter.LectureAdapter;
 import com.universitylecture.universitylecture.adapter.ListDropDownAdapter;
+import com.universitylecture.universitylecture.adapter.OpeningLectureAdapter;
 import com.universitylecture.universitylecture.pojo.Lecture;
 import com.universitylecture.universitylecture.pojo.PopWindowAboutMoreButton;
 import com.universitylecture.universitylecture.pojo.School;
@@ -90,7 +91,8 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
 
     //两个recyclerView
     public RecyclerView nowOpening,nearHot;
-    private LectureAdapter adapter1,adapter2;
+    private OpeningLectureAdapter adapter1;
+    private LectureAdapter adapter2;
     private LinearLayoutManager layoutManager1,layoutManager2;
     private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
     @Override
@@ -140,6 +142,7 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
     private void initRecyclerView(){
         nowOpening = (RecyclerView) view.findViewById(R.id.opening_recycler_view);
         layoutManager1 = new LinearLayoutManager(MyApplication.getContext());
+        layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
         nowOpening.setLayoutManager(layoutManager1);
 
         nearHot = (RecyclerView) view.findViewById(R.id.near_hot_recycler_view);
@@ -164,7 +167,7 @@ public class LectureListFragment extends Fragment implements TranslucentScrollVi
                     public void run() {
                         //配置recylerview三部曲
 
-                        adapter1 = new LectureAdapter(lectures,getActivity(),"set");
+                        adapter1 = new OpeningLectureAdapter(lectures,getActivity(),"set");
                         nowOpening.setAdapter(adapter1);
 
                         adapter2 = new LectureAdapter(lectures,getActivity(),"set");
